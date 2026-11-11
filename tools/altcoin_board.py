@@ -140,6 +140,7 @@ LIVE_JS = r"""
   var OKXOI = "https://www.okx.com/api/v5/public/open-interest?instType=SWAP";
   var OKXPX = "https://www.okx.com/api/v5/market/tickers?instType=SWAP";
   var HLAPI = "https://api.hyperliquid.xyz/info";
+  var BITGET = "https://api.bitget.com/api/v2/mix/market/tickers?productType=usdt-futures";
   var MS = 300000, TOL = 0.20;
 
   function money(v){
@@ -196,19 +197,20 @@ LIVE_JS = r"""
     var sup=+b0.CMCCirculatingSupply;
     var px0=v0/c0, px1=v1/c1;
     var price=+ticker.lastPrice / mult;      // 折算成单枚价再比
-    var by=0, ok=0, hl=0;
+    var by=0, ok=0, hl=0, bg=0;
     if(cross){
       if(cross.by && (!cross.bpx || Math.abs(price/cross.bpx-1)<=TOL)) by=cross.by;
       if(cross.ok && (!cross.opx || Math.abs(price/cross.opx-1)<=TOL)) ok=cross.ok;
       if(cross.hl && (!cross.hpx || Math.abs(price/cross.hpx-1)<=TOL)) hl=cross.hl;
+      if(cross.bg && (!cross.bgpx || Math.abs(price/cross.bgpx-1)<=TOL)) bg=cross.bg;
     }
-    var total=v1+by+ok+hl;
+    var total=v1+by+ok+hl+bg;
     var mcap = sup>0 ? sup*px1 : null;
     return {
       px:(px1/px0-1)*100,
       ct:(c1/c0-1)*100,
       oi24:(v1/v0-1)*100,
-      oi_bin:v1, x_bybit:by, x_okx:ok, x_hl:hl, oi_total:total,
+      oi_bin:v1, x_bybit:by, x_okx:ok, x_hl:hl, x_bg:bg, oi_total:total,
       bin_share: total ? v1/total*100 : null,
       mcap:mcap,
       om: (mcap && total) ? total/mcap*100 : null,
@@ -281,9 +283,10 @@ LIVE_JS = r"""
       fetch(OKXPX).then(function(r){return r.json();}).catch(function(){return null;}),
       fetch(HLAPI, { method:"POST", headers:{ "Content-Type":"application/json" },
                      body: JSON.stringify({ type:"metaAndAssetCtxs" }) })
-        .then(function(r){return r.json();}).catch(function(){return null;})
+        .then(function(r){return r.json();}).catch(function(){return null;}),
+      fetch(BITGET).then(function(r){return r.json();}).catch(function(){return null;})
     ]).then(function(res){
-      var map = {}, by = res[0], oi = res[1], px = res[2], hl = res[3], e, b, v;
+      var map = {}, by = res[0], oi = res[1], px = res[2], hl = res[3], bg = res[4], e, b, v;
       if(by && by.result && by.result.list){
         by.result.list.forEach(function(r){
           var s = r.symbol || "";
@@ -329,6 +332,18 @@ LIVE_JS = r"""
           e.hpx = p;
         }
       }
+      if(bg && bg.data){
+        bg.data.forEach(function(r){
+          var s = r.symbol || "";
+          if(s.slice(-4) !== "USDT") return;
+          var mk = +r.markPrice, amt = +r.holdingAmount, usd = amt * mk;
+          if(!(usd>0) || !(mk>0)) return;
+          var gb = s.slice(0,-4);
+          var ge = map[gb] || (map[gb] = {});
+          ge.bg = (ge.bg||0) + usd;
+          ge.bgpx = mk;
+        });
+      }
       return map;
     });
   }
@@ -369,6 +384,7 @@ LIVE_JS = r"""
         put(tr,"x_bybit",xmoney(d.x_bybit),null);
         put(tr,"x_okx",xmoney(d.x_okx),null);
         put(tr,"x_hl",xmoney(d.x_hl),null);
+        put(tr,"x_bg",xmoney(d.x_bg),null);
         put(tr,"mcap",money(d.mcap),null);
         putCls(tr,"om", d.om===null?"—":d.om.toFixed(1)+"%",
                d.om!==null && d.om>=35 ? "up" : "mut");
@@ -460,9 +476,9 @@ def build_md(stamp, scanned, minvol, gain, sig, om, collisions, cross):
     a("")
     a("生成时间：%s（北京时间）｜扫描 %d 个合约，成交额 ≥ %s"
       % (stamp, scanned, ar.money(minvol)))
-    if cross and (cross.get("bybit") or cross.get("okx") or cross.get("hl")):
-        a("持仓口径：币安 + Bybit + OKX + Hyperliquid 四家跨所合计"
-          "（仍不含 Bitget / Gate / MEXC 等，属下限）")
+    if cross and (cross.get("bybit") or cross.get("okx") or cross.get("hl") or cross.get("bg")):
+        a("持仓口径：币安 + Bybit + OKX + Hyperliquid + Bitget 五家跨所合计"
+          "（仍不含 Gate / MEXC / KuCoin 等，属下限）")
     else:
         a("持仓口径：仅币安单所")
     a("价格与持仓取自同一时间窗口；涨幅榜用交易所滚动 24 小时涨跌幅。")
@@ -508,13 +524,13 @@ def build_md(stamp, scanned, minvol, gain, sig, om, collisions, cross):
 
     a("## 持仓占市值 Top10（跨所口径）")
     a("")
-    a("| # | 币种 | 价·同窗 | 持仓张数 | 持仓·跨所 | 币安占比 | Bybit | OKX | Hype | 流通市值 | OI/市值 | 换手 | 费率年化 | 命中信号 |")
-    a("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    a("| # | 币种 | 价·同窗 | 持仓张数 | 持仓·跨所 | 币安占比 | Bybit | OKX | Hype | Bitget | 流通市值 | OI/市值 | 换手 | 费率年化 | 命中信号 |")
+    a("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     for i, r in enumerate(om, 1):
         omv = om_key_of(r)
         tv = r.get("turnover")
         sh = r.get("bin_share")
-        a("| %d | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |"
+        a("| %d | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |"
           % (i, r["base"], ar.sgn_pct(r.get("px_chg_oi")),
              ar.sgn_pct(r.get("oi_contracts_24h")),
              ar.money(r.get("oi_total")),
@@ -522,6 +538,7 @@ def build_md(stamp, scanned, minvol, gain, sig, om, collisions, cross):
              ar.money(r.get("oi_bybit")) if r.get("oi_bybit") else "—",
              ar.money(r.get("oi_okx")) if r.get("oi_okx") else "—",
              ar.money(r.get("oi_hl")) if r.get("oi_hl") else "—",
+             ar.money(r.get("oi_bg")) if r.get("oi_bg") else "—",
              ar.money(r.get("mcap")),
              "%.1f%%" % (omv * 100) if omv else "—",
              "%.2fx" % tv if tv is not None else "—",
@@ -568,9 +585,11 @@ def build(rows, stamp, scanned, minvol, live=True, cross=None):
     a('</div>')
 
     cov = ""
-    if cross and (cross.get("bybit") or cross.get("okx") or cross.get("hl")):
-        cov = ("　｜　跨所覆盖：币安 + Bybit %d + OKX %d + Hyperliquid %d 个合约（同名不同币已校验剔除）"
-               % (cross.get("bybit", 0), cross.get("okx", 0), cross.get("hl", 0)))
+    if cross and (cross.get("bybit") or cross.get("okx") or cross.get("hl") or cross.get("bg")):
+        cov = ("　｜　跨所覆盖：币安 + Bybit %d + OKX %d + Hyperliquid %d + Bitget %d 个合约"
+               "（同名不同币已校验剔除）"
+               % (cross.get("bybit", 0), cross.get("okx", 0),
+                  cross.get("hl", 0), cross.get("bg", 0)))
     a('<div class="status">榜单由全市场扫描生成于 <b>%s</b>%s ｜ <i id="upd">正在获取实时数据…</i><br>'
       '页面每 5 分钟就地刷新。<b>涨幅榜会按全市场实时重算并重排</b>（这是唯一会自动重排的表）；'
       '另外两张表的排名来自生成时那次扫描，要重排请重跑脚本。</div>'
@@ -667,7 +686,8 @@ def build(rows, stamp, scanned, minvol, live=True, cross=None):
     else:
         a('<table><thead><tr>')
         for h in ["#", "币种", "24h价·同窗", "持仓张数", "持仓·跨所", "币安占比",
-                  "Bybit", "OKX", "Hype", "流通市值", "OI/市值·跨所", "换手", "费率和年化", "命中信号"]:
+                  "Bybit", "OKX", "Hype", "Bitget", "流通市值", "OI/市值·跨所",
+                  "换手", "费率和年化", "命中信号"]:
             a('<th>%s</th>' % h)
         a('</tr></thead><tbody>')
         for i, r in enumerate(top10_om, 1):
@@ -684,6 +704,7 @@ def build(rows, stamp, scanned, minvol, live=True, cross=None):
             a('<td class="mut" data-k="x_bybit">%s</td>' % xmoney(r.get("oi_bybit")))
             a('<td class="mut" data-k="x_okx">%s</td>' % xmoney(r.get("oi_okx")))
             a('<td class="mut" data-k="x_hl">%s</td>' % xmoney(r.get("oi_hl")))
+            a('<td class="mut" data-k="x_bg">%s</td>' % xmoney(r.get("oi_bg")))
             a('<td class="mut" data-k="mcap">%s</td>' % ar.money(r.get("mcap")))
             oma = r.get("oi_mcap_all")
             a('<td class="up" data-k="om">%.1f%%</td>' % (oma * 100) if oma is not None
@@ -702,9 +723,9 @@ def build(rows, stamp, scanned, minvol, live=True, cross=None):
         a('</tbody></table>')
 
     a('<footer>'
-      '<b>跨所口径</b>：持仓名义 = <b>币安 + Bybit + OKX + Hyperliquid</b> 四家合计（USD）。'
-      '「币安占比」是这四家内部的占比，不是全球占比——'
-      '暂未接入 Bitget / Gate / MEXC / KuCoin，所以合计只是下限，真实比例只会更高。'
+      '<b>跨所口径</b>：持仓名义 = <b>币安 + Bybit + OKX + Hyperliquid + Bitget</b> 五家合计（USD）。'
+      '「币安占比」是这五家内部的占比，不是全球占比——'
+      '暂未接入 Gate / MEXC / KuCoin / BitMEX，所以合计只是下限，真实比例只会更高。'
       '占比低于 85% 会被标红，说明单看币安会低估这个币的真实持仓。<br>'
       '<b>Hyperliquid 不可省</b>：对 HYPE、BTC 这类合约，Hyperliquid 的持仓常常超过币安，'
       '漏掉它会把这个币的杠杆水平算错一大截。<br>'
@@ -792,6 +813,7 @@ def main():
             r["oi_bybit"] = 0.0
             r["oi_okx"] = 0.0
             r["oi_hl"] = 0.0
+            r["oi_bg"] = 0.0
             r["oi_total"] = r.get("oi_usd") or 0.0
             r["bin_share"] = 1.0
             r["oi_mcap_all"] = r.get("oi_mcap")

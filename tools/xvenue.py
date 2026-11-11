@@ -19,6 +19,7 @@ BYBIT = "https://api.bybit.com/v5/market/tickers?category=linear"
 OKX_OI = "https://www.okx.com/api/v5/public/open-interest?instType=SWAP"
 OKX_PX = "https://www.okx.com/api/v5/market/tickers?instType=SWAP"
 HL_INFO = "https://api.hyperliquid.xyz/info"
+BITGET = "https://api.bitget.com/api/v2/mix/market/tickers?productType=usdt-futures"
 
 
 def _get(url):
@@ -59,7 +60,7 @@ def fetch():
     info: {"bybit": n, "okx": n, "errors": [...]}
     """
     data = {}
-    info = {"bybit": 0, "okx": 0, "hl": 0, "errors": []}
+    info = {"bybit": 0, "okx": 0, "hl": 0, "bg": 0, "errors": []}
 
     # ---- Bybit：一次拿全部线性合约 ----
     try:
@@ -128,6 +129,26 @@ def fetch():
     except Exception as e:
         info["errors"].append("Hyperliquid: %s" % e)
 
+    # ---- Bitget：一次拿全部 U 本位合约（持仓按币数 × markPrice 折成美元）----
+    try:
+        rows = _get(BITGET)["data"]
+        for r in rows:
+            sym = r.get("symbol", "") or ""
+            if not sym.endswith("USDT"):
+                continue
+            amt = _f(r.get("holdingAmount"))
+            px = _f(r.get("markPrice"))
+            usd = amt * px
+            if usd <= 0 or px <= 0:
+                continue
+            b = sym[:-4]
+            d = data.setdefault(b, {})
+            d["bg_usd"] = d.get("bg_usd", 0.0) + usd
+            d["bg_px"] = px
+            info["bg"] += 1
+    except Exception as e:
+        info["errors"].append("Bitget: %s" % e)
+
     return data, info
 
 
@@ -151,33 +172,33 @@ def attach(rows, data, tol=PX_TOLERANCE):
         px_unit = px / mult if px else 0      # 折算成单枚价再比
         d = data.get(b, {})
 
-        bybit = d.get("bybit_usd", 0.0)
-        okx = d.get("okx_usd", 0.0)
-        hl = d.get("hl_usd", 0.0)
+        xv = {
+            "bybit": d.get("bybit_usd") or 0.0,
+            "okx": d.get("okx_usd") or 0.0,
+            "hl": d.get("hl_usd") or 0.0,
+            "bg": d.get("bg_usd") or 0.0,
+        }
 
         # 资产身份校验：报价对不上就整所剔除
         drop = []
-        for venue, key_oi, key_px in (("Bybit", "bybit_usd", "bybit_px"),
-                                      ("OKX", "okx_usd", "okx_px"),
-                                      ("Hyperliquid", "hl_usd", "hl_px")):
-            vpx = d.get(key_px) or 0
-            if d.get(key_oi) and px_unit and vpx:
-                if abs(px_unit / vpx - 1.0) > tol:
-                    drop.append((venue, vpx))
-                    if key_oi == "bybit_usd":
-                        bybit = 0.0
-                    elif key_oi == "okx_usd":
-                        okx = 0.0
-                    else:
-                        hl = 0.0
+        for venue, koi, kpx, key in (("Bybit", "bybit_usd", "bybit_px", "bybit"),
+                                     ("OKX", "okx_usd", "okx_px", "okx"),
+                                     ("Hyperliquid", "hl_usd", "hl_px", "hl"),
+                                     ("Bitget", "bg_usd", "bg_px", "bg")):
+            v = d.get(koi) or 0.0
+            vpx = d.get(kpx) or 0
+            if v and px_unit and vpx and abs(px_unit / vpx - 1.0) > tol:
+                drop.append((venue, vpx))
+                xv[key] = 0.0
         if drop:
             collisions.append((r["base"], px_unit, drop))
 
         bin_oi = r.get("oi_usd") or 0.0
-        total = bin_oi + bybit + okx + hl
-        r["oi_bybit"] = bybit
-        r["oi_okx"] = okx
-        r["oi_hl"] = hl
+        total = bin_oi + sum(xv.values())
+        r["oi_bybit"] = xv["bybit"]
+        r["oi_okx"] = xv["okx"]
+        r["oi_hl"] = xv["hl"]
+        r["oi_bg"] = xv["bg"]
         r["oi_total"] = total
         r["bin_share"] = (bin_oi / total) if total else None
         mcap = r.get("mcap")
