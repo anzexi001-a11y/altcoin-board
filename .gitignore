@@ -1,4 +1,7 @@
 ﻿out/
 site/
+tools/output/
 __pycache__/
 *.pyc
+*.log
+*.log.old
