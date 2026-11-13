@@ -1,0 +1,5296 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>山寨合约三分类</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0b0e11;color:#eaecef;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+     padding:24px 16px 48px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-size:22px;font-weight:700}
+h1 span{color:#f0b90b}
+.sub{color:#848e9c;font-size:12.5px;margin-top:4px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px}
+.stat{background:#161a1e;border:1px solid #232830;border-radius:9px;padding:10px 16px;min-width:120px}
+.stat i{display:block;color:#848e9c;font-size:11.5px;font-style:normal;margin-bottom:3px}
+.stat b{font-size:18px}
+input{width:100%;max-width:340px;background:#161a1e;border:1px solid #2b323b;color:#eaecef;
+      border-radius:8px;padding:9px 12px;font-size:13px;margin:14px 0 4px;font-family:inherit}
+input:focus{outline:none;border-color:#f0b90b}
+h2{font-size:15px;margin:26px 0 4px;padding-left:9px;border-left:3px solid #f0b90b}
+h2 em{font-style:normal;color:#848e9c;font-size:11.5px;font-weight:400;margin-left:6px}
+.note{color:#5e6673;font-size:11.5px;margin:2px 0 9px;padding-left:12px}
+table{width:100%;border-collapse:collapse;background:#161a1e;border-radius:9px;overflow:hidden;font-size:12.5px}
+thead th{background:#1e2329;color:#848e9c;font-weight:600;text-align:right;padding:9px 8px;white-space:nowrap;
+         font-size:11.5px;cursor:pointer;user-select:none}
+thead th:hover{color:#f0b90b}
+thead th:first-child,tbody td:first-child{text-align:left;padding-left:12px}
+tbody td{padding:7px 8px;text-align:right;border-top:1px solid #232830;white-space:nowrap;
+         font-variant-numeric:tabular-nums}
+tbody tr:hover{background:#1c2126}
+.rk{color:#5e6673}
+.sym{font-weight:600;color:#eaecef}
+.up{color:#0ecb81}.down{color:#f6465d}.mut{color:#848e9c}
+.low{color:#f0b90b}
+.empty{padding:14px;color:#5e6673;font-size:12.5px;background:#161a1e;border-radius:9px}
+footer{margin-top:28px;padding-top:14px;border-top:1px solid #232830;color:#5e6673;font-size:11.5px;line-height:1.8}
+@media(max-width:700px){body{padding:14px 6px}}
+</style></head><body><div class="wrap">
+<h1>币安山寨合约 · <span>跟涨 / 抗跌 / 独立</span></h1>
+<div class="sub">数据源 regime_ALL_20261113_1952.csv ｜ 517 个真加密合约（已剔除 239 个代币化股票/商品）｜ 14 天 1 小时收益率 vs BTC</div>
+<div class="stats">
+<div class="stat"><i>抗跌</i><b>0</b></div>
+<div class="stat"><i>独立·逆势上涨</i><b>86</b></div>
+<div class="stat"><i>独立·逆势下跌</i><b>58</b></div>
+<div class="stat"><i>跟大盘走的</i><b>373</b></div>
+<div class="stat"><i>相关系数中位数</i><b>0.60</b></div>
+</div>
+<input id="q" placeholder="搜索币种，例如 ARIA / ON / SOL">
+<h2>能抵抗一阵的 <em>0 个</em></h2>
+<div class="note">相关≥0.45、下跌捕获&lt;0.60、Beta&lt;0.9 —— 跟涨不完全跟跌</div>
+<div class="empty">当前没有符合标准的合约</div>
+<h2>走自己独立的 · 逆势上涨 <em>86 个</em></h2>
+<div class="note">与 BTC 相关&lt;0.45 且跑赢大盘 —— 大盘分析对它无效</div>
+<table><thead><tr>
+<th data-num="0">#</th>
+<th data-num="0">币种</th>
+<th data-num="1">与BTC相关</th>
+<th data-num="1">Beta</th>
+<th data-num="1">下跌捕获</th>
+<th data-num="1">14天收益</th>
+<th data-num="1">超额</th>
+<th data-num="1">24h成交额</th>
+</tr></thead><tbody>
+<tr data-sym="ARIA">
+<td class="rk">1</td>
+<td class="sym">ARIA</td>
+<td class="low" data-v="0.0940">0.09</td>
+<td class="mut" data-v="0.8790">0.88</td>
+<td class="up" data-v="0.3900">0.39</td>
+<td class="up" data-v="140.9600">+141.0%</td>
+<td class="up" data-v="151.4100">+151.4%</td>
+<td class="mut" data-v="207051450">2.07亿</td>
+</tr>
+<tr data-sym="AIOT">
+<td class="rk">2</td>
+<td class="sym">AIOT</td>
+<td class="low" data-v="-0.0100">-0.01</td>
+<td class="mut" data-v="-0.0540">-0.05</td>
+<td class="up" data-v="-0.7530">-0.75</td>
+<td class="up" data-v="135.2600">+135.3%</td>
+<td class="up" data-v="145.7200">+145.7%</td>
+<td class="mut" data-v="18544263">1854万</td>
+</tr>
+<tr data-sym="TA">
+<td class="rk">3</td>
+<td class="sym">TA</td>
+<td class="low" data-v="-0.0400">-0.04</td>
+<td class="mut" data-v="-0.1710">-0.17</td>
+<td class="up" data-v="-0.7120">-0.71</td>
+<td class="up" data-v="85.6600">+85.7%</td>
+<td class="up" data-v="96.1200">+96.1%</td>
+<td class="mut" data-v="9205921">921万</td>
+</tr>
+<tr data-sym="PIEVERSE">
+<td class="rk">4</td>
+<td class="sym">PIEVERSE</td>
+<td class="low" data-v="0.2590">0.26</td>
+<td class="mut" data-v="1.1400">1.14</td>
+<td class="up" data-v="0.1230">0.12</td>
+<td class="up" data-v="68.2500">+68.2%</td>
+<td class="up" data-v="78.7100">+78.7%</td>
+<td class="mut" data-v="24299268">2430万</td>
+</tr>
+<tr data-sym="LYN">
+<td class="rk">5</td>
+<td class="sym">LYN</td>
+<td class="low" data-v="0.0730">0.07</td>
+<td class="mut" data-v="0.6980">0.70</td>
+<td class="up" data-v="-0.2650">-0.27</td>
+<td class="up" data-v="60.3500">+60.4%</td>
+<td class="up" data-v="70.8100">+70.8%</td>
+<td class="mut" data-v="8669050">867万</td>
+</tr>
+<tr data-sym="ICNT">
+<td class="rk">6</td>
+<td class="sym">ICNT</td>
+<td class="low" data-v="0.0680">0.07</td>
+<td class="mut" data-v="0.3510">0.35</td>
+<td class="up" data-v="-0.0430">-0.04</td>
+<td class="up" data-v="50.2400">+50.2%</td>
+<td class="up" data-v="60.6900">+60.7%</td>
+<td class="mut" data-v="9593044">959万</td>
+</tr>
+<tr data-sym="BARD">
+<td class="rk">7</td>
+<td class="sym">BARD</td>
+<td class="low" data-v="0.3320">0.33</td>
+<td class="mut" data-v="1.7310">1.73</td>
+<td class="mut" data-v="1.2710">1.27</td>
+<td class="up" data-v="43.4700">+43.5%</td>
+<td class="up" data-v="53.9200">+53.9%</td>
+<td class="mut" data-v="457696153">4.58亿</td>
+</tr>
+<tr data-sym="AGT">
+<td class="rk">8</td>
+<td class="sym">AGT</td>
+<td class="low" data-v="0.0310">0.03</td>
+<td class="mut" data-v="0.4890">0.49</td>
+<td class="mut" data-v="1.3280">1.33</td>
+<td class="up" data-v="42.0300">+42.0%</td>
+<td class="up" data-v="52.4800">+52.5%</td>
+<td class="mut" data-v="293523009">2.94亿</td>
+</tr>
+<tr data-sym="AIO">
+<td class="rk">9</td>
+<td class="sym">AIO</td>
+<td class="low" data-v="0.2480">0.25</td>
+<td class="mut" data-v="1.5900">1.59</td>
+<td class="mut" data-v="1.2690">1.27</td>
+<td class="up" data-v="40.1000">+40.1%</td>
+<td class="up" data-v="50.5600">+50.6%</td>
+<td class="mut" data-v="4148157">415万</td>
+</tr>
+<tr data-sym="HANA">
+<td class="rk">10</td>
+<td class="sym">HANA</td>
+<td class="low" data-v="0.2310">0.23</td>
+<td class="mut" data-v="1.3250">1.32</td>
+<td class="mut" data-v="0.9570">0.96</td>
+<td class="up" data-v="34.8800">+34.9%</td>
+<td class="up" data-v="45.3400">+45.3%</td>
+<td class="mut" data-v="9887039">989万</td>
+</tr>
+<tr data-sym="ESPORTS">
+<td class="rk">11</td>
+<td class="sym">ESPORTS</td>
+<td class="low" data-v="0.0460">0.05</td>
+<td class="mut" data-v="0.4260">0.43</td>
+<td class="up" data-v="0.4110">0.41</td>
+<td class="up" data-v="32.9200">+32.9%</td>
+<td class="up" data-v="43.3700">+43.4%</td>
+<td class="mut" data-v="5742676">574万</td>
+</tr>
+<tr data-sym="CAP">
+<td class="rk">12</td>
+<td class="sym">CAP</td>
+<td class="low" data-v="-0.0390">-0.04</td>
+<td class="mut" data-v="-0.1880">-0.19</td>
+<td class="up" data-v="-0.4420">-0.44</td>
+<td class="up" data-v="32.7500">+32.8%</td>
+<td class="up" data-v="43.2100">+43.2%</td>
+<td class="mut" data-v="19750179">1975万</td>
+</tr>
+<tr data-sym="ONE">
+<td class="rk">13</td>
+<td class="sym">ONE</td>
+<td class="low" data-v="0.1230">0.12</td>
+<td class="mut" data-v="0.7760">0.78</td>
+<td class="up" data-v="0.3970">0.40</td>
+<td class="up" data-v="25.4400">+25.4%</td>
+<td class="up" data-v="35.8900">+35.9%</td>
+<td class="mut" data-v="62854764">6285万</td>
+</tr>
+<tr data-sym="DODOX">
+<td class="rk">14</td>
+<td class="sym">DODOX</td>
+<td class="low" data-v="0.1690">0.17</td>
+<td class="mut" data-v="0.4340">0.43</td>
+<td class="up" data-v="0.6920">0.69</td>
+<td class="up" data-v="25.1100">+25.1%</td>
+<td class="up" data-v="35.5700">+35.6%</td>
+<td class="mut" data-v="64865886">6487万</td>
+</tr>
+<tr data-sym="IDOL">
+<td class="rk">15</td>
+<td class="sym">IDOL</td>
+<td class="low" data-v="0.0010">0.00</td>
+<td class="mut" data-v="0.0170">0.02</td>
+<td class="mut" data-v="0.9330">0.93</td>
+<td class="up" data-v="23.6600">+23.7%</td>
+<td class="up" data-v="34.1100">+34.1%</td>
+<td class="mut" data-v="138436184">1.38亿</td>
+</tr>
+<tr data-sym="SKYAI">
+<td class="rk">16</td>
+<td class="sym">SKYAI</td>
+<td class="low" data-v="0.4210">0.42</td>
+<td class="mut" data-v="1.4340">1.43</td>
+<td class="mut" data-v="1.0440">1.04</td>
+<td class="up" data-v="21.1900">+21.2%</td>
+<td class="up" data-v="31.6400">+31.6%</td>
+<td class="mut" data-v="3623778">362万</td>
+</tr>
+<tr data-sym="O">
+<td class="rk">17</td>
+<td class="sym">O</td>
+<td class="low" data-v="0.3310">0.33</td>
+<td class="mut" data-v="0.7940">0.79</td>
+<td class="up" data-v="0.5800">0.58</td>
+<td class="up" data-v="19.5800">+19.6%</td>
+<td class="up" data-v="30.0400">+30.0%</td>
+<td class="mut" data-v="1166643">117万</td>
+</tr>
+<tr data-sym="SIREN">
+<td class="rk">18</td>
+<td class="sym">SIREN</td>
+<td class="low" data-v="0.3180">0.32</td>
+<td class="mut" data-v="0.7740">0.77</td>
+<td class="up" data-v="0.3190">0.32</td>
+<td class="up" data-v="19.4200">+19.4%</td>
+<td class="up" data-v="29.8800">+29.9%</td>
+<td class="mut" data-v="4001270">400万</td>
+</tr>
+<tr data-sym="SXT">
+<td class="rk">19</td>
+<td class="sym">SXT</td>
+<td class="low" data-v="0.3540">0.35</td>
+<td class="mut" data-v="1.0410">1.04</td>
+<td class="up" data-v="0.6110">0.61</td>
+<td class="up" data-v="19.0900">+19.1%</td>
+<td class="up" data-v="29.5500">+29.6%</td>
+<td class="mut" data-v="7584013">758万</td>
+</tr>
+<tr data-sym="LIT">
+<td class="rk">20</td>
+<td class="sym">LIT</td>
+<td class="low" data-v="0.4310">0.43</td>
+<td class="mut" data-v="1.4270">1.43</td>
+<td class="mut" data-v="1.3790">1.38</td>
+<td class="up" data-v="18.0800">+18.1%</td>
+<td class="up" data-v="28.5300">+28.5%</td>
+<td class="mut" data-v="58744358">5874万</td>
+</tr>
+<tr data-sym="OPG">
+<td class="rk">21</td>
+<td class="sym">OPG</td>
+<td class="low" data-v="0.4380">0.44</td>
+<td class="mut" data-v="1.2180">1.22</td>
+<td class="up" data-v="0.6880">0.69</td>
+<td class="up" data-v="17.8100">+17.8%</td>
+<td class="up" data-v="28.2600">+28.3%</td>
+<td class="mut" data-v="8418833">842万</td>
+</tr>
+<tr data-sym="KITE">
+<td class="rk">22</td>
+<td class="sym">KITE</td>
+<td class="low" data-v="0.2910">0.29</td>
+<td class="mut" data-v="0.7110">0.71</td>
+<td class="up" data-v="0.3430">0.34</td>
+<td class="up" data-v="16.5000">+16.5%</td>
+<td class="up" data-v="26.9600">+27.0%</td>
+<td class="mut" data-v="7835662">784万</td>
+</tr>
+<tr data-sym="牛来">
+<td class="rk">23</td>
+<td class="sym">牛来</td>
+<td class="low" data-v="0.4150">0.41</td>
+<td class="mut" data-v="1.7420">1.74</td>
+<td class="mut" data-v="1.7470">1.75</td>
+<td class="up" data-v="16.0900">+16.1%</td>
+<td class="up" data-v="26.5400">+26.5%</td>
+<td class="mut" data-v="24050857">2405万</td>
+</tr>
+<tr data-sym="KGEN">
+<td class="rk">24</td>
+<td class="sym">KGEN</td>
+<td class="low" data-v="0.2110">0.21</td>
+<td class="mut" data-v="1.1330">1.13</td>
+<td class="mut" data-v="0.8450">0.84</td>
+<td class="up" data-v="15.4300">+15.4%</td>
+<td class="up" data-v="25.8900">+25.9%</td>
+<td class="mut" data-v="69946162">6995万</td>
+</tr>
+<tr data-sym="STAR">
+<td class="rk">25</td>
+<td class="sym">STAR</td>
+<td class="low" data-v="0.2270">0.23</td>
+<td class="mut" data-v="0.8310">0.83</td>
+<td class="up" data-v="0.1770">0.18</td>
+<td class="up" data-v="14.8700">+14.9%</td>
+<td class="up" data-v="25.3200">+25.3%</td>
+<td class="mut" data-v="2439400">244万</td>
+</tr>
+<tr data-sym="CLANKER">
+<td class="rk">26</td>
+<td class="sym">CLANKER</td>
+<td class="low" data-v="0.2030">0.20</td>
+<td class="mut" data-v="1.3450">1.34</td>
+<td class="up" data-v="0.0900">0.09</td>
+<td class="up" data-v="13.5600">+13.6%</td>
+<td class="up" data-v="24.0200">+24.0%</td>
+<td class="mut" data-v="3359496">336万</td>
+</tr>
+<tr data-sym="SWARMS">
+<td class="rk">27</td>
+<td class="sym">SWARMS</td>
+<td class="low" data-v="0.4340">0.43</td>
+<td class="mut" data-v="1.4080">1.41</td>
+<td class="mut" data-v="0.9820">0.98</td>
+<td class="up" data-v="13.4100">+13.4%</td>
+<td class="up" data-v="23.8600">+23.9%</td>
+<td class="mut" data-v="1667058">167万</td>
+</tr>
+<tr data-sym="ERA">
+<td class="rk">28</td>
+<td class="sym">ERA</td>
+<td class="low" data-v="0.1200">0.12</td>
+<td class="mut" data-v="0.4840">0.48</td>
+<td class="up" data-v="0.3270">0.33</td>
+<td class="up" data-v="13.3300">+13.3%</td>
+<td class="up" data-v="23.7800">+23.8%</td>
+<td class="mut" data-v="88515947">8852万</td>
+</tr>
+<tr data-sym="ACT">
+<td class="rk">29</td>
+<td class="sym">ACT</td>
+<td class="low" data-v="0.1810">0.18</td>
+<td class="mut" data-v="0.7220">0.72</td>
+<td class="mut" data-v="1.1570">1.16</td>
+<td class="up" data-v="11.3000">+11.3%</td>
+<td class="up" data-v="21.7500">+21.8%</td>
+<td class="mut" data-v="4297024">430万</td>
+</tr>
+<tr data-sym="HOT">
+<td class="rk">30</td>
+<td class="sym">HOT</td>
+<td class="low" data-v="0.1030">0.10</td>
+<td class="mut" data-v="0.6050">0.60</td>
+<td class="up" data-v="-0.0900">-0.09</td>
+<td class="up" data-v="8.0300">+8.0%</td>
+<td class="up" data-v="18.4800">+18.5%</td>
+<td class="mut" data-v="10127820">1013万</td>
+</tr>
+<tr data-sym="COLLECT">
+<td class="rk">31</td>
+<td class="sym">COLLECT</td>
+<td class="low" data-v="0.3990">0.40</td>
+<td class="mut" data-v="0.9520">0.95</td>
+<td class="mut" data-v="0.8790">0.88</td>
+<td class="up" data-v="8.0100">+8.0%</td>
+<td class="up" data-v="18.4600">+18.5%</td>
+<td class="mut" data-v="1635133">164万</td>
+</tr>
+<tr data-sym="FOLKS">
+<td class="rk">32</td>
+<td class="sym">FOLKS</td>
+<td class="low" data-v="0.3000">0.30</td>
+<td class="mut" data-v="0.7640">0.76</td>
+<td class="up" data-v="0.2920">0.29</td>
+<td class="up" data-v="7.7600">+7.8%</td>
+<td class="up" data-v="18.2100">+18.2%</td>
+<td class="mut" data-v="2008295">201万</td>
+</tr>
+<tr data-sym="MERL">
+<td class="rk">33</td>
+<td class="sym">MERL</td>
+<td class="low" data-v="0.3430">0.34</td>
+<td class="mut" data-v="1.3910">1.39</td>
+<td class="mut" data-v="1.0810">1.08</td>
+<td class="up" data-v="7.5700">+7.6%</td>
+<td class="up" data-v="18.0200">+18.0%</td>
+<td class="mut" data-v="3388208">339万</td>
+</tr>
+<tr data-sym="JST">
+<td class="rk">34</td>
+<td class="sym">JST</td>
+<td class="low" data-v="0.1250">0.12</td>
+<td class="mut" data-v="0.0960">0.10</td>
+<td class="up" data-v="-0.0350">-0.04</td>
+<td class="up" data-v="6.2400">+6.2%</td>
+<td class="up" data-v="16.6900">+16.7%</td>
+<td class="mut" data-v="4484084">448万</td>
+</tr>
+<tr data-sym="RSR">
+<td class="rk">35</td>
+<td class="sym">RSR</td>
+<td class="low" data-v="0.2510">0.25</td>
+<td class="mut" data-v="0.8830">0.88</td>
+<td class="mut" data-v="0.8010">0.80</td>
+<td class="up" data-v="5.8700">+5.9%</td>
+<td class="up" data-v="16.3200">+16.3%</td>
+<td class="mut" data-v="5592607">559万</td>
+</tr>
+<tr data-sym="ELSA">
+<td class="rk">36</td>
+<td class="sym">ELSA</td>
+<td class="low" data-v="0.1590">0.16</td>
+<td class="mut" data-v="1.0100">1.01</td>
+<td class="mut" data-v="0.9540">0.95</td>
+<td class="up" data-v="5.5000">+5.5%</td>
+<td class="up" data-v="15.9500">+15.9%</td>
+<td class="mut" data-v="5121326">512万</td>
+</tr>
+<tr data-sym="FLUID">
+<td class="rk">37</td>
+<td class="sym">FLUID</td>
+<td class="low" data-v="0.4060">0.41</td>
+<td class="mut" data-v="1.1590">1.16</td>
+<td class="up" data-v="0.6840">0.68</td>
+<td class="up" data-v="5.1300">+5.1%</td>
+<td class="up" data-v="15.5800">+15.6%</td>
+<td class="mut" data-v="1500784">150万</td>
+</tr>
+<tr data-sym="TRADOOR">
+<td class="rk">38</td>
+<td class="sym">TRADOOR</td>
+<td class="low" data-v="0.3210">0.32</td>
+<td class="mut" data-v="0.9500">0.95</td>
+<td class="up" data-v="0.5030">0.50</td>
+<td class="up" data-v="4.2300">+4.2%</td>
+<td class="up" data-v="14.6800">+14.7%</td>
+<td class="mut" data-v="2301318">230万</td>
+</tr>
+<tr data-sym="ACU">
+<td class="rk">39</td>
+<td class="sym">ACU</td>
+<td class="low" data-v="0.2580">0.26</td>
+<td class="mut" data-v="0.5230">0.52</td>
+<td class="up" data-v="0.2980">0.30</td>
+<td class="up" data-v="3.6000">+3.6%</td>
+<td class="up" data-v="14.0500">+14.1%</td>
+<td class="mut" data-v="1097501">110万</td>
+</tr>
+<tr data-sym="STX">
+<td class="rk">40</td>
+<td class="sym">STX</td>
+<td class="low" data-v="0.4200">0.42</td>
+<td class="mut" data-v="1.1700">1.17</td>
+<td class="mut" data-v="1.4960">1.50</td>
+<td class="up" data-v="2.8000">+2.8%</td>
+<td class="up" data-v="13.2600">+13.3%</td>
+<td class="mut" data-v="13901900">1390万</td>
+</tr>
+<tr data-sym="B2">
+<td class="rk">41</td>
+<td class="sym">B2</td>
+<td class="low" data-v="0.2340">0.23</td>
+<td class="mut" data-v="0.9030">0.90</td>
+<td class="up" data-v="0.6180">0.62</td>
+<td class="up" data-v="2.7300">+2.7%</td>
+<td class="up" data-v="13.1900">+13.2%</td>
+<td class="mut" data-v="2268512">227万</td>
+</tr>
+<tr data-sym="FLOCK">
+<td class="rk">42</td>
+<td class="sym">FLOCK</td>
+<td class="low" data-v="0.3790">0.38</td>
+<td class="mut" data-v="1.1750">1.18</td>
+<td class="mut" data-v="0.8120">0.81</td>
+<td class="up" data-v="2.6000">+2.6%</td>
+<td class="up" data-v="13.0500">+13.1%</td>
+<td class="mut" data-v="1673811">167万</td>
+</tr>
+<tr data-sym="RED">
+<td class="rk">43</td>
+<td class="sym">RED</td>
+<td class="low" data-v="0.4150">0.41</td>
+<td class="mut" data-v="1.1030">1.10</td>
+<td class="mut" data-v="0.8190">0.82</td>
+<td class="up" data-v="2.5300">+2.5%</td>
+<td class="up" data-v="12.9800">+13.0%</td>
+<td class="mut" data-v="3995893">400万</td>
+</tr>
+<tr data-sym="EDGE">
+<td class="rk">44</td>
+<td class="sym">EDGE</td>
+<td class="low" data-v="0.3930">0.39</td>
+<td class="mut" data-v="1.2680">1.27</td>
+<td class="mut" data-v="1.1020">1.10</td>
+<td class="up" data-v="0.6700">+0.7%</td>
+<td class="up" data-v="11.1300">+11.1%</td>
+<td class="mut" data-v="4942572">494万</td>
+</tr>
+<tr data-sym="USDC">
+<td class="rk">45</td>
+<td class="sym">USDC</td>
+<td class="low" data-v="-0.0430">-0.04</td>
+<td class="mut" data-v="-0.0010">-0.00</td>
+<td class="up" data-v="0.0000">0.00</td>
+<td class="down" data-v="-0.0400">-0.0%</td>
+<td class="up" data-v="10.4200">+10.4%</td>
+<td class="mut" data-v="2128549">213万</td>
+</tr>
+<tr data-sym="CTR">
+<td class="rk">46</td>
+<td class="sym">CTR</td>
+<td class="low" data-v="0.2670">0.27</td>
+<td class="mut" data-v="0.4510">0.45</td>
+<td class="up" data-v="0.3380">0.34</td>
+<td class="down" data-v="-0.6800">-0.7%</td>
+<td class="up" data-v="9.7700">+9.8%</td>
+<td class="mut" data-v="840235">84万</td>
+</tr>
+<tr data-sym="KAVA">
+<td class="rk">47</td>
+<td class="sym">KAVA</td>
+<td class="low" data-v="0.4270">0.43</td>
+<td class="mut" data-v="0.3040">0.30</td>
+<td class="up" data-v="0.2310">0.23</td>
+<td class="down" data-v="-1.0900">-1.1%</td>
+<td class="up" data-v="9.3600">+9.4%</td>
+<td class="mut" data-v="3043291">304万</td>
+</tr>
+<tr data-sym="STABLE">
+<td class="rk">48</td>
+<td class="sym">STABLE</td>
+<td class="low" data-v="0.1890">0.19</td>
+<td class="mut" data-v="0.5070">0.51</td>
+<td class="up" data-v="0.3660">0.37</td>
+<td class="down" data-v="-1.3600">-1.4%</td>
+<td class="up" data-v="9.1000">+9.1%</td>
+<td class="mut" data-v="1475607">148万</td>
+</tr>
+<tr data-sym="BIRB">
+<td class="rk">49</td>
+<td class="sym">BIRB</td>
+<td class="low" data-v="0.0880">0.09</td>
+<td class="mut" data-v="0.4920">0.49</td>
+<td class="up" data-v="0.7620">0.76</td>
+<td class="down" data-v="-1.5700">-1.6%</td>
+<td class="up" data-v="8.8900">+8.9%</td>
+<td class="mut" data-v="17739943">1774万</td>
+</tr>
+<tr data-sym="WOO">
+<td class="rk">50</td>
+<td class="sym">WOO</td>
+<td class="low" data-v="0.4310">0.43</td>
+<td class="mut" data-v="1.0490">1.05</td>
+<td class="mut" data-v="0.9000">0.90</td>
+<td class="down" data-v="-1.6200">-1.6%</td>
+<td class="up" data-v="8.8300">+8.8%</td>
+<td class="mut" data-v="1281724">128万</td>
+</tr>
+<tr data-sym="TRUST">
+<td class="rk">51</td>
+<td class="sym">TRUST</td>
+<td class="low" data-v="0.1610">0.16</td>
+<td class="mut" data-v="0.5270">0.53</td>
+<td class="mut" data-v="0.8190">0.82</td>
+<td class="down" data-v="-1.6800">-1.7%</td>
+<td class="up" data-v="8.7700">+8.8%</td>
+<td class="mut" data-v="1664634">166万</td>
+</tr>
+<tr data-sym="SOPH">
+<td class="rk">52</td>
+<td class="sym">SOPH</td>
+<td class="low" data-v="0.0380">0.04</td>
+<td class="mut" data-v="0.2560">0.26</td>
+<td class="up" data-v="-0.0880">-0.09</td>
+<td class="down" data-v="-1.7700">-1.8%</td>
+<td class="up" data-v="8.6800">+8.7%</td>
+<td class="mut" data-v="30879440">3088万</td>
+</tr>
+<tr data-sym="XAUT">
+<td class="rk">53</td>
+<td class="sym">XAUT</td>
+<td class="low" data-v="0.3650">0.36</td>
+<td class="mut" data-v="0.2250">0.23</td>
+<td class="up" data-v="0.2600">0.26</td>
+<td class="down" data-v="-1.8400">-1.8%</td>
+<td class="up" data-v="8.6200">+8.6%</td>
+<td class="mut" data-v="53803614">5380万</td>
+</tr>
+<tr data-sym="FF">
+<td class="rk">54</td>
+<td class="sym">FF</td>
+<td class="low" data-v="0.2060">0.21</td>
+<td class="mut" data-v="0.4160">0.42</td>
+<td class="up" data-v="0.3340">0.33</td>
+<td class="down" data-v="-1.8700">-1.9%</td>
+<td class="up" data-v="8.5900">+8.6%</td>
+<td class="mut" data-v="5626273">563万</td>
+</tr>
+<tr data-sym="GRAM">
+<td class="rk">55</td>
+<td class="sym">GRAM</td>
+<td class="low" data-v="0.2890">0.29</td>
+<td class="mut" data-v="0.6350">0.64</td>
+<td class="up" data-v="0.5690">0.57</td>
+<td class="down" data-v="-1.8800">-1.9%</td>
+<td class="up" data-v="8.5700">+8.6%</td>
+<td class="mut" data-v="87714860">8771万</td>
+</tr>
+<tr data-sym="1000CAT">
+<td class="rk">56</td>
+<td class="sym">1000CAT</td>
+<td class="low" data-v="0.2950">0.29</td>
+<td class="mut" data-v="0.9540">0.95</td>
+<td class="mut" data-v="1.1380">1.14</td>
+<td class="down" data-v="-2.0000">-2.0%</td>
+<td class="up" data-v="8.4600">+8.5%</td>
+<td class="mut" data-v="1337258">134万</td>
+</tr>
+<tr data-sym="PAXG">
+<td class="rk">57</td>
+<td class="sym">PAXG</td>
+<td class="low" data-v="0.3750">0.38</td>
+<td class="mut" data-v="0.2330">0.23</td>
+<td class="up" data-v="0.2630">0.26</td>
+<td class="down" data-v="-2.0300">-2.0%</td>
+<td class="up" data-v="8.4200">+8.4%</td>
+<td class="mut" data-v="100968378">1.01亿</td>
+</tr>
+<tr data-sym="MEGA">
+<td class="rk">58</td>
+<td class="sym">MEGA</td>
+<td class="low" data-v="0.2270">0.23</td>
+<td class="mut" data-v="0.7520">0.75</td>
+<td class="up" data-v="0.5930">0.59</td>
+<td class="down" data-v="-2.8000">-2.8%</td>
+<td class="up" data-v="7.6600">+7.7%</td>
+<td class="mut" data-v="11043922">1104万</td>
+</tr>
+<tr data-sym="C">
+<td class="rk">59</td>
+<td class="sym">C</td>
+<td class="low" data-v="0.3800">0.38</td>
+<td class="mut" data-v="1.0910">1.09</td>
+<td class="mut" data-v="0.9380">0.94</td>
+<td class="down" data-v="-3.4200">-3.4%</td>
+<td class="up" data-v="7.0300">+7.0%</td>
+<td class="mut" data-v="661605">66万</td>
+</tr>
+<tr data-sym="MAGIC">
+<td class="rk">60</td>
+<td class="sym">MAGIC</td>
+<td class="low" data-v="0.4020">0.40</td>
+<td class="mut" data-v="0.7900">0.79</td>
+<td class="up" data-v="0.5500">0.55</td>
+<td class="down" data-v="-4.1700">-4.2%</td>
+<td class="up" data-v="6.2900">+6.3%</td>
+<td class="mut" data-v="5213095">521万</td>
+</tr>
+<tr data-sym="LIGHT">
+<td class="rk">61</td>
+<td class="sym">LIGHT</td>
+<td class="low" data-v="0.2150">0.21</td>
+<td class="mut" data-v="0.5970">0.60</td>
+<td class="up" data-v="0.5850">0.58</td>
+<td class="down" data-v="-4.3300">-4.3%</td>
+<td class="up" data-v="6.1200">+6.1%</td>
+<td class="mut" data-v="2081529">208万</td>
+</tr>
+<tr data-sym="BEAMX">
+<td class="rk">62</td>
+<td class="sym">BEAMX</td>
+<td class="low" data-v="0.1100">0.11</td>
+<td class="mut" data-v="0.5680">0.57</td>
+<td class="up" data-v="0.4620">0.46</td>
+<td class="down" data-v="-5.3100">-5.3%</td>
+<td class="up" data-v="5.1400">+5.1%</td>
+<td class="mut" data-v="9372839">937万</td>
+</tr>
+<tr data-sym="HAEDAL">
+<td class="rk">63</td>
+<td class="sym">HAEDAL</td>
+<td class="low" data-v="0.1700">0.17</td>
+<td class="mut" data-v="0.7440">0.74</td>
+<td class="up" data-v="0.5080">0.51</td>
+<td class="down" data-v="-5.5200">-5.5%</td>
+<td class="up" data-v="4.9300">+4.9%</td>
+<td class="mut" data-v="4981460">498万</td>
+</tr>
+<tr data-sym="BR">
+<td class="rk">64</td>
+<td class="sym">BR</td>
+<td class="low" data-v="0.0700">0.07</td>
+<td class="mut" data-v="0.2400">0.24</td>
+<td class="up" data-v="0.2750">0.28</td>
+<td class="down" data-v="-5.5400">-5.5%</td>
+<td class="up" data-v="4.9100">+4.9%</td>
+<td class="mut" data-v="3523038">352万</td>
+</tr>
+<tr data-sym="WLFI">
+<td class="rk">65</td>
+<td class="sym">WLFI</td>
+<td class="low" data-v="0.1250">0.12</td>
+<td class="mut" data-v="0.2790">0.28</td>
+<td class="up" data-v="0.1580">0.16</td>
+<td class="down" data-v="-5.8000">-5.8%</td>
+<td class="up" data-v="4.6500">+4.7%</td>
+<td class="mut" data-v="29797107">2980万</td>
+</tr>
+<tr data-sym="TAKE">
+<td class="rk">66</td>
+<td class="sym">TAKE</td>
+<td class="low" data-v="0.4120">0.41</td>
+<td class="mut" data-v="0.9300">0.93</td>
+<td class="mut" data-v="0.9950">0.99</td>
+<td class="down" data-v="-5.8200">-5.8%</td>
+<td class="up" data-v="4.6300">+4.6%</td>
+<td class="mut" data-v="1052905">105万</td>
+</tr>
+<tr data-sym="TRX">
+<td class="rk">67</td>
+<td class="sym">TRX</td>
+<td class="low" data-v="0.1980">0.20</td>
+<td class="mut" data-v="0.1270">0.13</td>
+<td class="up" data-v="0.1530">0.15</td>
+<td class="down" data-v="-6.2900">-6.3%</td>
+<td class="up" data-v="4.1700">+4.2%</td>
+<td class="mut" data-v="38679854">3868万</td>
+</tr>
+<tr data-sym="BLUAI">
+<td class="rk">68</td>
+<td class="sym">BLUAI</td>
+<td class="low" data-v="0.3710">0.37</td>
+<td class="mut" data-v="1.3910">1.39</td>
+<td class="mut" data-v="1.1260">1.13</td>
+<td class="down" data-v="-6.8400">-6.8%</td>
+<td class="up" data-v="3.6200">+3.6%</td>
+<td class="mut" data-v="5120055">512万</td>
+</tr>
+<tr data-sym="SUN">
+<td class="rk">69</td>
+<td class="sym">SUN</td>
+<td class="low" data-v="0.3220">0.32</td>
+<td class="mut" data-v="0.2880">0.29</td>
+<td class="up" data-v="0.3400">0.34</td>
+<td class="down" data-v="-6.9400">-6.9%</td>
+<td class="up" data-v="3.5100">+3.5%</td>
+<td class="mut" data-v="1047025">105万</td>
+</tr>
+<tr data-sym="BMT">
+<td class="rk">70</td>
+<td class="sym">BMT</td>
+<td class="low" data-v="0.1550">0.15</td>
+<td class="mut" data-v="0.6530">0.65</td>
+<td class="mut" data-v="0.8980">0.90</td>
+<td class="down" data-v="-6.9800">-7.0%</td>
+<td class="up" data-v="3.4700">+3.5%</td>
+<td class="mut" data-v="14019748">1402万</td>
+</tr>
+<tr data-sym="CYBER">
+<td class="rk">71</td>
+<td class="sym">CYBER</td>
+<td class="low" data-v="0.1960">0.20</td>
+<td class="mut" data-v="1.1190">1.12</td>
+<td class="mut" data-v="1.6070">1.61</td>
+<td class="down" data-v="-7.0800">-7.1%</td>
+<td class="up" data-v="3.3700">+3.4%</td>
+<td class="mut" data-v="16118942">1612万</td>
+</tr>
+<tr data-sym="POWR">
+<td class="rk">72</td>
+<td class="sym">POWR</td>
+<td class="low" data-v="0.3240">0.32</td>
+<td class="mut" data-v="1.0160">1.02</td>
+<td class="mut" data-v="0.8540">0.85</td>
+<td class="down" data-v="-7.7200">-7.7%</td>
+<td class="up" data-v="2.7400">+2.7%</td>
+<td class="mut" data-v="1759249">176万</td>
+</tr>
+<tr data-sym="NXPC">
+<td class="rk">73</td>
+<td class="sym">NXPC</td>
+<td class="low" data-v="0.3340">0.33</td>
+<td class="mut" data-v="1.2590">1.26</td>
+<td class="mut" data-v="1.2080">1.21</td>
+<td class="down" data-v="-7.8100">-7.8%</td>
+<td class="up" data-v="2.6500">+2.6%</td>
+<td class="mut" data-v="4270200">427万</td>
+</tr>
+<tr data-sym="GENIUS">
+<td class="rk">74</td>
+<td class="sym">GENIUS</td>
+<td class="low" data-v="0.3470">0.35</td>
+<td class="mut" data-v="0.5090">0.51</td>
+<td class="up" data-v="0.5240">0.52</td>
+<td class="down" data-v="-8.0400">-8.0%</td>
+<td class="up" data-v="2.4100">+2.4%</td>
+<td class="mut" data-v="952586">95万</td>
+</tr>
+<tr data-sym="XPIN">
+<td class="rk">75</td>
+<td class="sym">XPIN</td>
+<td class="low" data-v="0.2590">0.26</td>
+<td class="mut" data-v="0.7120">0.71</td>
+<td class="up" data-v="0.7840">0.78</td>
+<td class="down" data-v="-8.1300">-8.1%</td>
+<td class="up" data-v="2.3200">+2.3%</td>
+<td class="mut" data-v="1154116">115万</td>
+</tr>
+<tr data-sym="XMR">
+<td class="rk">76</td>
+<td class="sym">XMR</td>
+<td class="low" data-v="0.3610">0.36</td>
+<td class="mut" data-v="0.6050">0.60</td>
+<td class="up" data-v="0.6370">0.64</td>
+<td class="down" data-v="-8.7200">-8.7%</td>
+<td class="up" data-v="1.7300">+1.7%</td>
+<td class="mut" data-v="118390468">1.18亿</td>
+</tr>
+<tr data-sym="BTR">
+<td class="rk">77</td>
+<td class="sym">BTR</td>
+<td class="low" data-v="0.2700">0.27</td>
+<td class="mut" data-v="0.6540">0.65</td>
+<td class="up" data-v="0.5790">0.58</td>
+<td class="down" data-v="-8.8300">-8.8%</td>
+<td class="up" data-v="1.6300">+1.6%</td>
+<td class="mut" data-v="1242400">124万</td>
+</tr>
+<tr data-sym="龙虾">
+<td class="rk">78</td>
+<td class="sym">龙虾</td>
+<td class="low" data-v="0.2570">0.26</td>
+<td class="mut" data-v="0.8060">0.81</td>
+<td class="mut" data-v="1.1650">1.17</td>
+<td class="down" data-v="-8.8600">-8.9%</td>
+<td class="up" data-v="1.6000">+1.6%</td>
+<td class="mut" data-v="6174968">617万</td>
+</tr>
+<tr data-sym="OGN">
+<td class="rk">79</td>
+<td class="sym">OGN</td>
+<td class="low" data-v="0.4110">0.41</td>
+<td class="mut" data-v="1.0050">1.00</td>
+<td class="mut" data-v="0.8000">0.80</td>
+<td class="down" data-v="-8.8900">-8.9%</td>
+<td class="up" data-v="1.5600">+1.6%</td>
+<td class="mut" data-v="2042131">204万</td>
+</tr>
+<tr data-sym="COW">
+<td class="rk">80</td>
+<td class="sym">COW</td>
+<td class="low" data-v="0.3440">0.34</td>
+<td class="mut" data-v="1.0530">1.05</td>
+<td class="up" data-v="0.7960">0.80</td>
+<td class="down" data-v="-8.9100">-8.9%</td>
+<td class="up" data-v="1.5500">+1.6%</td>
+<td class="mut" data-v="2456155">246万</td>
+</tr>
+<tr data-sym="SENT">
+<td class="rk">81</td>
+<td class="sym">SENT</td>
+<td class="low" data-v="0.3970">0.40</td>
+<td class="mut" data-v="0.8960">0.90</td>
+<td class="up" data-v="0.7050">0.70</td>
+<td class="down" data-v="-9.1500">-9.2%</td>
+<td class="up" data-v="1.3100">+1.3%</td>
+<td class="mut" data-v="3370584">337万</td>
+</tr>
+<tr data-sym="PROM">
+<td class="rk">82</td>
+<td class="sym">PROM</td>
+<td class="low" data-v="0.1370">0.14</td>
+<td class="mut" data-v="0.4970">0.50</td>
+<td class="up" data-v="0.3360">0.34</td>
+<td class="down" data-v="-9.8000">-9.8%</td>
+<td class="up" data-v="0.6500">+0.7%</td>
+<td class="mut" data-v="14955309">1496万</td>
+</tr>
+<tr data-sym="ZAMA">
+<td class="rk">83</td>
+<td class="sym">ZAMA</td>
+<td class="low" data-v="0.4410">0.44</td>
+<td class="mut" data-v="1.2680">1.27</td>
+<td class="mut" data-v="1.2380">1.24</td>
+<td class="down" data-v="-10.1000">-10.1%</td>
+<td class="up" data-v="0.3500">+0.3%</td>
+<td class="mut" data-v="10214708">1021万</td>
+</tr>
+<tr data-sym="ALLO">
+<td class="rk">84</td>
+<td class="sym">ALLO</td>
+<td class="low" data-v="0.3540">0.35</td>
+<td class="mut" data-v="0.8340">0.83</td>
+<td class="mut" data-v="0.9050">0.91</td>
+<td class="down" data-v="-10.1700">-10.2%</td>
+<td class="up" data-v="0.2900">+0.3%</td>
+<td class="mut" data-v="5142646">514万</td>
+</tr>
+<tr data-sym="币安人生">
+<td class="rk">85</td>
+<td class="sym">币安人生</td>
+<td class="low" data-v="0.3610">0.36</td>
+<td class="mut" data-v="0.6220">0.62</td>
+<td class="up" data-v="0.6500">0.65</td>
+<td class="down" data-v="-10.2200">-10.2%</td>
+<td class="up" data-v="0.2400">+0.2%</td>
+<td class="mut" data-v="4289282">429万</td>
+</tr>
+<tr data-sym="PHAROS">
+<td class="rk">86</td>
+<td class="sym">PHAROS</td>
+<td class="low" data-v="0.3940">0.39</td>
+<td class="mut" data-v="0.8570">0.86</td>
+<td class="mut" data-v="0.8520">0.85</td>
+<td class="down" data-v="-10.3100">-10.3%</td>
+<td class="up" data-v="0.1500">+0.1%</td>
+<td class="mut" data-v="776078">78万</td>
+</tr>
+</tbody></table>
+<h2>走自己独立的 · 逆势下跌 <em>58 个</em></h2>
+<div class="note">与 BTC 相关&lt;0.45 且跑输大盘 —— 自己的风险，不是大盘的</div>
+<table><thead><tr>
+<th data-num="0">#</th>
+<th data-num="0">币种</th>
+<th data-num="1">与BTC相关</th>
+<th data-num="1">Beta</th>
+<th data-num="1">下跌捕获</th>
+<th data-num="1">14天收益</th>
+<th data-num="1">超额</th>
+<th data-num="1">24h成交额</th>
+</tr></thead><tbody>
+<tr data-sym="AWE">
+<td class="rk">1</td>
+<td class="sym">AWE</td>
+<td class="low" data-v="0.3610">0.36</td>
+<td class="mut" data-v="0.8740">0.87</td>
+<td class="up" data-v="0.6050">0.60</td>
+<td class="down" data-v="-11.1500">-11.2%</td>
+<td class="down" data-v="-0.7000">-0.7%</td>
+<td class="mut" data-v="1009235">101万</td>
+</tr>
+<tr data-sym="TAG">
+<td class="rk">2</td>
+<td class="sym">TAG</td>
+<td class="low" data-v="0.3130">0.31</td>
+<td class="mut" data-v="1.0860">1.09</td>
+<td class="mut" data-v="0.8030">0.80</td>
+<td class="down" data-v="-11.4200">-11.4%</td>
+<td class="down" data-v="-0.9600">-1.0%</td>
+<td class="mut" data-v="1668867">167万</td>
+</tr>
+<tr data-sym="G">
+<td class="rk">3</td>
+<td class="sym">G</td>
+<td class="low" data-v="0.4350">0.43</td>
+<td class="mut" data-v="1.1320">1.13</td>
+<td class="mut" data-v="1.1870">1.19</td>
+<td class="down" data-v="-11.4400">-11.4%</td>
+<td class="down" data-v="-0.9800">-1.0%</td>
+<td class="mut" data-v="2324029">232万</td>
+</tr>
+<tr data-sym="PROVE">
+<td class="rk">4</td>
+<td class="sym">PROVE</td>
+<td class="low" data-v="0.4390">0.44</td>
+<td class="mut" data-v="0.8400">0.84</td>
+<td class="up" data-v="0.7950">0.80</td>
+<td class="down" data-v="-11.8000">-11.8%</td>
+<td class="down" data-v="-1.3400">-1.3%</td>
+<td class="mut" data-v="1723110">172万</td>
+</tr>
+<tr data-sym="ARX">
+<td class="rk">5</td>
+<td class="sym">ARX</td>
+<td class="low" data-v="0.2560">0.26</td>
+<td class="mut" data-v="1.0890">1.09</td>
+<td class="mut" data-v="1.1220">1.12</td>
+<td class="down" data-v="-12.0200">-12.0%</td>
+<td class="down" data-v="-1.5700">-1.6%</td>
+<td class="mut" data-v="7817286">782万</td>
+</tr>
+<tr data-sym="GWEI">
+<td class="rk">6</td>
+<td class="sym">GWEI</td>
+<td class="low" data-v="0.3560">0.36</td>
+<td class="mut" data-v="1.0070">1.01</td>
+<td class="mut" data-v="0.9130">0.91</td>
+<td class="down" data-v="-12.3700">-12.4%</td>
+<td class="down" data-v="-1.9100">-1.9%</td>
+<td class="mut" data-v="2026792">203万</td>
+</tr>
+<tr data-sym="DOS">
+<td class="rk">7</td>
+<td class="sym">DOS</td>
+<td class="low" data-v="0.1760">0.18</td>
+<td class="mut" data-v="0.5830">0.58</td>
+<td class="up" data-v="0.6820">0.68</td>
+<td class="down" data-v="-13.4100">-13.4%</td>
+<td class="down" data-v="-2.9500">-3.0%</td>
+<td class="mut" data-v="2440942">244万</td>
+</tr>
+<tr data-sym="SOLV">
+<td class="rk">8</td>
+<td class="sym">SOLV</td>
+<td class="low" data-v="0.2290">0.23</td>
+<td class="mut" data-v="0.7540">0.75</td>
+<td class="mut" data-v="0.9700">0.97</td>
+<td class="down" data-v="-13.4600">-13.5%</td>
+<td class="down" data-v="-3.0100">-3.0%</td>
+<td class="mut" data-v="1982855">198万</td>
+</tr>
+<tr data-sym="SIGN">
+<td class="rk">9</td>
+<td class="sym">SIGN</td>
+<td class="low" data-v="0.2470">0.25</td>
+<td class="mut" data-v="0.8900">0.89</td>
+<td class="up" data-v="0.5160">0.52</td>
+<td class="down" data-v="-14.6400">-14.6%</td>
+<td class="down" data-v="-4.1800">-4.2%</td>
+<td class="mut" data-v="2906152">291万</td>
+</tr>
+<tr data-sym="WET">
+<td class="rk">10</td>
+<td class="sym">WET</td>
+<td class="low" data-v="0.3940">0.39</td>
+<td class="mut" data-v="1.1280">1.13</td>
+<td class="mut" data-v="1.1360">1.14</td>
+<td class="down" data-v="-14.9500">-14.9%</td>
+<td class="down" data-v="-4.5000">-4.5%</td>
+<td class="mut" data-v="1148329">115万</td>
+</tr>
+<tr data-sym="RUNE">
+<td class="rk">11</td>
+<td class="sym">RUNE</td>
+<td class="low" data-v="0.2850">0.28</td>
+<td class="mut" data-v="0.8310">0.83</td>
+<td class="up" data-v="0.7650">0.77</td>
+<td class="down" data-v="-15.4600">-15.5%</td>
+<td class="down" data-v="-5.0100">-5.0%</td>
+<td class="mut" data-v="6423346">642万</td>
+</tr>
+<tr data-sym="GRVT">
+<td class="rk">12</td>
+<td class="sym">GRVT</td>
+<td class="low" data-v="0.3210">0.32</td>
+<td class="mut" data-v="0.8280">0.83</td>
+<td class="mut" data-v="0.9090">0.91</td>
+<td class="down" data-v="-15.8500">-15.8%</td>
+<td class="down" data-v="-5.4000">-5.4%</td>
+<td class="mut" data-v="4205111">421万</td>
+</tr>
+<tr data-sym="EVAA">
+<td class="rk">13</td>
+<td class="sym">EVAA</td>
+<td class="low" data-v="0.1000">0.10</td>
+<td class="mut" data-v="0.5610">0.56</td>
+<td class="up" data-v="0.3690">0.37</td>
+<td class="down" data-v="-16.0500">-16.1%</td>
+<td class="down" data-v="-5.5900">-5.6%</td>
+<td class="mut" data-v="7131516">713万</td>
+</tr>
+<tr data-sym="M">
+<td class="rk">14</td>
+<td class="sym">M</td>
+<td class="low" data-v="0.2840">0.28</td>
+<td class="mut" data-v="0.6570">0.66</td>
+<td class="mut" data-v="0.8690">0.87</td>
+<td class="down" data-v="-16.6900">-16.7%</td>
+<td class="down" data-v="-6.2400">-6.2%</td>
+<td class="mut" data-v="1331555">133万</td>
+</tr>
+<tr data-sym="MAGMA">
+<td class="rk">15</td>
+<td class="sym">MAGMA</td>
+<td class="low" data-v="-0.0060">-0.01</td>
+<td class="mut" data-v="-0.0370">-0.04</td>
+<td class="up" data-v="-0.1290">-0.13</td>
+<td class="down" data-v="-16.7100">-16.7%</td>
+<td class="down" data-v="-6.2600">-6.3%</td>
+<td class="mut" data-v="152695784">1.53亿</td>
+</tr>
+<tr data-sym="BSB">
+<td class="rk">16</td>
+<td class="sym">BSB</td>
+<td class="low" data-v="0.4400">0.44</td>
+<td class="mut" data-v="1.0740">1.07</td>
+<td class="mut" data-v="0.9170">0.92</td>
+<td class="down" data-v="-17.3300">-17.3%</td>
+<td class="down" data-v="-6.8800">-6.9%</td>
+<td class="mut" data-v="1600752">160万</td>
+</tr>
+<tr data-sym="BEAT">
+<td class="rk">17</td>
+<td class="sym">BEAT</td>
+<td class="low" data-v="0.1430">0.14</td>
+<td class="mut" data-v="0.5370">0.54</td>
+<td class="up" data-v="0.6730">0.67</td>
+<td class="down" data-v="-17.4900">-17.5%</td>
+<td class="down" data-v="-7.0400">-7.0%</td>
+<td class="mut" data-v="7584749">758万</td>
+</tr>
+<tr data-sym="RECALL">
+<td class="rk">18</td>
+<td class="sym">RECALL</td>
+<td class="low" data-v="0.3990">0.40</td>
+<td class="mut" data-v="1.4290">1.43</td>
+<td class="mut" data-v="1.5040">1.50</td>
+<td class="down" data-v="-17.8300">-17.8%</td>
+<td class="down" data-v="-7.3800">-7.4%</td>
+<td class="mut" data-v="2117375">212万</td>
+</tr>
+<tr data-sym="KOMA">
+<td class="rk">19</td>
+<td class="sym">KOMA</td>
+<td class="low" data-v="0.2360">0.24</td>
+<td class="mut" data-v="1.2620">1.26</td>
+<td class="mut" data-v="1.4140">1.41</td>
+<td class="down" data-v="-18.2400">-18.2%</td>
+<td class="down" data-v="-7.7900">-7.8%</td>
+<td class="mut" data-v="2369220">237万</td>
+</tr>
+<tr data-sym="US">
+<td class="rk">20</td>
+<td class="sym">US</td>
+<td class="low" data-v="0.4100">0.41</td>
+<td class="mut" data-v="1.2840">1.28</td>
+<td class="mut" data-v="1.1240">1.12</td>
+<td class="down" data-v="-18.8400">-18.8%</td>
+<td class="down" data-v="-8.3800">-8.4%</td>
+<td class="mut" data-v="4564457">456万</td>
+</tr>
+<tr data-sym="BILL">
+<td class="rk">21</td>
+<td class="sym">BILL</td>
+<td class="low" data-v="0.4380">0.44</td>
+<td class="mut" data-v="1.0760">1.08</td>
+<td class="mut" data-v="0.9090">0.91</td>
+<td class="down" data-v="-20.2000">-20.2%</td>
+<td class="down" data-v="-9.7400">-9.7%</td>
+<td class="mut" data-v="3274525">327万</td>
+</tr>
+<tr data-sym="FIGHT">
+<td class="rk">22</td>
+<td class="sym">FIGHT</td>
+<td class="low" data-v="0.3650">0.36</td>
+<td class="mut" data-v="1.0210">1.02</td>
+<td class="mut" data-v="1.1350">1.14</td>
+<td class="down" data-v="-20.5800">-20.6%</td>
+<td class="down" data-v="-10.1300">-10.1%</td>
+<td class="mut" data-v="648726">65万</td>
+</tr>
+<tr data-sym="PREDICT">
+<td class="rk">23</td>
+<td class="sym">PREDICT</td>
+<td class="low" data-v="0.1510">0.15</td>
+<td class="mut" data-v="0.3650">0.36</td>
+<td class="up" data-v="0.6200">0.62</td>
+<td class="down" data-v="-20.7200">-20.7%</td>
+<td class="down" data-v="-10.2700">-10.3%</td>
+<td class="mut" data-v="3165475">317万</td>
+</tr>
+<tr data-sym="REZ">
+<td class="rk">24</td>
+<td class="sym">REZ</td>
+<td class="low" data-v="0.3830">0.38</td>
+<td class="mut" data-v="1.1730">1.17</td>
+<td class="mut" data-v="1.3880">1.39</td>
+<td class="down" data-v="-20.8300">-20.8%</td>
+<td class="down" data-v="-10.3700">-10.4%</td>
+<td class="mut" data-v="4015741">402万</td>
+</tr>
+<tr data-sym="CT">
+<td class="rk">25</td>
+<td class="sym">CT</td>
+<td class="low" data-v="0.2820">0.28</td>
+<td class="mut" data-v="0.8940">0.89</td>
+<td class="mut" data-v="1.5180">1.52</td>
+<td class="down" data-v="-21.3100">-21.3%</td>
+<td class="down" data-v="-10.8600">-10.9%</td>
+<td class="mut" data-v="10749229">1075万</td>
+</tr>
+<tr data-sym="LSK">
+<td class="rk">26</td>
+<td class="sym">LSK</td>
+<td class="low" data-v="0.2570">0.26</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="mut" data-v="1.6900">1.69</td>
+<td class="down" data-v="-21.3400">-21.3%</td>
+<td class="down" data-v="-10.8900">-10.9%</td>
+<td class="mut" data-v="8791391">879万</td>
+</tr>
+<tr data-sym="DOOD">
+<td class="rk">27</td>
+<td class="sym">DOOD</td>
+<td class="low" data-v="0.4350">0.43</td>
+<td class="mut" data-v="1.1390">1.14</td>
+<td class="mut" data-v="1.3670">1.37</td>
+<td class="down" data-v="-21.3700">-21.4%</td>
+<td class="down" data-v="-10.9200">-10.9%</td>
+<td class="mut" data-v="3721839">372万</td>
+</tr>
+<tr data-sym="TRUTH">
+<td class="rk">28</td>
+<td class="sym">TRUTH</td>
+<td class="low" data-v="0.1540">0.15</td>
+<td class="mut" data-v="0.4500">0.45</td>
+<td class="up" data-v="0.4100">0.41</td>
+<td class="down" data-v="-22.1900">-22.2%</td>
+<td class="down" data-v="-11.7300">-11.7%</td>
+<td class="mut" data-v="3101301">310万</td>
+</tr>
+<tr data-sym="SOON">
+<td class="rk">29</td>
+<td class="sym">SOON</td>
+<td class="low" data-v="0.3110">0.31</td>
+<td class="mut" data-v="0.8010">0.80</td>
+<td class="mut" data-v="1.1530">1.15</td>
+<td class="down" data-v="-22.5500">-22.6%</td>
+<td class="down" data-v="-12.0900">-12.1%</td>
+<td class="mut" data-v="4254140">425万</td>
+</tr>
+<tr data-sym="NAORIS">
+<td class="rk">30</td>
+<td class="sym">NAORIS</td>
+<td class="low" data-v="0.2350">0.23</td>
+<td class="mut" data-v="0.8650">0.86</td>
+<td class="mut" data-v="0.9890">0.99</td>
+<td class="down" data-v="-22.9400">-22.9%</td>
+<td class="down" data-v="-12.4800">-12.5%</td>
+<td class="mut" data-v="2324025">232万</td>
+</tr>
+<tr data-sym="BLUR">
+<td class="rk">31</td>
+<td class="sym">BLUR</td>
+<td class="low" data-v="0.2740">0.27</td>
+<td class="mut" data-v="0.6670">0.67</td>
+<td class="up" data-v="0.7790">0.78</td>
+<td class="down" data-v="-23.0000">-23.0%</td>
+<td class="down" data-v="-12.5400">-12.5%</td>
+<td class="mut" data-v="3314173">331万</td>
+</tr>
+<tr data-sym="AVA">
+<td class="rk">32</td>
+<td class="sym">AVA</td>
+<td class="low" data-v="0.2430">0.24</td>
+<td class="mut" data-v="0.7020">0.70</td>
+<td class="mut" data-v="0.9230">0.92</td>
+<td class="down" data-v="-23.0500">-23.1%</td>
+<td class="down" data-v="-12.5900">-12.6%</td>
+<td class="mut" data-v="4452559">445万</td>
+</tr>
+<tr data-sym="GTC">
+<td class="rk">33</td>
+<td class="sym">GTC</td>
+<td class="low" data-v="0.1930">0.19</td>
+<td class="mut" data-v="0.7020">0.70</td>
+<td class="mut" data-v="1.0850">1.08</td>
+<td class="down" data-v="-27.1700">-27.2%</td>
+<td class="down" data-v="-16.7200">-16.7%</td>
+<td class="mut" data-v="7392672">739万</td>
+</tr>
+<tr data-sym="ARC">
+<td class="rk">34</td>
+<td class="sym">ARC</td>
+<td class="low" data-v="0.4150">0.41</td>
+<td class="mut" data-v="0.9860">0.99</td>
+<td class="mut" data-v="1.0970">1.10</td>
+<td class="down" data-v="-27.9600">-28.0%</td>
+<td class="down" data-v="-17.5100">-17.5%</td>
+<td class="mut" data-v="1899128">190万</td>
+</tr>
+<tr data-sym="ZEST">
+<td class="rk">35</td>
+<td class="sym">ZEST</td>
+<td class="low" data-v="0.2890">0.29</td>
+<td class="mut" data-v="0.8340">0.83</td>
+<td class="mut" data-v="1.2770">1.28</td>
+<td class="down" data-v="-28.1800">-28.2%</td>
+<td class="down" data-v="-17.7300">-17.7%</td>
+<td class="mut" data-v="3721242">372万</td>
+</tr>
+<tr data-sym="MUBARAK">
+<td class="rk">36</td>
+<td class="sym">MUBARAK</td>
+<td class="low" data-v="0.3710">0.37</td>
+<td class="mut" data-v="0.9080">0.91</td>
+<td class="mut" data-v="1.3790">1.38</td>
+<td class="down" data-v="-28.2900">-28.3%</td>
+<td class="down" data-v="-17.8400">-17.8%</td>
+<td class="mut" data-v="5526381">553万</td>
+</tr>
+<tr data-sym="IRYS">
+<td class="rk">37</td>
+<td class="sym">IRYS</td>
+<td class="low" data-v="0.3970">0.40</td>
+<td class="mut" data-v="1.3880">1.39</td>
+<td class="mut" data-v="1.7310">1.73</td>
+<td class="down" data-v="-28.4700">-28.5%</td>
+<td class="down" data-v="-18.0100">-18.0%</td>
+<td class="mut" data-v="7733991">773万</td>
+</tr>
+<tr data-sym="NIL">
+<td class="rk">38</td>
+<td class="sym">NIL</td>
+<td class="low" data-v="0.3840">0.38</td>
+<td class="mut" data-v="1.1820">1.18</td>
+<td class="mut" data-v="1.6260">1.63</td>
+<td class="down" data-v="-28.7800">-28.8%</td>
+<td class="down" data-v="-18.3300">-18.3%</td>
+<td class="mut" data-v="4811660">481万</td>
+</tr>
+<tr data-sym="AT">
+<td class="rk">39</td>
+<td class="sym">AT</td>
+<td class="low" data-v="0.3030">0.30</td>
+<td class="mut" data-v="0.8220">0.82</td>
+<td class="mut" data-v="1.0410">1.04</td>
+<td class="down" data-v="-29.5200">-29.5%</td>
+<td class="down" data-v="-19.0700">-19.1%</td>
+<td class="mut" data-v="1924549">192万</td>
+</tr>
+<tr data-sym="PARTI">
+<td class="rk">40</td>
+<td class="sym">PARTI</td>
+<td class="low" data-v="-0.0250">-0.03</td>
+<td class="mut" data-v="-0.1040">-0.10</td>
+<td class="up" data-v="0.5100">0.51</td>
+<td class="down" data-v="-29.7700">-29.8%</td>
+<td class="down" data-v="-19.3200">-19.3%</td>
+<td class="mut" data-v="7480225">748万</td>
+</tr>
+<tr data-sym="FOGO">
+<td class="rk">41</td>
+<td class="sym">FOGO</td>
+<td class="low" data-v="0.4140">0.41</td>
+<td class="mut" data-v="1.3660">1.37</td>
+<td class="mut" data-v="1.0340">1.03</td>
+<td class="down" data-v="-30.1800">-30.2%</td>
+<td class="down" data-v="-19.7200">-19.7%</td>
+<td class="mut" data-v="3410700">341万</td>
+</tr>
+<tr data-sym="TRUMP">
+<td class="rk">42</td>
+<td class="sym">TRUMP</td>
+<td class="low" data-v="0.3850">0.39</td>
+<td class="mut" data-v="1.1220">1.12</td>
+<td class="mut" data-v="1.3980">1.40</td>
+<td class="down" data-v="-30.4900">-30.5%</td>
+<td class="down" data-v="-20.0400">-20.0%</td>
+<td class="mut" data-v="84069314">8407万</td>
+</tr>
+<tr data-sym="THE">
+<td class="rk">43</td>
+<td class="sym">THE</td>
+<td class="low" data-v="0.4250">0.42</td>
+<td class="mut" data-v="1.2670">1.27</td>
+<td class="mut" data-v="1.4470">1.45</td>
+<td class="down" data-v="-31.0900">-31.1%</td>
+<td class="down" data-v="-20.6400">-20.6%</td>
+<td class="mut" data-v="2368357">237万</td>
+</tr>
+<tr data-sym="BTW">
+<td class="rk">44</td>
+<td class="sym">BTW</td>
+<td class="low" data-v="0.0860">0.09</td>
+<td class="mut" data-v="0.6280">0.63</td>
+<td class="mut" data-v="1.0610">1.06</td>
+<td class="down" data-v="-34.8000">-34.8%</td>
+<td class="down" data-v="-24.3500">-24.4%</td>
+<td class="mut" data-v="83490875">8349万</td>
+</tr>
+<tr data-sym="APR">
+<td class="rk">45</td>
+<td class="sym">APR</td>
+<td class="low" data-v="0.1350">0.14</td>
+<td class="mut" data-v="0.7100">0.71</td>
+<td class="mut" data-v="0.9550">0.95</td>
+<td class="down" data-v="-35.0500">-35.0%</td>
+<td class="down" data-v="-24.6000">-24.6%</td>
+<td class="mut" data-v="12589536">1259万</td>
+</tr>
+<tr data-sym="AIN">
+<td class="rk">46</td>
+<td class="sym">AIN</td>
+<td class="low" data-v="0.0260">0.03</td>
+<td class="mut" data-v="0.3810">0.38</td>
+<td class="up" data-v="0.7650">0.77</td>
+<td class="down" data-v="-35.4500">-35.5%</td>
+<td class="down" data-v="-25.0000">-25.0%</td>
+<td class="mut" data-v="22692921">2269万</td>
+</tr>
+<tr data-sym="CLO">
+<td class="rk">47</td>
+<td class="sym">CLO</td>
+<td class="low" data-v="0.4070">0.41</td>
+<td class="mut" data-v="1.5790">1.58</td>
+<td class="mut" data-v="1.8190">1.82</td>
+<td class="down" data-v="-36.8400">-36.8%</td>
+<td class="down" data-v="-26.3900">-26.4%</td>
+<td class="mut" data-v="3570293">357万</td>
+</tr>
+<tr data-sym="Q">
+<td class="rk">48</td>
+<td class="sym">Q</td>
+<td class="low" data-v="0.0810">0.08</td>
+<td class="mut" data-v="0.5600">0.56</td>
+<td class="mut" data-v="1.0080">1.01</td>
+<td class="down" data-v="-39.5500">-39.5%</td>
+<td class="down" data-v="-29.1000">-29.1%</td>
+<td class="mut" data-v="26476756">2648万</td>
+</tr>
+<tr data-sym="BLESS">
+<td class="rk">49</td>
+<td class="sym">BLESS</td>
+<td class="low" data-v="0.1010">0.10</td>
+<td class="mut" data-v="0.5880">0.59</td>
+<td class="mut" data-v="1.0870">1.09</td>
+<td class="down" data-v="-39.8600">-39.9%</td>
+<td class="down" data-v="-29.4000">-29.4%</td>
+<td class="mut" data-v="6600830">660万</td>
+</tr>
+<tr data-sym="PLAY">
+<td class="rk">50</td>
+<td class="sym">PLAY</td>
+<td class="low" data-v="0.2340">0.23</td>
+<td class="mut" data-v="1.4260">1.43</td>
+<td class="mut" data-v="1.7250">1.73</td>
+<td class="down" data-v="-41.5500">-41.5%</td>
+<td class="down" data-v="-31.1000">-31.1%</td>
+<td class="mut" data-v="78373044">7837万</td>
+</tr>
+<tr data-sym="BULLA">
+<td class="rk">51</td>
+<td class="sym">BULLA</td>
+<td class="low" data-v="0.0210">0.02</td>
+<td class="mut" data-v="0.1200">0.12</td>
+<td class="up" data-v="0.1220">0.12</td>
+<td class="down" data-v="-45.3400">-45.3%</td>
+<td class="down" data-v="-34.8900">-34.9%</td>
+<td class="mut" data-v="32144164">3214万</td>
+</tr>
+<tr data-sym="INIT">
+<td class="rk">52</td>
+<td class="sym">INIT</td>
+<td class="low" data-v="0.0740">0.07</td>
+<td class="mut" data-v="0.7470">0.75</td>
+<td class="up" data-v="0.2010">0.20</td>
+<td class="down" data-v="-46.7800">-46.8%</td>
+<td class="down" data-v="-36.3300">-36.3%</td>
+<td class="mut" data-v="148052188">1.48亿</td>
+</tr>
+<tr data-sym="H">
+<td class="rk">53</td>
+<td class="sym">H</td>
+<td class="low" data-v="0.2780">0.28</td>
+<td class="mut" data-v="1.1410">1.14</td>
+<td class="mut" data-v="1.9550">1.96</td>
+<td class="down" data-v="-55.0600">-55.1%</td>
+<td class="down" data-v="-44.6100">-44.6%</td>
+<td class="mut" data-v="26317099">2632万</td>
+</tr>
+<tr data-sym="ON">
+<td class="rk">54</td>
+<td class="sym">ON</td>
+<td class="low" data-v="-0.0550">-0.06</td>
+<td class="mut" data-v="-0.5660">-0.57</td>
+<td class="up" data-v="0.5790">0.58</td>
+<td class="down" data-v="-60.2500">-60.2%</td>
+<td class="down" data-v="-49.7900">-49.8%</td>
+<td class="mut" data-v="36533530">3653万</td>
+</tr>
+<tr data-sym="JCT">
+<td class="rk">55</td>
+<td class="sym">JCT</td>
+<td class="low" data-v="0.0030">0.00</td>
+<td class="mut" data-v="0.0540">0.05</td>
+<td class="up" data-v="0.6570">0.66</td>
+<td class="down" data-v="-60.5000">-60.5%</td>
+<td class="down" data-v="-50.0400">-50.0%</td>
+<td class="mut" data-v="208470305">2.08亿</td>
+</tr>
+<tr data-sym="AKE">
+<td class="rk">56</td>
+<td class="sym">AKE</td>
+<td class="low" data-v="0.0410">0.04</td>
+<td class="mut" data-v="0.7570">0.76</td>
+<td class="mut" data-v="1.5880">1.59</td>
+<td class="down" data-v="-68.2700">-68.3%</td>
+<td class="down" data-v="-57.8100">-57.8%</td>
+<td class="mut" data-v="386712853">3.87亿</td>
+</tr>
+<tr data-sym="HUMA">
+<td class="rk">57</td>
+<td class="sym">HUMA</td>
+<td class="low" data-v="0.1100">0.11</td>
+<td class="mut" data-v="0.5970">0.60</td>
+<td class="mut" data-v="1.6860">1.69</td>
+<td class="down" data-v="-71.7300">-71.7%</td>
+<td class="down" data-v="-61.2700">-61.3%</td>
+<td class="mut" data-v="29862101">2986万</td>
+</tr>
+<tr data-sym="UAI">
+<td class="rk">58</td>
+<td class="sym">UAI</td>
+<td class="low" data-v="0.0370">0.04</td>
+<td class="mut" data-v="0.6320">0.63</td>
+<td class="mut" data-v="2.8060">2.81</td>
+<td class="down" data-v="-84.7000">-84.7%</td>
+<td class="down" data-v="-74.2500">-74.2%</td>
+<td class="mut" data-v="21064596">2106万</td>
+</tr>
+</tbody></table>
+<h2>跟大盘走的 <em>373 个</em></h2>
+<div class="note">与 BTC 相关≥0.45 —— BTC 动它就动，Beta 决定放大倍数</div>
+<table><thead><tr>
+<th data-num="0">#</th>
+<th data-num="0">币种</th>
+<th data-num="1">与BTC相关</th>
+<th data-num="1">Beta</th>
+<th data-num="1">下跌捕获</th>
+<th data-num="1">14天收益</th>
+<th data-num="1">超额</th>
+<th data-num="1">24h成交额</th>
+</tr></thead><tbody>
+<tr data-sym="OPEN">
+<td class="rk">1</td>
+<td class="sym">OPEN</td>
+<td class="mut" data-v="0.4920">0.49</td>
+<td class="mut" data-v="1.2620">1.26</td>
+<td class="mut" data-v="0.9530">0.95</td>
+<td class="up" data-v="14.0700">+14.1%</td>
+<td class="up" data-v="24.5200">+24.5%</td>
+<td class="mut" data-v="6824767">682万</td>
+</tr>
+<tr data-sym="NIGHT">
+<td class="rk">2</td>
+<td class="sym">NIGHT</td>
+<td class="mut" data-v="0.5110">0.51</td>
+<td class="mut" data-v="1.3170">1.32</td>
+<td class="mut" data-v="1.2890">1.29</td>
+<td class="up" data-v="13.9000">+13.9%</td>
+<td class="up" data-v="24.3600">+24.4%</td>
+<td class="mut" data-v="18262443">1826万</td>
+</tr>
+<tr data-sym="USUAL">
+<td class="rk">3</td>
+<td class="sym">USUAL</td>
+<td class="mut" data-v="0.5640">0.56</td>
+<td class="mut" data-v="1.1940">1.19</td>
+<td class="mut" data-v="0.9930">0.99</td>
+<td class="up" data-v="10.2600">+10.3%</td>
+<td class="up" data-v="20.7100">+20.7%</td>
+<td class="mut" data-v="2333086">233万</td>
+</tr>
+<tr data-sym="PYTH">
+<td class="rk">4</td>
+<td class="sym">PYTH</td>
+<td class="mut" data-v="0.5870">0.59</td>
+<td class="mut" data-v="1.3680">1.37</td>
+<td class="mut" data-v="1.0990">1.10</td>
+<td class="up" data-v="7.4000">+7.4%</td>
+<td class="up" data-v="17.8600">+17.9%</td>
+<td class="mut" data-v="17728719">1773万</td>
+</tr>
+<tr data-sym="INJ">
+<td class="rk">5</td>
+<td class="sym">INJ</td>
+<td class="mut" data-v="0.5410">0.54</td>
+<td class="mut" data-v="1.3050">1.30</td>
+<td class="mut" data-v="1.1380">1.14</td>
+<td class="up" data-v="6.6000">+6.6%</td>
+<td class="up" data-v="17.0500">+17.1%</td>
+<td class="mut" data-v="80953319">8095万</td>
+</tr>
+<tr data-sym="CROSS">
+<td class="rk">6</td>
+<td class="sym">CROSS</td>
+<td class="mut" data-v="0.4960">0.50</td>
+<td class="mut" data-v="0.9830">0.98</td>
+<td class="up" data-v="0.5750">0.57</td>
+<td class="up" data-v="5.7100">+5.7%</td>
+<td class="up" data-v="16.1700">+16.2%</td>
+<td class="mut" data-v="1920673">192万</td>
+</tr>
+<tr data-sym="COOKIE">
+<td class="rk">7</td>
+<td class="sym">COOKIE</td>
+<td class="mut" data-v="0.6500">0.65</td>
+<td class="mut" data-v="1.4670">1.47</td>
+<td class="mut" data-v="1.2890">1.29</td>
+<td class="up" data-v="5.1200">+5.1%</td>
+<td class="up" data-v="15.5700">+15.6%</td>
+<td class="mut" data-v="1968433">197万</td>
+</tr>
+<tr data-sym="MET">
+<td class="rk">8</td>
+<td class="sym">MET</td>
+<td class="mut" data-v="0.5020">0.50</td>
+<td class="mut" data-v="1.3630">1.36</td>
+<td class="mut" data-v="1.0460">1.05</td>
+<td class="up" data-v="3.6900">+3.7%</td>
+<td class="up" data-v="14.1500">+14.2%</td>
+<td class="mut" data-v="8886715">889万</td>
+</tr>
+<tr data-sym="ICP">
+<td class="rk">9</td>
+<td class="sym">ICP</td>
+<td class="mut" data-v="0.6460">0.65</td>
+<td class="mut" data-v="1.1900">1.19</td>
+<td class="mut" data-v="0.9570">0.96</td>
+<td class="up" data-v="3.6000">+3.6%</td>
+<td class="up" data-v="14.0600">+14.1%</td>
+<td class="mut" data-v="34117249">3412万</td>
+</tr>
+<tr data-sym="TRIA">
+<td class="rk">10</td>
+<td class="sym">TRIA</td>
+<td class="mut" data-v="0.4700">0.47</td>
+<td class="mut" data-v="1.3240">1.32</td>
+<td class="mut" data-v="1.1120">1.11</td>
+<td class="up" data-v="2.8600">+2.9%</td>
+<td class="up" data-v="13.3100">+13.3%</td>
+<td class="mut" data-v="4455062">446万</td>
+</tr>
+<tr data-sym="JUP">
+<td class="rk">11</td>
+<td class="sym">JUP</td>
+<td class="mut" data-v="0.6780">0.68</td>
+<td class="mut" data-v="1.4690">1.47</td>
+<td class="mut" data-v="1.3550">1.35</td>
+<td class="up" data-v="2.3900">+2.4%</td>
+<td class="up" data-v="12.8400">+12.8%</td>
+<td class="mut" data-v="26152809">2615万</td>
+</tr>
+<tr data-sym="GPS">
+<td class="rk">12</td>
+<td class="sym">GPS</td>
+<td class="mut" data-v="0.5170">0.52</td>
+<td class="mut" data-v="1.0880">1.09</td>
+<td class="mut" data-v="0.8990">0.90</td>
+<td class="up" data-v="2.2000">+2.2%</td>
+<td class="up" data-v="12.6500">+12.7%</td>
+<td class="mut" data-v="2095617">210万</td>
+</tr>
+<tr data-sym="AVAX">
+<td class="rk">13</td>
+<td class="sym">AVAX</td>
+<td class="mut" data-v="0.6840">0.68</td>
+<td class="mut" data-v="1.3170">1.32</td>
+<td class="mut" data-v="1.1630">1.16</td>
+<td class="up" data-v="1.5400">+1.5%</td>
+<td class="up" data-v="11.9900">+12.0%</td>
+<td class="mut" data-v="126587868">1.27亿</td>
+</tr>
+<tr data-sym="USELESS">
+<td class="rk">14</td>
+<td class="sym">USELESS</td>
+<td class="mut" data-v="0.5890">0.59</td>
+<td class="mut" data-v="2.3480">2.35</td>
+<td class="mut" data-v="2.1980">2.20</td>
+<td class="up" data-v="1.1800">+1.2%</td>
+<td class="up" data-v="11.6400">+11.6%</td>
+<td class="mut" data-v="29168888">2917万</td>
+</tr>
+<tr data-sym="ETHFI">
+<td class="rk">15</td>
+<td class="sym">ETHFI</td>
+<td class="mut" data-v="0.6190">0.62</td>
+<td class="mut" data-v="1.5330">1.53</td>
+<td class="mut" data-v="1.1870">1.19</td>
+<td class="up" data-v="1.0700">+1.1%</td>
+<td class="up" data-v="11.5300">+11.5%</td>
+<td class="mut" data-v="31900190">3190万</td>
+</tr>
+<tr data-sym="ASR">
+<td class="rk">16</td>
+<td class="sym">ASR</td>
+<td class="mut" data-v="0.5460">0.55</td>
+<td class="mut" data-v="0.8160">0.82</td>
+<td class="up" data-v="0.6830">0.68</td>
+<td class="up" data-v="0.9600">+1.0%</td>
+<td class="up" data-v="11.4100">+11.4%</td>
+<td class="mut" data-v="682924">68万</td>
+</tr>
+<tr data-sym="YFI">
+<td class="rk">17</td>
+<td class="sym">YFI</td>
+<td class="mut" data-v="0.6630">0.66</td>
+<td class="mut" data-v="1.0980">1.10</td>
+<td class="mut" data-v="1.0460">1.05</td>
+<td class="up" data-v="0.6600">+0.7%</td>
+<td class="up" data-v="11.1200">+11.1%</td>
+<td class="mut" data-v="2558284">256万</td>
+</tr>
+<tr data-sym="HMSTR">
+<td class="rk">18</td>
+<td class="sym">HMSTR</td>
+<td class="mut" data-v="0.4720">0.47</td>
+<td class="mut" data-v="1.0260">1.03</td>
+<td class="mut" data-v="0.8250">0.82</td>
+<td class="up" data-v="0.0700">+0.1%</td>
+<td class="up" data-v="10.5300">+10.5%</td>
+<td class="mut" data-v="4124147">412万</td>
+</tr>
+<tr data-sym="HOME">
+<td class="rk">19</td>
+<td class="sym">HOME</td>
+<td class="mut" data-v="0.4950">0.49</td>
+<td class="mut" data-v="1.1510">1.15</td>
+<td class="mut" data-v="0.9250">0.93</td>
+<td class="down" data-v="-0.8700">-0.9%</td>
+<td class="up" data-v="9.5900">+9.6%</td>
+<td class="mut" data-v="3636332">364万</td>
+</tr>
+<tr data-sym="BROCCOLIF3B">
+<td class="rk">20</td>
+<td class="sym">BROCCOLIF3B</td>
+<td class="mut" data-v="0.5700">0.57</td>
+<td class="mut" data-v="1.2280">1.23</td>
+<td class="mut" data-v="0.9030">0.90</td>
+<td class="down" data-v="-0.8900">-0.9%</td>
+<td class="up" data-v="9.5600">+9.6%</td>
+<td class="mut" data-v="672179">67万</td>
+</tr>
+<tr data-sym="PORTAL">
+<td class="rk">21</td>
+<td class="sym">PORTAL</td>
+<td class="mut" data-v="0.5370">0.54</td>
+<td class="mut" data-v="1.2770">1.28</td>
+<td class="mut" data-v="1.0560">1.06</td>
+<td class="down" data-v="-0.9500">-0.9%</td>
+<td class="up" data-v="9.5000">+9.5%</td>
+<td class="mut" data-v="1296319">130万</td>
+</tr>
+<tr data-sym="MAVIA">
+<td class="rk">22</td>
+<td class="sym">MAVIA</td>
+<td class="mut" data-v="0.5250">0.53</td>
+<td class="mut" data-v="1.4180">1.42</td>
+<td class="mut" data-v="1.1030">1.10</td>
+<td class="down" data-v="-1.2100">-1.2%</td>
+<td class="up" data-v="9.2400">+9.2%</td>
+<td class="mut" data-v="820280">82万</td>
+</tr>
+<tr data-sym="MORPHO">
+<td class="rk">23</td>
+<td class="sym">MORPHO</td>
+<td class="mut" data-v="0.5870">0.59</td>
+<td class="mut" data-v="1.0850">1.08</td>
+<td class="mut" data-v="0.8570">0.86</td>
+<td class="down" data-v="-1.5000">-1.5%</td>
+<td class="up" data-v="8.9500">+8.9%</td>
+<td class="mut" data-v="7221745">722万</td>
+</tr>
+<tr data-sym="T">
+<td class="rk">24</td>
+<td class="sym">T</td>
+<td class="mut" data-v="0.5600">0.56</td>
+<td class="mut" data-v="0.9150">0.92</td>
+<td class="mut" data-v="0.8650">0.86</td>
+<td class="down" data-v="-1.5100">-1.5%</td>
+<td class="up" data-v="8.9400">+8.9%</td>
+<td class="mut" data-v="3297361">330万</td>
+</tr>
+<tr data-sym="FORM">
+<td class="rk">25</td>
+<td class="sym">FORM</td>
+<td class="mut" data-v="0.6210">0.62</td>
+<td class="mut" data-v="1.4630">1.46</td>
+<td class="mut" data-v="1.2590">1.26</td>
+<td class="down" data-v="-2.2000">-2.2%</td>
+<td class="up" data-v="8.2600">+8.3%</td>
+<td class="mut" data-v="2098467">210万</td>
+</tr>
+<tr data-sym="RENDER">
+<td class="rk">26</td>
+<td class="sym">RENDER</td>
+<td class="mut" data-v="0.6800">0.68</td>
+<td class="mut" data-v="1.5000">1.50</td>
+<td class="mut" data-v="1.4520">1.45</td>
+<td class="down" data-v="-2.3800">-2.4%</td>
+<td class="up" data-v="8.0800">+8.1%</td>
+<td class="mut" data-v="17967679">1797万</td>
+</tr>
+<tr data-sym="COMP">
+<td class="rk">27</td>
+<td class="sym">COMP</td>
+<td class="mut" data-v="0.6500">0.65</td>
+<td class="mut" data-v="0.9130">0.91</td>
+<td class="mut" data-v="0.8510">0.85</td>
+<td class="down" data-v="-2.4100">-2.4%</td>
+<td class="up" data-v="8.0400">+8.0%</td>
+<td class="mut" data-v="3299631">330万</td>
+</tr>
+<tr data-sym="SAFE">
+<td class="rk">28</td>
+<td class="sym">SAFE</td>
+<td class="mut" data-v="0.5490">0.55</td>
+<td class="mut" data-v="1.4790">1.48</td>
+<td class="mut" data-v="1.3410">1.34</td>
+<td class="down" data-v="-2.7400">-2.7%</td>
+<td class="up" data-v="7.7100">+7.7%</td>
+<td class="mut" data-v="1005442">101万</td>
+</tr>
+<tr data-sym="STEEM">
+<td class="rk">29</td>
+<td class="sym">STEEM</td>
+<td class="mut" data-v="0.5970">0.60</td>
+<td class="mut" data-v="0.9220">0.92</td>
+<td class="mut" data-v="0.8080">0.81</td>
+<td class="down" data-v="-3.0500">-3.0%</td>
+<td class="up" data-v="7.4100">+7.4%</td>
+<td class="mut" data-v="1037707">104万</td>
+</tr>
+<tr data-sym="ASTER">
+<td class="rk">30</td>
+<td class="sym">ASTER</td>
+<td class="mut" data-v="0.6140">0.61</td>
+<td class="mut" data-v="0.7660">0.77</td>
+<td class="up" data-v="0.6700">0.67</td>
+<td class="down" data-v="-3.0900">-3.1%</td>
+<td class="up" data-v="7.3600">+7.4%</td>
+<td class="mut" data-v="43318776">4332万</td>
+</tr>
+<tr data-sym="DOGS">
+<td class="rk">31</td>
+<td class="sym">DOGS</td>
+<td class="mut" data-v="0.6830">0.68</td>
+<td class="mut" data-v="1.4950">1.50</td>
+<td class="mut" data-v="1.3480">1.35</td>
+<td class="down" data-v="-3.1800">-3.2%</td>
+<td class="up" data-v="7.2700">+7.3%</td>
+<td class="mut" data-v="2388608">239万</td>
+</tr>
+<tr data-sym="COTI">
+<td class="rk">32</td>
+<td class="sym">COTI</td>
+<td class="mut" data-v="0.6010">0.60</td>
+<td class="mut" data-v="1.3740">1.37</td>
+<td class="mut" data-v="1.3280">1.33</td>
+<td class="down" data-v="-3.3000">-3.3%</td>
+<td class="up" data-v="7.1600">+7.2%</td>
+<td class="mut" data-v="4393170">439万</td>
+</tr>
+<tr data-sym="MOVR">
+<td class="rk">33</td>
+<td class="sym">MOVR</td>
+<td class="mut" data-v="0.5390">0.54</td>
+<td class="mut" data-v="1.2870">1.29</td>
+<td class="mut" data-v="1.0160">1.02</td>
+<td class="down" data-v="-3.5800">-3.6%</td>
+<td class="up" data-v="6.8800">+6.9%</td>
+<td class="mut" data-v="4597010">460万</td>
+</tr>
+<tr data-sym="RAYSOL">
+<td class="rk">34</td>
+<td class="sym">RAYSOL</td>
+<td class="mut" data-v="0.6250">0.62</td>
+<td class="mut" data-v="1.3410">1.34</td>
+<td class="mut" data-v="1.3510">1.35</td>
+<td class="down" data-v="-3.6100">-3.6%</td>
+<td class="up" data-v="6.8500">+6.8%</td>
+<td class="mut" data-v="10110856">1011万</td>
+</tr>
+<tr data-sym="SPX">
+<td class="rk">35</td>
+<td class="sym">SPX</td>
+<td class="mut" data-v="0.6670">0.67</td>
+<td class="mut" data-v="1.7660">1.77</td>
+<td class="mut" data-v="1.6510">1.65</td>
+<td class="down" data-v="-3.8900">-3.9%</td>
+<td class="up" data-v="6.5600">+6.6%</td>
+<td class="mut" data-v="10252772">1025万</td>
+</tr>
+<tr data-sym="AR">
+<td class="rk">36</td>
+<td class="sym">AR</td>
+<td class="mut" data-v="0.7310">0.73</td>
+<td class="mut" data-v="1.6830">1.68</td>
+<td class="mut" data-v="1.5060">1.51</td>
+<td class="down" data-v="-4.4100">-4.4%</td>
+<td class="up" data-v="6.0400">+6.0%</td>
+<td class="mut" data-v="13047427">1305万</td>
+</tr>
+<tr data-sym="LUMIA">
+<td class="rk">37</td>
+<td class="sym">LUMIA</td>
+<td class="mut" data-v="0.5840">0.58</td>
+<td class="mut" data-v="1.2820">1.28</td>
+<td class="mut" data-v="0.9980">1.00</td>
+<td class="down" data-v="-4.4700">-4.5%</td>
+<td class="up" data-v="5.9800">+6.0%</td>
+<td class="mut" data-v="1492588">149万</td>
+</tr>
+<tr data-sym="JELLYJELLY">
+<td class="rk">38</td>
+<td class="sym">JELLYJELLY</td>
+<td class="mut" data-v="0.5220">0.52</td>
+<td class="mut" data-v="1.0740">1.07</td>
+<td class="mut" data-v="1.1340">1.13</td>
+<td class="down" data-v="-4.6000">-4.6%</td>
+<td class="up" data-v="5.8500">+5.8%</td>
+<td class="mut" data-v="754897">75万</td>
+</tr>
+<tr data-sym="GMX">
+<td class="rk">39</td>
+<td class="sym">GMX</td>
+<td class="mut" data-v="0.5110">0.51</td>
+<td class="mut" data-v="1.0660">1.07</td>
+<td class="mut" data-v="0.9410">0.94</td>
+<td class="down" data-v="-4.6200">-4.6%</td>
+<td class="up" data-v="5.8400">+5.8%</td>
+<td class="mut" data-v="3410476">341万</td>
+</tr>
+<tr data-sym="VELVET">
+<td class="rk">40</td>
+<td class="sym">VELVET</td>
+<td class="mut" data-v="0.5020">0.50</td>
+<td class="mut" data-v="1.3580">1.36</td>
+<td class="mut" data-v="1.2800">1.28</td>
+<td class="down" data-v="-4.7600">-4.8%</td>
+<td class="up" data-v="5.7000">+5.7%</td>
+<td class="mut" data-v="4358161">436万</td>
+</tr>
+<tr data-sym="LISTA">
+<td class="rk">41</td>
+<td class="sym">LISTA</td>
+<td class="mut" data-v="0.6210">0.62</td>
+<td class="mut" data-v="1.0100">1.01</td>
+<td class="mut" data-v="0.8970">0.90</td>
+<td class="down" data-v="-5.0100">-5.0%</td>
+<td class="up" data-v="5.4400">+5.4%</td>
+<td class="mut" data-v="1010265">101万</td>
+</tr>
+<tr data-sym="KAIA">
+<td class="rk">42</td>
+<td class="sym">KAIA</td>
+<td class="mut" data-v="0.7150">0.71</td>
+<td class="mut" data-v="1.3230">1.32</td>
+<td class="mut" data-v="1.1810">1.18</td>
+<td class="down" data-v="-5.1900">-5.2%</td>
+<td class="up" data-v="5.2700">+5.3%</td>
+<td class="mut" data-v="2174175">217万</td>
+</tr>
+<tr data-sym="POL">
+<td class="rk">43</td>
+<td class="sym">POL</td>
+<td class="mut" data-v="0.5740">0.57</td>
+<td class="mut" data-v="1.0030">1.00</td>
+<td class="mut" data-v="1.0070">1.01</td>
+<td class="down" data-v="-5.4800">-5.5%</td>
+<td class="up" data-v="4.9700">+5.0%</td>
+<td class="mut" data-v="12971285">1297万</td>
+</tr>
+<tr data-sym="GLM">
+<td class="rk">44</td>
+<td class="sym">GLM</td>
+<td class="mut" data-v="0.6180">0.62</td>
+<td class="mut" data-v="1.0450">1.04</td>
+<td class="mut" data-v="0.9610">0.96</td>
+<td class="down" data-v="-6.0200">-6.0%</td>
+<td class="up" data-v="4.4300">+4.4%</td>
+<td class="mut" data-v="935891">94万</td>
+</tr>
+<tr data-sym="0G">
+<td class="rk">45</td>
+<td class="sym">0G</td>
+<td class="mut" data-v="0.5720">0.57</td>
+<td class="mut" data-v="1.3370">1.34</td>
+<td class="mut" data-v="1.2140">1.21</td>
+<td class="down" data-v="-6.1300">-6.1%</td>
+<td class="up" data-v="4.3200">+4.3%</td>
+<td class="mut" data-v="9191696">919万</td>
+</tr>
+<tr data-sym="SONIC">
+<td class="rk">46</td>
+<td class="sym">SONIC</td>
+<td class="mut" data-v="0.5850">0.58</td>
+<td class="mut" data-v="1.3210">1.32</td>
+<td class="mut" data-v="1.3820">1.38</td>
+<td class="down" data-v="-6.1700">-6.2%</td>
+<td class="up" data-v="4.2900">+4.3%</td>
+<td class="mut" data-v="969856">97万</td>
+</tr>
+<tr data-sym="ZRO">
+<td class="rk">47</td>
+<td class="sym">ZRO</td>
+<td class="mut" data-v="0.5140">0.51</td>
+<td class="mut" data-v="1.4460">1.45</td>
+<td class="mut" data-v="1.3310">1.33</td>
+<td class="down" data-v="-6.2100">-6.2%</td>
+<td class="up" data-v="4.2400">+4.2%</td>
+<td class="mut" data-v="39843123">3984万</td>
+</tr>
+<tr data-sym="XTZ">
+<td class="rk">48</td>
+<td class="sym">XTZ</td>
+<td class="mut" data-v="0.5380">0.54</td>
+<td class="mut" data-v="1.3230">1.32</td>
+<td class="mut" data-v="1.3040">1.30</td>
+<td class="down" data-v="-6.3200">-6.3%</td>
+<td class="up" data-v="4.1400">+4.1%</td>
+<td class="mut" data-v="3370348">337万</td>
+</tr>
+<tr data-sym="NOT">
+<td class="rk">49</td>
+<td class="sym">NOT</td>
+<td class="mut" data-v="0.7180">0.72</td>
+<td class="mut" data-v="1.5520">1.55</td>
+<td class="mut" data-v="1.3320">1.33</td>
+<td class="down" data-v="-6.3700">-6.4%</td>
+<td class="up" data-v="4.0900">+4.1%</td>
+<td class="mut" data-v="2226610">223万</td>
+</tr>
+<tr data-sym="NMR">
+<td class="rk">50</td>
+<td class="sym">NMR</td>
+<td class="mut" data-v="0.6150">0.61</td>
+<td class="mut" data-v="1.0950">1.09</td>
+<td class="mut" data-v="0.9280">0.93</td>
+<td class="down" data-v="-6.4200">-6.4%</td>
+<td class="up" data-v="4.0400">+4.0%</td>
+<td class="mut" data-v="2514846">251万</td>
+</tr>
+<tr data-sym="SUPER">
+<td class="rk">51</td>
+<td class="sym">SUPER</td>
+<td class="mut" data-v="0.5720">0.57</td>
+<td class="mut" data-v="1.2680">1.27</td>
+<td class="mut" data-v="1.1760">1.18</td>
+<td class="down" data-v="-6.5200">-6.5%</td>
+<td class="up" data-v="3.9400">+3.9%</td>
+<td class="mut" data-v="2498117">250万</td>
+</tr>
+<tr data-sym="BEL">
+<td class="rk">52</td>
+<td class="sym">BEL</td>
+<td class="mut" data-v="0.7490">0.75</td>
+<td class="mut" data-v="1.2210">1.22</td>
+<td class="mut" data-v="1.1530">1.15</td>
+<td class="down" data-v="-6.5200">-6.5%</td>
+<td class="up" data-v="3.9300">+3.9%</td>
+<td class="mut" data-v="904929">90万</td>
+</tr>
+<tr data-sym="CVC">
+<td class="rk">53</td>
+<td class="sym">CVC</td>
+<td class="mut" data-v="0.4590">0.46</td>
+<td class="mut" data-v="1.1390">1.14</td>
+<td class="mut" data-v="1.0960">1.10</td>
+<td class="down" data-v="-6.5400">-6.5%</td>
+<td class="up" data-v="3.9100">+3.9%</td>
+<td class="mut" data-v="900040">90万</td>
+</tr>
+<tr data-sym="ARPA">
+<td class="rk">54</td>
+<td class="sym">ARPA</td>
+<td class="mut" data-v="0.6600">0.66</td>
+<td class="mut" data-v="1.1430">1.14</td>
+<td class="mut" data-v="1.0730">1.07</td>
+<td class="down" data-v="-7.0500">-7.0%</td>
+<td class="up" data-v="3.4000">+3.4%</td>
+<td class="mut" data-v="628790">63万</td>
+</tr>
+<tr data-sym="ANKR">
+<td class="rk">55</td>
+<td class="sym">ANKR</td>
+<td class="mut" data-v="0.6610">0.66</td>
+<td class="mut" data-v="1.2590">1.26</td>
+<td class="mut" data-v="1.2760">1.28</td>
+<td class="down" data-v="-7.2200">-7.2%</td>
+<td class="up" data-v="3.2300">+3.2%</td>
+<td class="mut" data-v="866681">87万</td>
+</tr>
+<tr data-sym="TURTLE">
+<td class="rk">56</td>
+<td class="sym">TURTLE</td>
+<td class="mut" data-v="0.5310">0.53</td>
+<td class="mut" data-v="0.9970">1.00</td>
+<td class="mut" data-v="1.0450">1.04</td>
+<td class="down" data-v="-7.3700">-7.4%</td>
+<td class="up" data-v="3.0800">+3.1%</td>
+<td class="mut" data-v="874627">87万</td>
+</tr>
+<tr data-sym="DIA">
+<td class="rk">57</td>
+<td class="sym">DIA</td>
+<td class="mut" data-v="0.5340">0.53</td>
+<td class="mut" data-v="1.1520">1.15</td>
+<td class="mut" data-v="1.1480">1.15</td>
+<td class="down" data-v="-7.4200">-7.4%</td>
+<td class="up" data-v="3.0400">+3.0%</td>
+<td class="mut" data-v="609533">61万</td>
+</tr>
+<tr data-sym="MANA">
+<td class="rk">58</td>
+<td class="sym">MANA</td>
+<td class="mut" data-v="0.7400">0.74</td>
+<td class="mut" data-v="1.2100">1.21</td>
+<td class="mut" data-v="1.1170">1.12</td>
+<td class="down" data-v="-7.4500">-7.5%</td>
+<td class="up" data-v="3.0100">+3.0%</td>
+<td class="mut" data-v="3577048">358万</td>
+</tr>
+<tr data-sym="CATI">
+<td class="rk">59</td>
+<td class="sym">CATI</td>
+<td class="mut" data-v="0.6030">0.60</td>
+<td class="mut" data-v="1.3450">1.34</td>
+<td class="mut" data-v="1.1900">1.19</td>
+<td class="down" data-v="-7.4700">-7.5%</td>
+<td class="up" data-v="2.9800">+3.0%</td>
+<td class="mut" data-v="836911">84万</td>
+</tr>
+<tr data-sym="CHILLGUY">
+<td class="rk">60</td>
+<td class="sym">CHILLGUY</td>
+<td class="mut" data-v="0.6330">0.63</td>
+<td class="mut" data-v="1.3990">1.40</td>
+<td class="mut" data-v="1.2140">1.21</td>
+<td class="down" data-v="-7.5200">-7.5%</td>
+<td class="up" data-v="2.9400">+2.9%</td>
+<td class="mut" data-v="789742">79万</td>
+</tr>
+<tr data-sym="CAKE">
+<td class="rk">61</td>
+<td class="sym">CAKE</td>
+<td class="mut" data-v="0.7780">0.78</td>
+<td class="mut" data-v="1.1760">1.18</td>
+<td class="mut" data-v="1.1870">1.19</td>
+<td class="down" data-v="-7.7600">-7.8%</td>
+<td class="up" data-v="2.6900">+2.7%</td>
+<td class="mut" data-v="8297279">830万</td>
+</tr>
+<tr data-sym="CELO">
+<td class="rk">62</td>
+<td class="sym">CELO</td>
+<td class="mut" data-v="0.6670">0.67</td>
+<td class="mut" data-v="1.2640">1.26</td>
+<td class="mut" data-v="1.2350">1.24</td>
+<td class="down" data-v="-7.9300">-7.9%</td>
+<td class="up" data-v="2.5300">+2.5%</td>
+<td class="mut" data-v="2326984">233万</td>
+</tr>
+<tr data-sym="KERNEL">
+<td class="rk">63</td>
+<td class="sym">KERNEL</td>
+<td class="mut" data-v="0.4750">0.47</td>
+<td class="mut" data-v="0.9730">0.97</td>
+<td class="mut" data-v="0.8470">0.85</td>
+<td class="down" data-v="-7.9500">-8.0%</td>
+<td class="up" data-v="2.5100">+2.5%</td>
+<td class="mut" data-v="1909503">191万</td>
+</tr>
+<tr data-sym="AIA">
+<td class="rk">64</td>
+<td class="sym">AIA</td>
+<td class="mut" data-v="0.6300">0.63</td>
+<td class="mut" data-v="1.3400">1.34</td>
+<td class="mut" data-v="1.2410">1.24</td>
+<td class="down" data-v="-7.9900">-8.0%</td>
+<td class="up" data-v="2.4700">+2.5%</td>
+<td class="mut" data-v="2441040">244万</td>
+</tr>
+<tr data-sym="ZRX">
+<td class="rk">65</td>
+<td class="sym">ZRX</td>
+<td class="mut" data-v="0.7510">0.75</td>
+<td class="mut" data-v="1.2500">1.25</td>
+<td class="mut" data-v="1.2340">1.23</td>
+<td class="down" data-v="-7.9900">-8.0%</td>
+<td class="up" data-v="2.4700">+2.5%</td>
+<td class="mut" data-v="1110788">111万</td>
+</tr>
+<tr data-sym="UB">
+<td class="rk">66</td>
+<td class="sym">UB</td>
+<td class="mut" data-v="0.5230">0.52</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="mut" data-v="0.9840">0.98</td>
+<td class="down" data-v="-8.1200">-8.1%</td>
+<td class="up" data-v="2.3300">+2.3%</td>
+<td class="mut" data-v="3420578">342万</td>
+</tr>
+<tr data-sym="AKT">
+<td class="rk">67</td>
+<td class="sym">AKT</td>
+<td class="mut" data-v="0.6730">0.67</td>
+<td class="mut" data-v="1.3500">1.35</td>
+<td class="mut" data-v="1.2970">1.30</td>
+<td class="down" data-v="-8.2200">-8.2%</td>
+<td class="up" data-v="2.2300">+2.2%</td>
+<td class="mut" data-v="4281386">428万</td>
+</tr>
+<tr data-sym="JOE">
+<td class="rk">68</td>
+<td class="sym">JOE</td>
+<td class="mut" data-v="0.6770">0.68</td>
+<td class="mut" data-v="1.3030">1.30</td>
+<td class="mut" data-v="1.1150">1.11</td>
+<td class="down" data-v="-8.2700">-8.3%</td>
+<td class="up" data-v="2.1900">+2.2%</td>
+<td class="mut" data-v="771070">77万</td>
+</tr>
+<tr data-sym="TST">
+<td class="rk">69</td>
+<td class="sym">TST</td>
+<td class="mut" data-v="0.4660">0.47</td>
+<td class="mut" data-v="1.5910">1.59</td>
+<td class="mut" data-v="1.3560">1.36</td>
+<td class="down" data-v="-8.2900">-8.3%</td>
+<td class="up" data-v="2.1600">+2.2%</td>
+<td class="mut" data-v="3657263">366万</td>
+</tr>
+<tr data-sym="POLYX">
+<td class="rk">70</td>
+<td class="sym">POLYX</td>
+<td class="mut" data-v="0.6960">0.70</td>
+<td class="mut" data-v="1.1400">1.14</td>
+<td class="mut" data-v="1.1550">1.16</td>
+<td class="down" data-v="-8.3100">-8.3%</td>
+<td class="up" data-v="2.1400">+2.1%</td>
+<td class="mut" data-v="954748">95万</td>
+</tr>
+<tr data-sym="SPORTFUN">
+<td class="rk">71</td>
+<td class="sym">SPORTFUN</td>
+<td class="mut" data-v="0.5220">0.52</td>
+<td class="mut" data-v="1.4760">1.48</td>
+<td class="mut" data-v="1.2500">1.25</td>
+<td class="down" data-v="-8.3500">-8.3%</td>
+<td class="up" data-v="2.1000">+2.1%</td>
+<td class="mut" data-v="750074">75万</td>
+</tr>
+<tr data-sym="ESP">
+<td class="rk">72</td>
+<td class="sym">ESP</td>
+<td class="mut" data-v="0.4690">0.47</td>
+<td class="mut" data-v="0.9490">0.95</td>
+<td class="mut" data-v="0.9320">0.93</td>
+<td class="down" data-v="-8.4000">-8.4%</td>
+<td class="up" data-v="2.0500">+2.0%</td>
+<td class="mut" data-v="2895620">290万</td>
+</tr>
+<tr data-sym="IMX">
+<td class="rk">73</td>
+<td class="sym">IMX</td>
+<td class="mut" data-v="0.6700">0.67</td>
+<td class="mut" data-v="1.3440">1.34</td>
+<td class="mut" data-v="1.3140">1.31</td>
+<td class="down" data-v="-8.4200">-8.4%</td>
+<td class="up" data-v="2.0300">+2.0%</td>
+<td class="mut" data-v="26770465">2677万</td>
+</tr>
+<tr data-sym="EDEN">
+<td class="rk">74</td>
+<td class="sym">EDEN</td>
+<td class="mut" data-v="0.5270">0.53</td>
+<td class="mut" data-v="1.1900">1.19</td>
+<td class="mut" data-v="1.1650">1.17</td>
+<td class="down" data-v="-8.4500">-8.4%</td>
+<td class="up" data-v="2.0100">+2.0%</td>
+<td class="mut" data-v="1704123">170万</td>
+</tr>
+<tr data-sym="ALGO">
+<td class="rk">75</td>
+<td class="sym">ALGO</td>
+<td class="mut" data-v="0.6600">0.66</td>
+<td class="mut" data-v="1.1980">1.20</td>
+<td class="mut" data-v="1.2110">1.21</td>
+<td class="down" data-v="-8.5100">-8.5%</td>
+<td class="up" data-v="1.9400">+1.9%</td>
+<td class="mut" data-v="9834080">983万</td>
+</tr>
+<tr data-sym="XVS">
+<td class="rk">76</td>
+<td class="sym">XVS</td>
+<td class="mut" data-v="0.7430">0.74</td>
+<td class="mut" data-v="0.9630">0.96</td>
+<td class="mut" data-v="0.9140">0.91</td>
+<td class="down" data-v="-8.5300">-8.5%</td>
+<td class="up" data-v="1.9200">+1.9%</td>
+<td class="mut" data-v="732301">73万</td>
+</tr>
+<tr data-sym="LDO">
+<td class="rk">77</td>
+<td class="sym">LDO</td>
+<td class="mut" data-v="0.7550">0.76</td>
+<td class="mut" data-v="1.5030">1.50</td>
+<td class="mut" data-v="1.3570">1.36</td>
+<td class="down" data-v="-8.5600">-8.6%</td>
+<td class="up" data-v="1.8900">+1.9%</td>
+<td class="mut" data-v="12767994">1277万</td>
+</tr>
+<tr data-sym="GUA">
+<td class="rk">78</td>
+<td class="sym">GUA</td>
+<td class="mut" data-v="0.5660">0.57</td>
+<td class="mut" data-v="1.1080">1.11</td>
+<td class="mut" data-v="0.9850">0.98</td>
+<td class="down" data-v="-8.5700">-8.6%</td>
+<td class="up" data-v="1.8800">+1.9%</td>
+<td class="mut" data-v="735689">74万</td>
+</tr>
+<tr data-sym="HIVE">
+<td class="rk">79</td>
+<td class="sym">HIVE</td>
+<td class="mut" data-v="0.7510">0.75</td>
+<td class="mut" data-v="1.0500">1.05</td>
+<td class="mut" data-v="1.0630">1.06</td>
+<td class="down" data-v="-8.6000">-8.6%</td>
+<td class="up" data-v="1.8500">+1.9%</td>
+<td class="mut" data-v="875831">88万</td>
+</tr>
+<tr data-sym="CTK">
+<td class="rk">80</td>
+<td class="sym">CTK</td>
+<td class="mut" data-v="0.6770">0.68</td>
+<td class="mut" data-v="1.2920">1.29</td>
+<td class="mut" data-v="1.2870">1.29</td>
+<td class="down" data-v="-8.6200">-8.6%</td>
+<td class="up" data-v="1.8300">+1.8%</td>
+<td class="mut" data-v="640374">64万</td>
+</tr>
+<tr data-sym="JASMY">
+<td class="rk">81</td>
+<td class="sym">JASMY</td>
+<td class="mut" data-v="0.6140">0.61</td>
+<td class="mut" data-v="1.2250">1.23</td>
+<td class="mut" data-v="1.1100">1.11</td>
+<td class="down" data-v="-8.6600">-8.7%</td>
+<td class="up" data-v="1.8000">+1.8%</td>
+<td class="mut" data-v="2984448">298万</td>
+</tr>
+<tr data-sym="BIO">
+<td class="rk">82</td>
+<td class="sym">BIO</td>
+<td class="mut" data-v="0.5870">0.59</td>
+<td class="mut" data-v="1.3540">1.35</td>
+<td class="mut" data-v="1.1340">1.13</td>
+<td class="down" data-v="-8.6800">-8.7%</td>
+<td class="up" data-v="1.7700">+1.8%</td>
+<td class="mut" data-v="3472846">347万</td>
+</tr>
+<tr data-sym="RPL">
+<td class="rk">83</td>
+<td class="sym">RPL</td>
+<td class="mut" data-v="0.7070">0.71</td>
+<td class="mut" data-v="1.3120">1.31</td>
+<td class="mut" data-v="1.3080">1.31</td>
+<td class="down" data-v="-8.6900">-8.7%</td>
+<td class="up" data-v="1.7700">+1.8%</td>
+<td class="mut" data-v="921621">92万</td>
+</tr>
+<tr data-sym="BNB">
+<td class="rk">84</td>
+<td class="sym">BNB</td>
+<td class="mut" data-v="0.8760">0.88</td>
+<td class="mut" data-v="0.8730">0.87</td>
+<td class="mut" data-v="0.8780">0.88</td>
+<td class="down" data-v="-8.7000">-8.7%</td>
+<td class="up" data-v="1.7500">+1.8%</td>
+<td class="mut" data-v="565601994">5.66亿</td>
+</tr>
+<tr data-sym="哈基米">
+<td class="rk">85</td>
+<td class="sym">哈基米</td>
+<td class="mut" data-v="0.4720">0.47</td>
+<td class="mut" data-v="1.5470">1.55</td>
+<td class="mut" data-v="1.4420">1.44</td>
+<td class="down" data-v="-8.7200">-8.7%</td>
+<td class="up" data-v="1.7300">+1.7%</td>
+<td class="mut" data-v="1225277">123万</td>
+</tr>
+<tr data-sym="ORDI">
+<td class="rk">86</td>
+<td class="sym">ORDI</td>
+<td class="mut" data-v="0.7230">0.72</td>
+<td class="mut" data-v="1.2660">1.27</td>
+<td class="mut" data-v="1.0180">1.02</td>
+<td class="down" data-v="-8.7900">-8.8%</td>
+<td class="up" data-v="1.6600">+1.7%</td>
+<td class="mut" data-v="7935926">794万</td>
+</tr>
+<tr data-sym="UMA">
+<td class="rk">87</td>
+<td class="sym">UMA</td>
+<td class="mut" data-v="0.7320">0.73</td>
+<td class="mut" data-v="1.2010">1.20</td>
+<td class="mut" data-v="1.1890">1.19</td>
+<td class="down" data-v="-8.8200">-8.8%</td>
+<td class="up" data-v="1.6300">+1.6%</td>
+<td class="mut" data-v="813141">81万</td>
+</tr>
+<tr data-sym="SLP">
+<td class="rk">88</td>
+<td class="sym">SLP</td>
+<td class="mut" data-v="0.5430">0.54</td>
+<td class="mut" data-v="1.3410">1.34</td>
+<td class="mut" data-v="1.3690">1.37</td>
+<td class="down" data-v="-8.8600">-8.9%</td>
+<td class="up" data-v="1.6000">+1.6%</td>
+<td class="mut" data-v="778263">78万</td>
+</tr>
+<tr data-sym="CTSI">
+<td class="rk">89</td>
+<td class="sym">CTSI</td>
+<td class="mut" data-v="0.6160">0.62</td>
+<td class="mut" data-v="1.1160">1.12</td>
+<td class="mut" data-v="1.1280">1.13</td>
+<td class="down" data-v="-8.8500">-8.8%</td>
+<td class="up" data-v="1.6000">+1.6%</td>
+<td class="mut" data-v="1023103">102万</td>
+</tr>
+<tr data-sym="ETHW">
+<td class="rk">90</td>
+<td class="sym">ETHW</td>
+<td class="mut" data-v="0.6700">0.67</td>
+<td class="mut" data-v="1.2040">1.20</td>
+<td class="mut" data-v="1.1040">1.10</td>
+<td class="down" data-v="-8.8600">-8.9%</td>
+<td class="up" data-v="1.6000">+1.6%</td>
+<td class="mut" data-v="782012">78万</td>
+</tr>
+<tr data-sym="CC">
+<td class="rk">91</td>
+<td class="sym">CC</td>
+<td class="mut" data-v="0.5360">0.54</td>
+<td class="mut" data-v="1.0430">1.04</td>
+<td class="mut" data-v="1.0180">1.02</td>
+<td class="down" data-v="-8.9300">-8.9%</td>
+<td class="up" data-v="1.5300">+1.5%</td>
+<td class="mut" data-v="6597064">660万</td>
+</tr>
+<tr data-sym="INX">
+<td class="rk">92</td>
+<td class="sym">INX</td>
+<td class="mut" data-v="0.6450">0.65</td>
+<td class="mut" data-v="1.6500">1.65</td>
+<td class="mut" data-v="1.4070">1.41</td>
+<td class="down" data-v="-8.9200">-8.9%</td>
+<td class="up" data-v="1.5300">+1.5%</td>
+<td class="mut" data-v="969635">97万</td>
+</tr>
+<tr data-sym="MMT">
+<td class="rk">93</td>
+<td class="sym">MMT</td>
+<td class="mut" data-v="0.6670">0.67</td>
+<td class="mut" data-v="1.3530">1.35</td>
+<td class="mut" data-v="1.2830">1.28</td>
+<td class="down" data-v="-8.9200">-8.9%</td>
+<td class="up" data-v="1.5300">+1.5%</td>
+<td class="mut" data-v="2222513">222万</td>
+</tr>
+<tr data-sym="HOLO">
+<td class="rk">94</td>
+<td class="sym">HOLO</td>
+<td class="mut" data-v="0.6460">0.65</td>
+<td class="mut" data-v="1.0500">1.05</td>
+<td class="mut" data-v="1.0060">1.01</td>
+<td class="down" data-v="-8.9400">-8.9%</td>
+<td class="up" data-v="1.5100">+1.5%</td>
+<td class="mut" data-v="928704">93万</td>
+</tr>
+<tr data-sym="ATOM">
+<td class="rk">95</td>
+<td class="sym">ATOM</td>
+<td class="mut" data-v="0.6120">0.61</td>
+<td class="mut" data-v="1.0510">1.05</td>
+<td class="mut" data-v="1.0160">1.02</td>
+<td class="down" data-v="-8.9700">-9.0%</td>
+<td class="up" data-v="1.4900">+1.5%</td>
+<td class="mut" data-v="16952831">1695万</td>
+</tr>
+<tr data-sym="1INCH">
+<td class="rk">96</td>
+<td class="sym">1INCH</td>
+<td class="mut" data-v="0.7000">0.70</td>
+<td class="mut" data-v="1.0560">1.06</td>
+<td class="mut" data-v="0.9220">0.92</td>
+<td class="down" data-v="-8.9600">-9.0%</td>
+<td class="up" data-v="1.4900">+1.5%</td>
+<td class="mut" data-v="2179093">218万</td>
+</tr>
+<tr data-sym="BAT">
+<td class="rk">97</td>
+<td class="sym">BAT</td>
+<td class="mut" data-v="0.4750">0.47</td>
+<td class="mut" data-v="1.1740">1.17</td>
+<td class="mut" data-v="0.9830">0.98</td>
+<td class="down" data-v="-9.0300">-9.0%</td>
+<td class="up" data-v="1.4200">+1.4%</td>
+<td class="mut" data-v="13523261">1352万</td>
+</tr>
+<tr data-sym="EGLD">
+<td class="rk">98</td>
+<td class="sym">EGLD</td>
+<td class="mut" data-v="0.6630">0.66</td>
+<td class="mut" data-v="1.1640">1.16</td>
+<td class="mut" data-v="1.0920">1.09</td>
+<td class="down" data-v="-9.0500">-9.1%</td>
+<td class="up" data-v="1.4000">+1.4%</td>
+<td class="mut" data-v="3946902">395万</td>
+</tr>
+<tr data-sym="DOLO">
+<td class="rk">99</td>
+<td class="sym">DOLO</td>
+<td class="mut" data-v="0.6460">0.65</td>
+<td class="mut" data-v="1.1080">1.11</td>
+<td class="mut" data-v="1.0130">1.01</td>
+<td class="down" data-v="-9.0700">-9.1%</td>
+<td class="up" data-v="1.3800">+1.4%</td>
+<td class="mut" data-v="830115">83万</td>
+</tr>
+<tr data-sym="TRB">
+<td class="rk">100</td>
+<td class="sym">TRB</td>
+<td class="mut" data-v="0.7640">0.76</td>
+<td class="mut" data-v="1.2810">1.28</td>
+<td class="mut" data-v="1.1600">1.16</td>
+<td class="down" data-v="-9.1400">-9.1%</td>
+<td class="up" data-v="1.3100">+1.3%</td>
+<td class="mut" data-v="4859389">486万</td>
+</tr>
+<tr data-sym="KMNO">
+<td class="rk">101</td>
+<td class="sym">KMNO</td>
+<td class="mut" data-v="0.4970">0.50</td>
+<td class="mut" data-v="1.2120">1.21</td>
+<td class="mut" data-v="1.0660">1.07</td>
+<td class="down" data-v="-9.1800">-9.2%</td>
+<td class="up" data-v="1.2800">+1.3%</td>
+<td class="mut" data-v="2747224">275万</td>
+</tr>
+<tr data-sym="FARTCOIN">
+<td class="rk">102</td>
+<td class="sym">FARTCOIN</td>
+<td class="mut" data-v="0.7160">0.72</td>
+<td class="mut" data-v="1.6240">1.62</td>
+<td class="mut" data-v="1.4560">1.46</td>
+<td class="down" data-v="-9.1800">-9.2%</td>
+<td class="up" data-v="1.2700">+1.3%</td>
+<td class="mut" data-v="29251173">2925万</td>
+</tr>
+<tr data-sym="ETC">
+<td class="rk">103</td>
+<td class="sym">ETC</td>
+<td class="mut" data-v="0.8000">0.80</td>
+<td class="mut" data-v="1.1360">1.14</td>
+<td class="mut" data-v="1.0480">1.05</td>
+<td class="down" data-v="-9.2000">-9.2%</td>
+<td class="up" data-v="1.2500">+1.2%</td>
+<td class="mut" data-v="22810593">2281万</td>
+</tr>
+<tr data-sym="TWT">
+<td class="rk">104</td>
+<td class="sym">TWT</td>
+<td class="mut" data-v="0.6820">0.68</td>
+<td class="mut" data-v="1.2520">1.25</td>
+<td class="mut" data-v="1.2080">1.21</td>
+<td class="down" data-v="-9.2500">-9.2%</td>
+<td class="up" data-v="1.2000">+1.2%</td>
+<td class="mut" data-v="1855826">186万</td>
+</tr>
+<tr data-sym="PLUME">
+<td class="rk">105</td>
+<td class="sym">PLUME</td>
+<td class="mut" data-v="0.6560">0.66</td>
+<td class="mut" data-v="1.4940">1.49</td>
+<td class="mut" data-v="1.4200">1.42</td>
+<td class="down" data-v="-9.2700">-9.3%</td>
+<td class="up" data-v="1.1800">+1.2%</td>
+<td class="mut" data-v="12003543">1200万</td>
+</tr>
+<tr data-sym="TAO">
+<td class="rk">106</td>
+<td class="sym">TAO</td>
+<td class="mut" data-v="0.7820">0.78</td>
+<td class="mut" data-v="1.3870">1.39</td>
+<td class="mut" data-v="1.3450">1.34</td>
+<td class="down" data-v="-9.3200">-9.3%</td>
+<td class="up" data-v="1.1400">+1.1%</td>
+<td class="mut" data-v="109653159">1.10亿</td>
+</tr>
+<tr data-sym="API3">
+<td class="rk">107</td>
+<td class="sym">API3</td>
+<td class="mut" data-v="0.7040">0.70</td>
+<td class="mut" data-v="1.3170">1.32</td>
+<td class="mut" data-v="1.3030">1.30</td>
+<td class="down" data-v="-9.3400">-9.3%</td>
+<td class="up" data-v="1.1100">+1.1%</td>
+<td class="mut" data-v="1531389">153万</td>
+</tr>
+<tr data-sym="PIXEL">
+<td class="rk">108</td>
+<td class="sym">PIXEL</td>
+<td class="mut" data-v="0.6820">0.68</td>
+<td class="mut" data-v="1.3620">1.36</td>
+<td class="mut" data-v="1.2120">1.21</td>
+<td class="down" data-v="-9.3800">-9.4%</td>
+<td class="up" data-v="1.0800">+1.1%</td>
+<td class="mut" data-v="2334227">233万</td>
+</tr>
+<tr data-sym="ILV">
+<td class="rk">109</td>
+<td class="sym">ILV</td>
+<td class="mut" data-v="0.7340">0.73</td>
+<td class="mut" data-v="1.3490">1.35</td>
+<td class="mut" data-v="1.1630">1.16</td>
+<td class="down" data-v="-9.4200">-9.4%</td>
+<td class="up" data-v="1.0300">+1.0%</td>
+<td class="mut" data-v="2975785">298万</td>
+</tr>
+<tr data-sym="TIA">
+<td class="rk">110</td>
+<td class="sym">TIA</td>
+<td class="mut" data-v="0.5970">0.60</td>
+<td class="mut" data-v="1.4790">1.48</td>
+<td class="mut" data-v="1.3440">1.34</td>
+<td class="down" data-v="-9.4600">-9.5%</td>
+<td class="up" data-v="1.0000">+1.0%</td>
+<td class="mut" data-v="64300383">6430万</td>
+</tr>
+<tr data-sym="ARK">
+<td class="rk">111</td>
+<td class="sym">ARK</td>
+<td class="mut" data-v="0.5360">0.54</td>
+<td class="mut" data-v="0.9990">1.00</td>
+<td class="mut" data-v="1.0360">1.04</td>
+<td class="down" data-v="-9.6000">-9.6%</td>
+<td class="up" data-v="0.8500">+0.8%</td>
+<td class="mut" data-v="1891844">189万</td>
+</tr>
+<tr data-sym="SUI">
+<td class="rk">112</td>
+<td class="sym">SUI</td>
+<td class="mut" data-v="0.8070">0.81</td>
+<td class="mut" data-v="1.3950">1.40</td>
+<td class="mut" data-v="1.3350">1.33</td>
+<td class="down" data-v="-9.6500">-9.7%</td>
+<td class="up" data-v="0.8000">+0.8%</td>
+<td class="mut" data-v="188279673">1.88亿</td>
+</tr>
+<tr data-sym="YGG">
+<td class="rk">113</td>
+<td class="sym">YGG</td>
+<td class="mut" data-v="0.6400">0.64</td>
+<td class="mut" data-v="1.2650">1.26</td>
+<td class="mut" data-v="1.1040">1.10</td>
+<td class="down" data-v="-9.6700">-9.7%</td>
+<td class="up" data-v="0.7800">+0.8%</td>
+<td class="mut" data-v="1506209">151万</td>
+</tr>
+<tr data-sym="OG">
+<td class="rk">114</td>
+<td class="sym">OG</td>
+<td class="mut" data-v="0.6180">0.62</td>
+<td class="mut" data-v="1.0230">1.02</td>
+<td class="mut" data-v="0.9590">0.96</td>
+<td class="down" data-v="-9.7000">-9.7%</td>
+<td class="up" data-v="0.7500">+0.8%</td>
+<td class="mut" data-v="1016747">102万</td>
+</tr>
+<tr data-sym="SPELL">
+<td class="rk">115</td>
+<td class="sym">SPELL</td>
+<td class="mut" data-v="0.6600">0.66</td>
+<td class="mut" data-v="1.2020">1.20</td>
+<td class="mut" data-v="1.1200">1.12</td>
+<td class="down" data-v="-9.7400">-9.7%</td>
+<td class="up" data-v="0.7200">+0.7%</td>
+<td class="mut" data-v="596222">60万</td>
+</tr>
+<tr data-sym="SPK">
+<td class="rk">116</td>
+<td class="sym">SPK</td>
+<td class="mut" data-v="0.5770">0.58</td>
+<td class="mut" data-v="1.2440">1.24</td>
+<td class="mut" data-v="1.2030">1.20</td>
+<td class="down" data-v="-9.7500">-9.8%</td>
+<td class="up" data-v="0.7000">+0.7%</td>
+<td class="mut" data-v="2052521">205万</td>
+</tr>
+<tr data-sym="LINK">
+<td class="rk">117</td>
+<td class="sym">LINK</td>
+<td class="mut" data-v="0.7670">0.77</td>
+<td class="mut" data-v="1.3070">1.31</td>
+<td class="mut" data-v="1.2730">1.27</td>
+<td class="down" data-v="-9.7900">-9.8%</td>
+<td class="up" data-v="0.6600">+0.7%</td>
+<td class="mut" data-v="145011588">1.45亿</td>
+</tr>
+<tr data-sym="BOME">
+<td class="rk">118</td>
+<td class="sym">BOME</td>
+<td class="mut" data-v="0.5860">0.59</td>
+<td class="mut" data-v="1.2530">1.25</td>
+<td class="mut" data-v="1.1360">1.14</td>
+<td class="down" data-v="-9.8500">-9.8%</td>
+<td class="up" data-v="0.6100">+0.6%</td>
+<td class="mut" data-v="11250685">1125万</td>
+</tr>
+<tr data-sym="AVAAI">
+<td class="rk">119</td>
+<td class="sym">AVAAI</td>
+<td class="mut" data-v="0.5100">0.51</td>
+<td class="mut" data-v="1.2930">1.29</td>
+<td class="mut" data-v="0.9420">0.94</td>
+<td class="down" data-v="-9.9200">-9.9%</td>
+<td class="up" data-v="0.5300">+0.5%</td>
+<td class="mut" data-v="984086">98万</td>
+</tr>
+<tr data-sym="IOTA">
+<td class="rk">120</td>
+<td class="sym">IOTA</td>
+<td class="mut" data-v="0.6860">0.69</td>
+<td class="mut" data-v="1.2990">1.30</td>
+<td class="mut" data-v="1.2160">1.22</td>
+<td class="down" data-v="-9.9300">-9.9%</td>
+<td class="up" data-v="0.5300">+0.5%</td>
+<td class="mut" data-v="4114478">411万</td>
+</tr>
+<tr data-sym="BSV">
+<td class="rk">121</td>
+<td class="sym">BSV</td>
+<td class="mut" data-v="0.6780">0.68</td>
+<td class="mut" data-v="1.0440">1.04</td>
+<td class="mut" data-v="1.0730">1.07</td>
+<td class="down" data-v="-9.9500">-9.9%</td>
+<td class="up" data-v="0.5100">+0.5%</td>
+<td class="mut" data-v="1312988">131万</td>
+</tr>
+<tr data-sym="ENJ">
+<td class="rk">122</td>
+<td class="sym">ENJ</td>
+<td class="mut" data-v="0.6190">0.62</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="mut" data-v="1.1270">1.13</td>
+<td class="down" data-v="-9.9700">-10.0%</td>
+<td class="up" data-v="0.4800">+0.5%</td>
+<td class="mut" data-v="2625712">263万</td>
+</tr>
+<tr data-sym="GMT">
+<td class="rk">123</td>
+<td class="sym">GMT</td>
+<td class="mut" data-v="0.7330">0.73</td>
+<td class="mut" data-v="1.2570">1.26</td>
+<td class="mut" data-v="1.1680">1.17</td>
+<td class="down" data-v="-9.9800">-10.0%</td>
+<td class="up" data-v="0.4800">+0.5%</td>
+<td class="mut" data-v="1944713">194万</td>
+</tr>
+<tr data-sym="IOST">
+<td class="rk">124</td>
+<td class="sym">IOST</td>
+<td class="mut" data-v="0.6130">0.61</td>
+<td class="mut" data-v="1.1110">1.11</td>
+<td class="mut" data-v="1.0590">1.06</td>
+<td class="down" data-v="-10.0600">-10.1%</td>
+<td class="up" data-v="0.3900">+0.4%</td>
+<td class="mut" data-v="5419007">542万</td>
+</tr>
+<tr data-sym="SFP">
+<td class="rk">125</td>
+<td class="sym">SFP</td>
+<td class="mut" data-v="0.7090">0.71</td>
+<td class="mut" data-v="1.4320">1.43</td>
+<td class="mut" data-v="1.3140">1.31</td>
+<td class="down" data-v="-10.1000">-10.1%</td>
+<td class="up" data-v="0.3500">+0.3%</td>
+<td class="mut" data-v="1270684">127万</td>
+</tr>
+<tr data-sym="MASK">
+<td class="rk">126</td>
+<td class="sym">MASK</td>
+<td class="mut" data-v="0.6580">0.66</td>
+<td class="mut" data-v="1.0790">1.08</td>
+<td class="mut" data-v="1.1140">1.11</td>
+<td class="down" data-v="-10.1100">-10.1%</td>
+<td class="up" data-v="0.3400">+0.3%</td>
+<td class="mut" data-v="3387823">339万</td>
+</tr>
+<tr data-sym="ZEREBRO">
+<td class="rk">127</td>
+<td class="sym">ZEREBRO</td>
+<td class="mut" data-v="0.4600">0.46</td>
+<td class="mut" data-v="1.0380">1.04</td>
+<td class="mut" data-v="1.1390">1.14</td>
+<td class="down" data-v="-10.2300">-10.2%</td>
+<td class="up" data-v="0.2300">+0.2%</td>
+<td class="mut" data-v="1697955">170万</td>
+</tr>
+<tr data-sym="VTHO">
+<td class="rk">128</td>
+<td class="sym">VTHO</td>
+<td class="mut" data-v="0.6950">0.69</td>
+<td class="mut" data-v="1.3460">1.35</td>
+<td class="mut" data-v="1.3480">1.35</td>
+<td class="down" data-v="-10.2200">-10.2%</td>
+<td class="up" data-v="0.2300">+0.2%</td>
+<td class="mut" data-v="1891040">189万</td>
+</tr>
+<tr data-sym="MTL">
+<td class="rk">129</td>
+<td class="sym">MTL</td>
+<td class="mut" data-v="0.6970">0.70</td>
+<td class="mut" data-v="1.0850">1.08</td>
+<td class="mut" data-v="1.0450">1.04</td>
+<td class="down" data-v="-10.2300">-10.2%</td>
+<td class="up" data-v="0.2200">+0.2%</td>
+<td class="mut" data-v="728440">73万</td>
+</tr>
+<tr data-sym="RESOLV">
+<td class="rk">130</td>
+<td class="sym">RESOLV</td>
+<td class="mut" data-v="0.7250">0.72</td>
+<td class="mut" data-v="1.4140">1.41</td>
+<td class="mut" data-v="1.3910">1.39</td>
+<td class="down" data-v="-10.2400">-10.2%</td>
+<td class="up" data-v="0.2200">+0.2%</td>
+<td class="mut" data-v="854630">85万</td>
+</tr>
+<tr data-sym="1000BONK">
+<td class="rk">131</td>
+<td class="sym">1000BONK</td>
+<td class="mut" data-v="0.7340">0.73</td>
+<td class="mut" data-v="1.5050">1.50</td>
+<td class="mut" data-v="1.4420">1.44</td>
+<td class="down" data-v="-10.2300">-10.2%</td>
+<td class="up" data-v="0.2200">+0.2%</td>
+<td class="mut" data-v="16378249">1638万</td>
+</tr>
+<tr data-sym="CGPT">
+<td class="rk">132</td>
+<td class="sym">CGPT</td>
+<td class="mut" data-v="0.4760">0.48</td>
+<td class="mut" data-v="1.1110">1.11</td>
+<td class="mut" data-v="0.8690">0.87</td>
+<td class="down" data-v="-10.2400">-10.2%</td>
+<td class="up" data-v="0.2100">+0.2%</td>
+<td class="mut" data-v="1303974">130万</td>
+</tr>
+<tr data-sym="FET">
+<td class="rk">133</td>
+<td class="sym">FET</td>
+<td class="mut" data-v="0.7100">0.71</td>
+<td class="mut" data-v="1.4100">1.41</td>
+<td class="mut" data-v="1.4140">1.41</td>
+<td class="down" data-v="-10.4100">-10.4%</td>
+<td class="up" data-v="0.0400">+0.0%</td>
+<td class="mut" data-v="38432955">3843万</td>
+</tr>
+<tr data-sym="FHE">
+<td class="rk">134</td>
+<td class="sym">FHE</td>
+<td class="mut" data-v="0.6700">0.67</td>
+<td class="mut" data-v="1.4520">1.45</td>
+<td class="mut" data-v="1.4340">1.43</td>
+<td class="down" data-v="-10.4300">-10.4%</td>
+<td class="up" data-v="0.0200">+0.0%</td>
+<td class="mut" data-v="932577">93万</td>
+</tr>
+<tr data-sym="CETUS">
+<td class="rk">135</td>
+<td class="sym">CETUS</td>
+<td class="mut" data-v="0.7070">0.71</td>
+<td class="mut" data-v="1.2500">1.25</td>
+<td class="mut" data-v="1.1900">1.19</td>
+<td class="down" data-v="-10.5000">-10.5%</td>
+<td class="down" data-v="-0.0500">-0.1%</td>
+<td class="mut" data-v="803473">80万</td>
+</tr>
+<tr data-sym="B">
+<td class="rk">136</td>
+<td class="sym">B</td>
+<td class="mut" data-v="0.5290">0.53</td>
+<td class="mut" data-v="1.5540">1.55</td>
+<td class="mut" data-v="1.3420">1.34</td>
+<td class="down" data-v="-10.5500">-10.6%</td>
+<td class="down" data-v="-0.1000">-0.1%</td>
+<td class="mut" data-v="1246861">125万</td>
+</tr>
+<tr data-sym="KAS">
+<td class="rk">137</td>
+<td class="sym">KAS</td>
+<td class="mut" data-v="0.6410">0.64</td>
+<td class="mut" data-v="1.2100">1.21</td>
+<td class="mut" data-v="1.2620">1.26</td>
+<td class="down" data-v="-10.6200">-10.6%</td>
+<td class="down" data-v="-0.1700">-0.2%</td>
+<td class="mut" data-v="3545990">355万</td>
+</tr>
+<tr data-sym="RVN">
+<td class="rk">138</td>
+<td class="sym">RVN</td>
+<td class="mut" data-v="0.6970">0.70</td>
+<td class="mut" data-v="1.4900">1.49</td>
+<td class="mut" data-v="1.3390">1.34</td>
+<td class="down" data-v="-10.6200">-10.6%</td>
+<td class="down" data-v="-0.1700">-0.2%</td>
+<td class="mut" data-v="2565998">257万</td>
+</tr>
+<tr data-sym="SPACE">
+<td class="rk">139</td>
+<td class="sym">SPACE</td>
+<td class="mut" data-v="0.6870">0.69</td>
+<td class="mut" data-v="1.5540">1.55</td>
+<td class="mut" data-v="1.3640">1.36</td>
+<td class="down" data-v="-10.6600">-10.7%</td>
+<td class="down" data-v="-0.2100">-0.2%</td>
+<td class="mut" data-v="786649">79万</td>
+</tr>
+<tr data-sym="GIGGLE">
+<td class="rk">140</td>
+<td class="sym">GIGGLE</td>
+<td class="mut" data-v="0.7420">0.74</td>
+<td class="mut" data-v="1.5780">1.58</td>
+<td class="mut" data-v="1.3910">1.39</td>
+<td class="down" data-v="-10.6900">-10.7%</td>
+<td class="down" data-v="-0.2300">-0.2%</td>
+<td class="mut" data-v="5396966">540万</td>
+</tr>
+<tr data-sym="S">
+<td class="rk">141</td>
+<td class="sym">S</td>
+<td class="mut" data-v="0.6480">0.65</td>
+<td class="mut" data-v="1.4670">1.47</td>
+<td class="mut" data-v="1.3640">1.36</td>
+<td class="down" data-v="-10.7200">-10.7%</td>
+<td class="down" data-v="-0.2700">-0.3%</td>
+<td class="mut" data-v="7462709">746万</td>
+</tr>
+<tr data-sym="我踏马来了">
+<td class="rk">142</td>
+<td class="sym">我踏马来了</td>
+<td class="mut" data-v="0.5350">0.54</td>
+<td class="mut" data-v="1.3670">1.37</td>
+<td class="mut" data-v="1.3840">1.38</td>
+<td class="down" data-v="-10.8300">-10.8%</td>
+<td class="down" data-v="-0.3700">-0.4%</td>
+<td class="mut" data-v="816255">82万</td>
+</tr>
+<tr data-sym="ALPINE">
+<td class="rk">143</td>
+<td class="sym">ALPINE</td>
+<td class="mut" data-v="0.5240">0.52</td>
+<td class="mut" data-v="0.9740">0.97</td>
+<td class="up" data-v="0.7790">0.78</td>
+<td class="down" data-v="-10.8900">-10.9%</td>
+<td class="down" data-v="-0.4400">-0.4%</td>
+<td class="mut" data-v="1166783">117万</td>
+</tr>
+<tr data-sym="FIDA">
+<td class="rk">144</td>
+<td class="sym">FIDA</td>
+<td class="mut" data-v="0.7420">0.74</td>
+<td class="mut" data-v="1.3440">1.34</td>
+<td class="mut" data-v="1.2900">1.29</td>
+<td class="down" data-v="-10.8900">-10.9%</td>
+<td class="down" data-v="-0.4400">-0.4%</td>
+<td class="mut" data-v="1034609">103万</td>
+</tr>
+<tr data-sym="THETA">
+<td class="rk">145</td>
+<td class="sym">THETA</td>
+<td class="mut" data-v="0.7160">0.72</td>
+<td class="mut" data-v="1.3190">1.32</td>
+<td class="mut" data-v="1.2330">1.23</td>
+<td class="down" data-v="-10.9100">-10.9%</td>
+<td class="down" data-v="-0.4600">-0.5%</td>
+<td class="mut" data-v="3525931">353万</td>
+</tr>
+<tr data-sym="LA">
+<td class="rk">146</td>
+<td class="sym">LA</td>
+<td class="mut" data-v="0.5130">0.51</td>
+<td class="mut" data-v="1.2470">1.25</td>
+<td class="mut" data-v="1.1700">1.17</td>
+<td class="down" data-v="-10.9600">-11.0%</td>
+<td class="down" data-v="-0.5100">-0.5%</td>
+<td class="mut" data-v="2647324">265万</td>
+</tr>
+<tr data-sym="ARB">
+<td class="rk">147</td>
+<td class="sym">ARB</td>
+<td class="mut" data-v="0.5770">0.58</td>
+<td class="mut" data-v="1.3220">1.32</td>
+<td class="mut" data-v="1.2130">1.21</td>
+<td class="down" data-v="-11.0600">-11.1%</td>
+<td class="down" data-v="-0.6000">-0.6%</td>
+<td class="mut" data-v="90471539">9047万</td>
+</tr>
+<tr data-sym="AAVE">
+<td class="rk">148</td>
+<td class="sym">AAVE</td>
+<td class="mut" data-v="0.5870">0.59</td>
+<td class="mut" data-v="1.1000">1.10</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="down" data-v="-11.0800">-11.1%</td>
+<td class="down" data-v="-0.6300">-0.6%</td>
+<td class="mut" data-v="115836458">1.16亿</td>
+</tr>
+<tr data-sym="GOAT">
+<td class="rk">149</td>
+<td class="sym">GOAT</td>
+<td class="mut" data-v="0.6840">0.68</td>
+<td class="mut" data-v="1.1590">1.16</td>
+<td class="mut" data-v="1.0510">1.05</td>
+<td class="down" data-v="-11.0900">-11.1%</td>
+<td class="down" data-v="-0.6400">-0.6%</td>
+<td class="mut" data-v="1099478">110万</td>
+</tr>
+<tr data-sym="TNSR">
+<td class="rk">150</td>
+<td class="sym">TNSR</td>
+<td class="mut" data-v="0.7260">0.73</td>
+<td class="mut" data-v="1.3230">1.32</td>
+<td class="mut" data-v="1.2700">1.27</td>
+<td class="down" data-v="-11.1300">-11.1%</td>
+<td class="down" data-v="-0.6700">-0.7%</td>
+<td class="mut" data-v="1934999">193万</td>
+</tr>
+<tr data-sym="SUSHI">
+<td class="rk">151</td>
+<td class="sym">SUSHI</td>
+<td class="mut" data-v="0.7500">0.75</td>
+<td class="mut" data-v="1.2650">1.26</td>
+<td class="mut" data-v="1.2120">1.21</td>
+<td class="down" data-v="-11.1700">-11.2%</td>
+<td class="down" data-v="-0.7200">-0.7%</td>
+<td class="mut" data-v="3522730">352万</td>
+</tr>
+<tr data-sym="BROCCOLI714">
+<td class="rk">152</td>
+<td class="sym">BROCCOLI714</td>
+<td class="mut" data-v="0.6290">0.63</td>
+<td class="mut" data-v="1.5010">1.50</td>
+<td class="mut" data-v="1.4120">1.41</td>
+<td class="down" data-v="-11.2000">-11.2%</td>
+<td class="down" data-v="-0.7400">-0.7%</td>
+<td class="mut" data-v="1520817">152万</td>
+</tr>
+<tr data-sym="LTC">
+<td class="rk">153</td>
+<td class="sym">LTC</td>
+<td class="mut" data-v="0.8080">0.81</td>
+<td class="mut" data-v="1.1850">1.19</td>
+<td class="mut" data-v="1.1500">1.15</td>
+<td class="down" data-v="-11.2200">-11.2%</td>
+<td class="down" data-v="-0.7600">-0.8%</td>
+<td class="mut" data-v="88979047">8898万</td>
+</tr>
+<tr data-sym="SAGA">
+<td class="rk">154</td>
+<td class="sym">SAGA</td>
+<td class="mut" data-v="0.5800">0.58</td>
+<td class="mut" data-v="1.1490">1.15</td>
+<td class="mut" data-v="1.1020">1.10</td>
+<td class="down" data-v="-11.2300">-11.2%</td>
+<td class="down" data-v="-0.7800">-0.8%</td>
+<td class="mut" data-v="3922980">392万</td>
+</tr>
+<tr data-sym="1000SATS">
+<td class="rk">155</td>
+<td class="sym">1000SATS</td>
+<td class="mut" data-v="0.7630">0.76</td>
+<td class="mut" data-v="1.4280">1.43</td>
+<td class="mut" data-v="1.3120">1.31</td>
+<td class="down" data-v="-11.2300">-11.2%</td>
+<td class="down" data-v="-0.7800">-0.8%</td>
+<td class="mut" data-v="1675512">168万</td>
+</tr>
+<tr data-sym="1000000MOG">
+<td class="rk">156</td>
+<td class="sym">1000000MOG</td>
+<td class="mut" data-v="0.7630">0.76</td>
+<td class="mut" data-v="1.3120">1.31</td>
+<td class="mut" data-v="1.2670">1.27</td>
+<td class="down" data-v="-11.2400">-11.2%</td>
+<td class="down" data-v="-0.7900">-0.8%</td>
+<td class="mut" data-v="786624">79万</td>
+</tr>
+<tr data-sym="SCR">
+<td class="rk">157</td>
+<td class="sym">SCR</td>
+<td class="mut" data-v="0.6340">0.63</td>
+<td class="mut" data-v="1.4570">1.46</td>
+<td class="mut" data-v="1.2340">1.23</td>
+<td class="down" data-v="-11.2700">-11.3%</td>
+<td class="down" data-v="-0.8100">-0.8%</td>
+<td class="mut" data-v="939302">94万</td>
+</tr>
+<tr data-sym="EIGEN">
+<td class="rk">158</td>
+<td class="sym">EIGEN</td>
+<td class="mut" data-v="0.6660">0.67</td>
+<td class="mut" data-v="1.4920">1.49</td>
+<td class="mut" data-v="1.3900">1.39</td>
+<td class="down" data-v="-11.3400">-11.3%</td>
+<td class="down" data-v="-0.8900">-0.9%</td>
+<td class="mut" data-v="9649895">965万</td>
+</tr>
+<tr data-sym="ORDER">
+<td class="rk">159</td>
+<td class="sym">ORDER</td>
+<td class="mut" data-v="0.4760">0.48</td>
+<td class="mut" data-v="1.2370">1.24</td>
+<td class="mut" data-v="1.1510">1.15</td>
+<td class="down" data-v="-11.4100">-11.4%</td>
+<td class="down" data-v="-0.9500">-0.9%</td>
+<td class="mut" data-v="2839971">284万</td>
+</tr>
+<tr data-sym="SEI">
+<td class="rk">160</td>
+<td class="sym">SEI</td>
+<td class="mut" data-v="0.7340">0.73</td>
+<td class="mut" data-v="1.3410">1.34</td>
+<td class="mut" data-v="1.2370">1.24</td>
+<td class="down" data-v="-11.4200">-11.4%</td>
+<td class="down" data-v="-0.9600">-1.0%</td>
+<td class="mut" data-v="11771259">1177万</td>
+</tr>
+<tr data-sym="1000SHIB">
+<td class="rk">161</td>
+<td class="sym">1000SHIB</td>
+<td class="mut" data-v="0.7910">0.79</td>
+<td class="mut" data-v="1.0460">1.05</td>
+<td class="mut" data-v="1.0620">1.06</td>
+<td class="down" data-v="-11.4100">-11.4%</td>
+<td class="down" data-v="-0.9600">-1.0%</td>
+<td class="mut" data-v="34807623">3481万</td>
+</tr>
+<tr data-sym="ADA">
+<td class="rk">162</td>
+<td class="sym">ADA</td>
+<td class="mut" data-v="0.8140">0.81</td>
+<td class="mut" data-v="1.3140">1.31</td>
+<td class="mut" data-v="1.2540">1.25</td>
+<td class="down" data-v="-11.4300">-11.4%</td>
+<td class="down" data-v="-0.9800">-1.0%</td>
+<td class="mut" data-v="186973793">1.87亿</td>
+</tr>
+<tr data-sym="ENS">
+<td class="rk">163</td>
+<td class="sym">ENS</td>
+<td class="mut" data-v="0.8170">0.82</td>
+<td class="mut" data-v="1.5030">1.50</td>
+<td class="mut" data-v="1.4670">1.47</td>
+<td class="down" data-v="-11.4400">-11.4%</td>
+<td class="down" data-v="-0.9900">-1.0%</td>
+<td class="mut" data-v="4172523">417万</td>
+</tr>
+<tr data-sym="VIRTUAL">
+<td class="rk">164</td>
+<td class="sym">VIRTUAL</td>
+<td class="mut" data-v="0.7720">0.77</td>
+<td class="mut" data-v="1.3620">1.36</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="down" data-v="-11.4900">-11.5%</td>
+<td class="down" data-v="-1.0400">-1.0%</td>
+<td class="mut" data-v="17198767">1720万</td>
+</tr>
+<tr data-sym="SNX">
+<td class="rk">165</td>
+<td class="sym">SNX</td>
+<td class="mut" data-v="0.7240">0.72</td>
+<td class="mut" data-v="1.2920">1.29</td>
+<td class="mut" data-v="1.2150">1.22</td>
+<td class="down" data-v="-11.5600">-11.6%</td>
+<td class="down" data-v="-1.1100">-1.1%</td>
+<td class="mut" data-v="2343383">234万</td>
+</tr>
+<tr data-sym="W">
+<td class="rk">166</td>
+<td class="sym">W</td>
+<td class="mut" data-v="0.6260">0.63</td>
+<td class="mut" data-v="1.2440">1.24</td>
+<td class="mut" data-v="1.0810">1.08</td>
+<td class="down" data-v="-11.5700">-11.6%</td>
+<td class="down" data-v="-1.1200">-1.1%</td>
+<td class="mut" data-v="6595652">660万</td>
+</tr>
+<tr data-sym="SAND">
+<td class="rk">167</td>
+<td class="sym">SAND</td>
+<td class="mut" data-v="0.7130">0.71</td>
+<td class="mut" data-v="1.3720">1.37</td>
+<td class="mut" data-v="1.1840">1.18</td>
+<td class="down" data-v="-11.5700">-11.6%</td>
+<td class="down" data-v="-1.1200">-1.1%</td>
+<td class="mut" data-v="11946046">1195万</td>
+</tr>
+<tr data-sym="WCT">
+<td class="rk">168</td>
+<td class="sym">WCT</td>
+<td class="mut" data-v="0.6830">0.68</td>
+<td class="mut" data-v="1.2210">1.22</td>
+<td class="mut" data-v="1.2040">1.20</td>
+<td class="down" data-v="-11.6200">-11.6%</td>
+<td class="down" data-v="-1.1700">-1.2%</td>
+<td class="mut" data-v="1543994">154万</td>
+</tr>
+<tr data-sym="ARKM">
+<td class="rk">169</td>
+<td class="sym">ARKM</td>
+<td class="mut" data-v="0.6070">0.61</td>
+<td class="mut" data-v="1.1370">1.14</td>
+<td class="mut" data-v="1.0950">1.09</td>
+<td class="down" data-v="-11.6400">-11.6%</td>
+<td class="down" data-v="-1.1800">-1.2%</td>
+<td class="mut" data-v="5794025">579万</td>
+</tr>
+<tr data-sym="PENDLE">
+<td class="rk">170</td>
+<td class="sym">PENDLE</td>
+<td class="mut" data-v="0.7280">0.73</td>
+<td class="mut" data-v="1.4490">1.45</td>
+<td class="mut" data-v="1.4890">1.49</td>
+<td class="down" data-v="-11.6300">-11.6%</td>
+<td class="down" data-v="-1.1800">-1.2%</td>
+<td class="mut" data-v="10754403">1075万</td>
+</tr>
+<tr data-sym="A">
+<td class="rk">171</td>
+<td class="sym">A</td>
+<td class="mut" data-v="0.7270">0.73</td>
+<td class="mut" data-v="1.3770">1.38</td>
+<td class="mut" data-v="1.3370">1.34</td>
+<td class="down" data-v="-11.6700">-11.7%</td>
+<td class="down" data-v="-1.2100">-1.2%</td>
+<td class="mut" data-v="1922671">192万</td>
+</tr>
+<tr data-sym="AVNT">
+<td class="rk">172</td>
+<td class="sym">AVNT</td>
+<td class="mut" data-v="0.6680">0.67</td>
+<td class="mut" data-v="1.4760">1.48</td>
+<td class="mut" data-v="1.4630">1.46</td>
+<td class="down" data-v="-11.8100">-11.8%</td>
+<td class="down" data-v="-1.3600">-1.4%</td>
+<td class="mut" data-v="3079853">308万</td>
+</tr>
+<tr data-sym="MOVE">
+<td class="rk">173</td>
+<td class="sym">MOVE</td>
+<td class="mut" data-v="0.7110">0.71</td>
+<td class="mut" data-v="1.3580">1.36</td>
+<td class="mut" data-v="1.3500">1.35</td>
+<td class="down" data-v="-11.9500">-11.9%</td>
+<td class="down" data-v="-1.5000">-1.5%</td>
+<td class="mut" data-v="1485621">149万</td>
+</tr>
+<tr data-sym="NEO">
+<td class="rk">174</td>
+<td class="sym">NEO</td>
+<td class="mut" data-v="0.8000">0.80</td>
+<td class="mut" data-v="1.2770">1.28</td>
+<td class="mut" data-v="1.2000">1.20</td>
+<td class="down" data-v="-11.9900">-12.0%</td>
+<td class="down" data-v="-1.5400">-1.5%</td>
+<td class="mut" data-v="2894242">289万</td>
+</tr>
+<tr data-sym="SKL">
+<td class="rk">175</td>
+<td class="sym">SKL</td>
+<td class="mut" data-v="0.6220">0.62</td>
+<td class="mut" data-v="1.1240">1.12</td>
+<td class="mut" data-v="1.1310">1.13</td>
+<td class="down" data-v="-12.1000">-12.1%</td>
+<td class="down" data-v="-1.6500">-1.6%</td>
+<td class="mut" data-v="1617051">162万</td>
+</tr>
+<tr data-sym="ALCH">
+<td class="rk">176</td>
+<td class="sym">ALCH</td>
+<td class="mut" data-v="0.4580">0.46</td>
+<td class="mut" data-v="1.0970">1.10</td>
+<td class="mut" data-v="1.0330">1.03</td>
+<td class="down" data-v="-12.1500">-12.2%</td>
+<td class="down" data-v="-1.6900">-1.7%</td>
+<td class="mut" data-v="709164">71万</td>
+</tr>
+<tr data-sym="VET">
+<td class="rk">177</td>
+<td class="sym">VET</td>
+<td class="mut" data-v="0.7490">0.75</td>
+<td class="mut" data-v="1.2230">1.22</td>
+<td class="mut" data-v="1.1580">1.16</td>
+<td class="down" data-v="-12.1500">-12.2%</td>
+<td class="down" data-v="-1.6900">-1.7%</td>
+<td class="mut" data-v="4926990">493万</td>
+</tr>
+<tr data-sym="ACH">
+<td class="rk">178</td>
+<td class="sym">ACH</td>
+<td class="mut" data-v="0.7750">0.78</td>
+<td class="mut" data-v="1.1220">1.12</td>
+<td class="mut" data-v="1.1270">1.13</td>
+<td class="down" data-v="-12.1600">-12.2%</td>
+<td class="down" data-v="-1.7100">-1.7%</td>
+<td class="mut" data-v="1376332">138万</td>
+</tr>
+<tr data-sym="USTC">
+<td class="rk">179</td>
+<td class="sym">USTC</td>
+<td class="mut" data-v="0.6240">0.62</td>
+<td class="mut" data-v="1.3110">1.31</td>
+<td class="mut" data-v="1.2130">1.21</td>
+<td class="down" data-v="-12.1800">-12.2%</td>
+<td class="down" data-v="-1.7300">-1.7%</td>
+<td class="mut" data-v="748849">75万</td>
+</tr>
+<tr data-sym="METIS">
+<td class="rk">180</td>
+<td class="sym">METIS</td>
+<td class="mut" data-v="0.6750">0.68</td>
+<td class="mut" data-v="1.4090">1.41</td>
+<td class="mut" data-v="1.3880">1.39</td>
+<td class="down" data-v="-12.1900">-12.2%</td>
+<td class="down" data-v="-1.7300">-1.7%</td>
+<td class="mut" data-v="1446662">145万</td>
+</tr>
+<tr data-sym="XLM">
+<td class="rk">181</td>
+<td class="sym">XLM</td>
+<td class="mut" data-v="0.7310">0.73</td>
+<td class="mut" data-v="1.2320">1.23</td>
+<td class="mut" data-v="1.1860">1.19</td>
+<td class="down" data-v="-12.1800">-12.2%</td>
+<td class="down" data-v="-1.7300">-1.7%</td>
+<td class="mut" data-v="61388603">6139万</td>
+</tr>
+<tr data-sym="ONT">
+<td class="rk">182</td>
+<td class="sym">ONT</td>
+<td class="mut" data-v="0.7360">0.74</td>
+<td class="mut" data-v="1.1890">1.19</td>
+<td class="mut" data-v="1.1000">1.10</td>
+<td class="down" data-v="-12.1800">-12.2%</td>
+<td class="down" data-v="-1.7300">-1.7%</td>
+<td class="mut" data-v="1789711">179万</td>
+</tr>
+<tr data-sym="OP">
+<td class="rk">183</td>
+<td class="sym">OP</td>
+<td class="mut" data-v="0.6330">0.63</td>
+<td class="mut" data-v="1.4040">1.40</td>
+<td class="mut" data-v="1.2250">1.23</td>
+<td class="down" data-v="-12.2300">-12.2%</td>
+<td class="down" data-v="-1.7700">-1.8%</td>
+<td class="mut" data-v="29557839">2956万</td>
+</tr>
+<tr data-sym="ONDO">
+<td class="rk">184</td>
+<td class="sym">ONDO</td>
+<td class="mut" data-v="0.7150">0.71</td>
+<td class="mut" data-v="1.5660">1.57</td>
+<td class="mut" data-v="1.6070">1.61</td>
+<td class="down" data-v="-12.3000">-12.3%</td>
+<td class="down" data-v="-1.8400">-1.8%</td>
+<td class="mut" data-v="60542335">6054万</td>
+</tr>
+<tr data-sym="KNC">
+<td class="rk">185</td>
+<td class="sym">KNC</td>
+<td class="mut" data-v="0.6660">0.67</td>
+<td class="mut" data-v="1.0170">1.02</td>
+<td class="mut" data-v="0.9490">0.95</td>
+<td class="down" data-v="-12.3100">-12.3%</td>
+<td class="down" data-v="-1.8600">-1.9%</td>
+<td class="mut" data-v="846781">85万</td>
+</tr>
+<tr data-sym="DEEP">
+<td class="rk">186</td>
+<td class="sym">DEEP</td>
+<td class="mut" data-v="0.7220">0.72</td>
+<td class="mut" data-v="1.4170">1.42</td>
+<td class="mut" data-v="1.4800">1.48</td>
+<td class="down" data-v="-12.3400">-12.3%</td>
+<td class="down" data-v="-1.8900">-1.9%</td>
+<td class="mut" data-v="1020789">102万</td>
+</tr>
+<tr data-sym="PIPPIN">
+<td class="rk">187</td>
+<td class="sym">PIPPIN</td>
+<td class="mut" data-v="0.7320">0.73</td>
+<td class="mut" data-v="1.3220">1.32</td>
+<td class="mut" data-v="1.1980">1.20</td>
+<td class="down" data-v="-12.3800">-12.4%</td>
+<td class="down" data-v="-1.9300">-1.9%</td>
+<td class="mut" data-v="3696992">370万</td>
+</tr>
+<tr data-sym="CFX">
+<td class="rk">188</td>
+<td class="sym">CFX</td>
+<td class="mut" data-v="0.7400">0.74</td>
+<td class="mut" data-v="1.1550">1.16</td>
+<td class="mut" data-v="1.0650">1.06</td>
+<td class="down" data-v="-12.4600">-12.5%</td>
+<td class="down" data-v="-2.0000">-2.0%</td>
+<td class="mut" data-v="4337041">434万</td>
+</tr>
+<tr data-sym="CFG">
+<td class="rk">189</td>
+<td class="sym">CFG</td>
+<td class="mut" data-v="0.6610">0.66</td>
+<td class="mut" data-v="1.5270">1.53</td>
+<td class="mut" data-v="1.6850">1.69</td>
+<td class="down" data-v="-12.5300">-12.5%</td>
+<td class="down" data-v="-2.0700">-2.1%</td>
+<td class="mut" data-v="3327783">333万</td>
+</tr>
+<tr data-sym="1000XEC">
+<td class="rk">190</td>
+<td class="sym">1000XEC</td>
+<td class="mut" data-v="0.7630">0.76</td>
+<td class="mut" data-v="1.2220">1.22</td>
+<td class="mut" data-v="1.2070">1.21</td>
+<td class="down" data-v="-12.5400">-12.5%</td>
+<td class="down" data-v="-2.0800">-2.1%</td>
+<td class="mut" data-v="1351938">135万</td>
+</tr>
+<tr data-sym="GAS">
+<td class="rk">191</td>
+<td class="sym">GAS</td>
+<td class="mut" data-v="0.7610">0.76</td>
+<td class="mut" data-v="1.1780">1.18</td>
+<td class="mut" data-v="1.1240">1.12</td>
+<td class="down" data-v="-12.5500">-12.6%</td>
+<td class="down" data-v="-2.1000">-2.1%</td>
+<td class="mut" data-v="1045186">105万</td>
+</tr>
+<tr data-sym="AXS">
+<td class="rk">192</td>
+<td class="sym">AXS</td>
+<td class="mut" data-v="0.7790">0.78</td>
+<td class="mut" data-v="1.2930">1.29</td>
+<td class="mut" data-v="1.2360">1.24</td>
+<td class="down" data-v="-12.6400">-12.6%</td>
+<td class="down" data-v="-2.1800">-2.2%</td>
+<td class="mut" data-v="6538589">654万</td>
+</tr>
+<tr data-sym="NEIRO">
+<td class="rk">193</td>
+<td class="sym">NEIRO</td>
+<td class="mut" data-v="0.6790">0.68</td>
+<td class="mut" data-v="1.4230">1.42</td>
+<td class="mut" data-v="1.2320">1.23</td>
+<td class="down" data-v="-12.6500">-12.7%</td>
+<td class="down" data-v="-2.1900">-2.2%</td>
+<td class="mut" data-v="4188327">419万</td>
+</tr>
+<tr data-sym="TURBO">
+<td class="rk">194</td>
+<td class="sym">TURBO</td>
+<td class="mut" data-v="0.7710">0.77</td>
+<td class="mut" data-v="1.3290">1.33</td>
+<td class="mut" data-v="1.2720">1.27</td>
+<td class="down" data-v="-12.6400">-12.6%</td>
+<td class="down" data-v="-2.1900">-2.2%</td>
+<td class="mut" data-v="2556116">256万</td>
+</tr>
+<tr data-sym="LINEA">
+<td class="rk">195</td>
+<td class="sym">LINEA</td>
+<td class="mut" data-v="0.7630">0.76</td>
+<td class="mut" data-v="1.3980">1.40</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="down" data-v="-12.6500">-12.7%</td>
+<td class="down" data-v="-2.2000">-2.2%</td>
+<td class="mut" data-v="1994462">199万</td>
+</tr>
+<tr data-sym="C98">
+<td class="rk">196</td>
+<td class="sym">C98</td>
+<td class="mut" data-v="0.7420">0.74</td>
+<td class="mut" data-v="1.4380">1.44</td>
+<td class="mut" data-v="1.2920">1.29</td>
+<td class="down" data-v="-12.6800">-12.7%</td>
+<td class="down" data-v="-2.2300">-2.2%</td>
+<td class="mut" data-v="1384250">138万</td>
+</tr>
+<tr data-sym="HEMI">
+<td class="rk">197</td>
+<td class="sym">HEMI</td>
+<td class="mut" data-v="0.5850">0.58</td>
+<td class="mut" data-v="1.0350">1.03</td>
+<td class="mut" data-v="0.9710">0.97</td>
+<td class="down" data-v="-12.7000">-12.7%</td>
+<td class="down" data-v="-2.2400">-2.2%</td>
+<td class="mut" data-v="1985021">199万</td>
+</tr>
+<tr data-sym="TAC">
+<td class="rk">198</td>
+<td class="sym">TAC</td>
+<td class="mut" data-v="0.5940">0.59</td>
+<td class="mut" data-v="1.6570">1.66</td>
+<td class="mut" data-v="1.5500">1.55</td>
+<td class="down" data-v="-12.7200">-12.7%</td>
+<td class="down" data-v="-2.2700">-2.3%</td>
+<td class="mut" data-v="1310946">131万</td>
+</tr>
+<tr data-sym="LUNA2">
+<td class="rk">199</td>
+<td class="sym">LUNA2</td>
+<td class="mut" data-v="0.7260">0.73</td>
+<td class="mut" data-v="1.1360">1.14</td>
+<td class="mut" data-v="1.1500">1.15</td>
+<td class="down" data-v="-12.7300">-12.7%</td>
+<td class="down" data-v="-2.2800">-2.3%</td>
+<td class="mut" data-v="1731742">173万</td>
+</tr>
+<tr data-sym="WAL">
+<td class="rk">200</td>
+<td class="sym">WAL</td>
+<td class="mut" data-v="0.6510">0.65</td>
+<td class="mut" data-v="1.2260">1.23</td>
+<td class="mut" data-v="1.0040">1.00</td>
+<td class="down" data-v="-12.8000">-12.8%</td>
+<td class="down" data-v="-2.3400">-2.3%</td>
+<td class="mut" data-v="3893555">389万</td>
+</tr>
+<tr data-sym="DYM">
+<td class="rk">201</td>
+<td class="sym">DYM</td>
+<td class="mut" data-v="0.6870">0.69</td>
+<td class="mut" data-v="1.2570">1.26</td>
+<td class="mut" data-v="1.2320">1.23</td>
+<td class="down" data-v="-12.8100">-12.8%</td>
+<td class="down" data-v="-2.3500">-2.4%</td>
+<td class="mut" data-v="1708199">171万</td>
+</tr>
+<tr data-sym="DOT">
+<td class="rk">202</td>
+<td class="sym">DOT</td>
+<td class="mut" data-v="0.6920">0.69</td>
+<td class="mut" data-v="1.1810">1.18</td>
+<td class="mut" data-v="1.2170">1.22</td>
+<td class="down" data-v="-12.8200">-12.8%</td>
+<td class="down" data-v="-2.3700">-2.4%</td>
+<td class="mut" data-v="40086511">4009万</td>
+</tr>
+<tr data-sym="BNT">
+<td class="rk">203</td>
+<td class="sym">BNT</td>
+<td class="mut" data-v="0.6990">0.70</td>
+<td class="mut" data-v="1.0830">1.08</td>
+<td class="mut" data-v="0.9730">0.97</td>
+<td class="down" data-v="-12.8200">-12.8%</td>
+<td class="down" data-v="-2.3700">-2.4%</td>
+<td class="mut" data-v="596322">60万</td>
+</tr>
+<tr data-sym="MINA">
+<td class="rk">204</td>
+<td class="sym">MINA</td>
+<td class="mut" data-v="0.6910">0.69</td>
+<td class="mut" data-v="1.4090">1.41</td>
+<td class="mut" data-v="1.3240">1.32</td>
+<td class="down" data-v="-12.8800">-12.9%</td>
+<td class="down" data-v="-2.4300">-2.4%</td>
+<td class="mut" data-v="4408959">441万</td>
+</tr>
+<tr data-sym="HBAR">
+<td class="rk">205</td>
+<td class="sym">HBAR</td>
+<td class="mut" data-v="0.7520">0.75</td>
+<td class="mut" data-v="1.0960">1.10</td>
+<td class="mut" data-v="1.1410">1.14</td>
+<td class="down" data-v="-13.0500">-13.1%</td>
+<td class="down" data-v="-2.5900">-2.6%</td>
+<td class="mut" data-v="49575044">4958万</td>
+</tr>
+<tr data-sym="NOM">
+<td class="rk">206</td>
+<td class="sym">NOM</td>
+<td class="mut" data-v="0.4850">0.48</td>
+<td class="mut" data-v="1.1270">1.13</td>
+<td class="mut" data-v="1.0250">1.02</td>
+<td class="down" data-v="-13.0900">-13.1%</td>
+<td class="down" data-v="-2.6400">-2.6%</td>
+<td class="mut" data-v="1985947">199万</td>
+</tr>
+<tr data-sym="SQD">
+<td class="rk">207</td>
+<td class="sym">SQD</td>
+<td class="mut" data-v="0.5920">0.59</td>
+<td class="mut" data-v="1.4650">1.47</td>
+<td class="mut" data-v="1.4140">1.41</td>
+<td class="down" data-v="-13.1600">-13.2%</td>
+<td class="down" data-v="-2.7100">-2.7%</td>
+<td class="mut" data-v="2074127">207万</td>
+</tr>
+<tr data-sym="LQTY">
+<td class="rk">208</td>
+<td class="sym">LQTY</td>
+<td class="mut" data-v="0.6580">0.66</td>
+<td class="mut" data-v="1.2220">1.22</td>
+<td class="mut" data-v="1.1470">1.15</td>
+<td class="down" data-v="-13.2100">-13.2%</td>
+<td class="down" data-v="-2.7500">-2.8%</td>
+<td class="mut" data-v="1005839">101万</td>
+</tr>
+<tr data-sym="CELR">
+<td class="rk">209</td>
+<td class="sym">CELR</td>
+<td class="mut" data-v="0.5320">0.53</td>
+<td class="mut" data-v="1.2480">1.25</td>
+<td class="mut" data-v="1.2280">1.23</td>
+<td class="down" data-v="-13.2200">-13.2%</td>
+<td class="down" data-v="-2.7700">-2.8%</td>
+<td class="mut" data-v="973176">97万</td>
+</tr>
+<tr data-sym="BAN">
+<td class="rk">210</td>
+<td class="sym">BAN</td>
+<td class="mut" data-v="0.6430">0.64</td>
+<td class="mut" data-v="1.4180">1.42</td>
+<td class="mut" data-v="1.3550">1.35</td>
+<td class="down" data-v="-13.2300">-13.2%</td>
+<td class="down" data-v="-2.7700">-2.8%</td>
+<td class="mut" data-v="880829">88万</td>
+</tr>
+<tr data-sym="GRT">
+<td class="rk">211</td>
+<td class="sym">GRT</td>
+<td class="mut" data-v="0.6870">0.69</td>
+<td class="mut" data-v="1.3000">1.30</td>
+<td class="mut" data-v="1.2410">1.24</td>
+<td class="down" data-v="-13.2300">-13.2%</td>
+<td class="down" data-v="-2.7800">-2.8%</td>
+<td class="mut" data-v="3829751">383万</td>
+</tr>
+<tr data-sym="KAITO">
+<td class="rk">212</td>
+<td class="sym">KAITO</td>
+<td class="mut" data-v="0.6630">0.66</td>
+<td class="mut" data-v="1.1600">1.16</td>
+<td class="mut" data-v="1.0900">1.09</td>
+<td class="down" data-v="-13.2700">-13.3%</td>
+<td class="down" data-v="-2.8100">-2.8%</td>
+<td class="mut" data-v="5105980">511万</td>
+</tr>
+<tr data-sym="DRIFT">
+<td class="rk">213</td>
+<td class="sym">DRIFT</td>
+<td class="mut" data-v="0.6610">0.66</td>
+<td class="mut" data-v="1.4250">1.43</td>
+<td class="mut" data-v="1.3810">1.38</td>
+<td class="down" data-v="-13.2900">-13.3%</td>
+<td class="down" data-v="-2.8300">-2.8%</td>
+<td class="mut" data-v="928138">93万</td>
+</tr>
+<tr data-sym="NEWT">
+<td class="rk">214</td>
+<td class="sym">NEWT</td>
+<td class="mut" data-v="0.6680">0.67</td>
+<td class="mut" data-v="1.2260">1.23</td>
+<td class="mut" data-v="1.2480">1.25</td>
+<td class="down" data-v="-13.3100">-13.3%</td>
+<td class="down" data-v="-2.8500">-2.9%</td>
+<td class="mut" data-v="918702">92万</td>
+</tr>
+<tr data-sym="ONG">
+<td class="rk">215</td>
+<td class="sym">ONG</td>
+<td class="mut" data-v="0.7180">0.72</td>
+<td class="mut" data-v="1.2620">1.26</td>
+<td class="mut" data-v="1.2190">1.22</td>
+<td class="down" data-v="-13.3900">-13.4%</td>
+<td class="down" data-v="-2.9300">-2.9%</td>
+<td class="mut" data-v="1937745">194万</td>
+</tr>
+<tr data-sym="APT">
+<td class="rk">216</td>
+<td class="sym">APT</td>
+<td class="mut" data-v="0.7320">0.73</td>
+<td class="mut" data-v="1.4240">1.42</td>
+<td class="mut" data-v="1.3480">1.35</td>
+<td class="down" data-v="-13.4100">-13.4%</td>
+<td class="down" data-v="-2.9500">-3.0%</td>
+<td class="mut" data-v="34597764">3460万</td>
+</tr>
+<tr data-sym="CHZ">
+<td class="rk">217</td>
+<td class="sym">CHZ</td>
+<td class="mut" data-v="0.7240">0.72</td>
+<td class="mut" data-v="1.0980">1.10</td>
+<td class="mut" data-v="1.1260">1.13</td>
+<td class="down" data-v="-13.4800">-13.5%</td>
+<td class="down" data-v="-3.0200">-3.0%</td>
+<td class="mut" data-v="6365642">637万</td>
+</tr>
+<tr data-sym="ZETA">
+<td class="rk">218</td>
+<td class="sym">ZETA</td>
+<td class="mut" data-v="0.7050">0.70</td>
+<td class="mut" data-v="1.5340">1.53</td>
+<td class="mut" data-v="1.4910">1.49</td>
+<td class="down" data-v="-13.5500">-13.6%</td>
+<td class="down" data-v="-3.1000">-3.1%</td>
+<td class="mut" data-v="1022780">102万</td>
+</tr>
+<tr data-sym="BAS">
+<td class="rk">219</td>
+<td class="sym">BAS</td>
+<td class="mut" data-v="0.6120">0.61</td>
+<td class="mut" data-v="1.4430">1.44</td>
+<td class="mut" data-v="1.3670">1.37</td>
+<td class="down" data-v="-13.6300">-13.6%</td>
+<td class="down" data-v="-3.1800">-3.2%</td>
+<td class="mut" data-v="820271">82万</td>
+</tr>
+<tr data-sym="CHR">
+<td class="rk">220</td>
+<td class="sym">CHR</td>
+<td class="mut" data-v="0.7260">0.73</td>
+<td class="mut" data-v="1.4510">1.45</td>
+<td class="mut" data-v="1.4440">1.44</td>
+<td class="down" data-v="-13.6900">-13.7%</td>
+<td class="down" data-v="-3.2400">-3.2%</td>
+<td class="mut" data-v="821035">82万</td>
+</tr>
+<tr data-sym="AEVO">
+<td class="rk">221</td>
+<td class="sym">AEVO</td>
+<td class="mut" data-v="0.7390">0.74</td>
+<td class="mut" data-v="1.3470">1.35</td>
+<td class="mut" data-v="1.2380">1.24</td>
+<td class="down" data-v="-13.7100">-13.7%</td>
+<td class="down" data-v="-3.2500">-3.2%</td>
+<td class="mut" data-v="837317">84万</td>
+</tr>
+<tr data-sym="GALA">
+<td class="rk">222</td>
+<td class="sym">GALA</td>
+<td class="mut" data-v="0.7530">0.75</td>
+<td class="mut" data-v="1.3820">1.38</td>
+<td class="mut" data-v="1.3110">1.31</td>
+<td class="down" data-v="-13.7000">-13.7%</td>
+<td class="down" data-v="-3.2500">-3.2%</td>
+<td class="mut" data-v="9052262">905万</td>
+</tr>
+<tr data-sym="WIF">
+<td class="rk">223</td>
+<td class="sym">WIF</td>
+<td class="mut" data-v="0.7150">0.71</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="mut" data-v="1.2430">1.24</td>
+<td class="down" data-v="-13.7900">-13.8%</td>
+<td class="down" data-v="-3.3300">-3.3%</td>
+<td class="mut" data-v="13594859">1359万</td>
+</tr>
+<tr data-sym="ROBO">
+<td class="rk">224</td>
+<td class="sym">ROBO</td>
+<td class="mut" data-v="0.6710">0.67</td>
+<td class="mut" data-v="1.6080">1.61</td>
+<td class="mut" data-v="1.6450">1.65</td>
+<td class="down" data-v="-13.8900">-13.9%</td>
+<td class="down" data-v="-3.4300">-3.4%</td>
+<td class="mut" data-v="1736262">174万</td>
+</tr>
+<tr data-sym="ALT">
+<td class="rk">225</td>
+<td class="sym">ALT</td>
+<td class="mut" data-v="0.6980">0.70</td>
+<td class="mut" data-v="1.3930">1.39</td>
+<td class="mut" data-v="1.4460">1.45</td>
+<td class="down" data-v="-13.9000">-13.9%</td>
+<td class="down" data-v="-3.4500">-3.5%</td>
+<td class="mut" data-v="4566401">457万</td>
+</tr>
+<tr data-sym="BAND">
+<td class="rk">226</td>
+<td class="sym">BAND</td>
+<td class="mut" data-v="0.7000">0.70</td>
+<td class="mut" data-v="1.0390">1.04</td>
+<td class="mut" data-v="1.0770">1.08</td>
+<td class="down" data-v="-13.9200">-13.9%</td>
+<td class="down" data-v="-3.4600">-3.5%</td>
+<td class="mut" data-v="1635420">164万</td>
+</tr>
+<tr data-sym="MOCA">
+<td class="rk">227</td>
+<td class="sym">MOCA</td>
+<td class="mut" data-v="0.6530">0.65</td>
+<td class="mut" data-v="1.2450">1.25</td>
+<td class="mut" data-v="1.3110">1.31</td>
+<td class="down" data-v="-14.0400">-14.0%</td>
+<td class="down" data-v="-3.5800">-3.6%</td>
+<td class="mut" data-v="1003235">100万</td>
+</tr>
+<tr data-sym="DOGE">
+<td class="rk">228</td>
+<td class="sym">DOGE</td>
+<td class="mut" data-v="0.8540">0.85</td>
+<td class="mut" data-v="1.2230">1.22</td>
+<td class="mut" data-v="1.2240">1.22</td>
+<td class="down" data-v="-14.0400">-14.0%</td>
+<td class="down" data-v="-3.5900">-3.6%</td>
+<td class="mut" data-v="431183416">4.31亿</td>
+</tr>
+<tr data-sym="DYDX">
+<td class="rk">229</td>
+<td class="sym">DYDX</td>
+<td class="mut" data-v="0.7510">0.75</td>
+<td class="mut" data-v="1.5890">1.59</td>
+<td class="mut" data-v="1.3650">1.36</td>
+<td class="down" data-v="-14.0900">-14.1%</td>
+<td class="down" data-v="-3.6400">-3.6%</td>
+<td class="mut" data-v="4901612">490万</td>
+</tr>
+<tr data-sym="LPT">
+<td class="rk">230</td>
+<td class="sym">LPT</td>
+<td class="mut" data-v="0.7710">0.77</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="down" data-v="-14.1000">-14.1%</td>
+<td class="down" data-v="-3.6400">-3.6%</td>
+<td class="mut" data-v="2031144">203万</td>
+</tr>
+<tr data-sym="TOWNS">
+<td class="rk">231</td>
+<td class="sym">TOWNS</td>
+<td class="mut" data-v="0.6080">0.61</td>
+<td class="mut" data-v="1.4400">1.44</td>
+<td class="mut" data-v="1.3550">1.35</td>
+<td class="down" data-v="-14.1000">-14.1%</td>
+<td class="down" data-v="-3.6500">-3.6%</td>
+<td class="mut" data-v="1577718">158万</td>
+</tr>
+<tr data-sym="DEXE">
+<td class="rk">232</td>
+<td class="sym">DEXE</td>
+<td class="mut" data-v="0.6910">0.69</td>
+<td class="mut" data-v="1.3510">1.35</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="down" data-v="-14.1400">-14.1%</td>
+<td class="down" data-v="-3.6900">-3.7%</td>
+<td class="mut" data-v="7806768">781万</td>
+</tr>
+<tr data-sym="MEME">
+<td class="rk">233</td>
+<td class="sym">MEME</td>
+<td class="mut" data-v="0.7310">0.73</td>
+<td class="mut" data-v="1.3850">1.39</td>
+<td class="mut" data-v="1.2780">1.28</td>
+<td class="down" data-v="-14.1700">-14.2%</td>
+<td class="down" data-v="-3.7200">-3.7%</td>
+<td class="mut" data-v="2233964">223万</td>
+</tr>
+<tr data-sym="1MBABYDOGE">
+<td class="rk">234</td>
+<td class="sym">1MBABYDOGE</td>
+<td class="mut" data-v="0.7700">0.77</td>
+<td class="mut" data-v="1.1800">1.18</td>
+<td class="mut" data-v="1.3050">1.30</td>
+<td class="down" data-v="-14.1800">-14.2%</td>
+<td class="down" data-v="-3.7300">-3.7%</td>
+<td class="mut" data-v="1492283">149万</td>
+</tr>
+<tr data-sym="FIL">
+<td class="rk">235</td>
+<td class="sym">FIL</td>
+<td class="mut" data-v="0.6500">0.65</td>
+<td class="mut" data-v="1.1790">1.18</td>
+<td class="mut" data-v="1.0540">1.05</td>
+<td class="down" data-v="-14.2300">-14.2%</td>
+<td class="down" data-v="-3.7800">-3.8%</td>
+<td class="mut" data-v="69910645">6991万</td>
+</tr>
+<tr data-sym="XNY">
+<td class="rk">236</td>
+<td class="sym">XNY</td>
+<td class="mut" data-v="0.4870">0.49</td>
+<td class="mut" data-v="0.9440">0.94</td>
+<td class="mut" data-v="1.1570">1.16</td>
+<td class="down" data-v="-14.2600">-14.3%</td>
+<td class="down" data-v="-3.8100">-3.8%</td>
+<td class="mut" data-v="750800">75万</td>
+</tr>
+<tr data-sym="1000CHEEMS">
+<td class="rk">237</td>
+<td class="sym">1000CHEEMS</td>
+<td class="mut" data-v="0.6680">0.67</td>
+<td class="mut" data-v="1.2520">1.25</td>
+<td class="mut" data-v="1.1670">1.17</td>
+<td class="down" data-v="-14.2900">-14.3%</td>
+<td class="down" data-v="-3.8300">-3.8%</td>
+<td class="mut" data-v="1036648">104万</td>
+</tr>
+<tr data-sym="XAI">
+<td class="rk">238</td>
+<td class="sym">XAI</td>
+<td class="mut" data-v="0.7200">0.72</td>
+<td class="mut" data-v="1.4110">1.41</td>
+<td class="mut" data-v="1.3990">1.40</td>
+<td class="down" data-v="-14.2900">-14.3%</td>
+<td class="down" data-v="-3.8300">-3.8%</td>
+<td class="mut" data-v="999985">100万</td>
+</tr>
+<tr data-sym="ZK">
+<td class="rk">239</td>
+<td class="sym">ZK</td>
+<td class="mut" data-v="0.6560">0.66</td>
+<td class="mut" data-v="1.3700">1.37</td>
+<td class="mut" data-v="1.2280">1.23</td>
+<td class="down" data-v="-14.3000">-14.3%</td>
+<td class="down" data-v="-3.8500">-3.9%</td>
+<td class="mut" data-v="7278543">728万</td>
+</tr>
+<tr data-sym="VANA">
+<td class="rk">240</td>
+<td class="sym">VANA</td>
+<td class="mut" data-v="0.7090">0.71</td>
+<td class="mut" data-v="1.2640">1.26</td>
+<td class="mut" data-v="1.2700">1.27</td>
+<td class="down" data-v="-14.3000">-14.3%</td>
+<td class="down" data-v="-3.8500">-3.9%</td>
+<td class="mut" data-v="967234">97万</td>
+</tr>
+<tr data-sym="KSM">
+<td class="rk">241</td>
+<td class="sym">KSM</td>
+<td class="mut" data-v="0.7420">0.74</td>
+<td class="mut" data-v="1.2570">1.26</td>
+<td class="mut" data-v="1.2550">1.25</td>
+<td class="down" data-v="-14.3500">-14.3%</td>
+<td class="down" data-v="-3.8900">-3.9%</td>
+<td class="mut" data-v="1270993">127万</td>
+</tr>
+<tr data-sym="AUCTION">
+<td class="rk">242</td>
+<td class="sym">AUCTION</td>
+<td class="mut" data-v="0.6040">0.60</td>
+<td class="mut" data-v="1.0500">1.05</td>
+<td class="mut" data-v="1.2400">1.24</td>
+<td class="down" data-v="-14.3700">-14.4%</td>
+<td class="down" data-v="-3.9200">-3.9%</td>
+<td class="mut" data-v="686322">69万</td>
+</tr>
+<tr data-sym="RAVE">
+<td class="rk">243</td>
+<td class="sym">RAVE</td>
+<td class="mut" data-v="0.6300">0.63</td>
+<td class="mut" data-v="1.3660">1.37</td>
+<td class="mut" data-v="1.2410">1.24</td>
+<td class="down" data-v="-14.4400">-14.4%</td>
+<td class="down" data-v="-3.9900">-4.0%</td>
+<td class="mut" data-v="2984153">298万</td>
+</tr>
+<tr data-sym="SANTOS">
+<td class="rk">244</td>
+<td class="sym">SANTOS</td>
+<td class="mut" data-v="0.6120">0.61</td>
+<td class="mut" data-v="1.0610">1.06</td>
+<td class="mut" data-v="1.1190">1.12</td>
+<td class="down" data-v="-14.4500">-14.4%</td>
+<td class="down" data-v="-4.0000">-4.0%</td>
+<td class="mut" data-v="607457">61万</td>
+</tr>
+<tr data-sym="TREE">
+<td class="rk">245</td>
+<td class="sym">TREE</td>
+<td class="mut" data-v="0.6430">0.64</td>
+<td class="mut" data-v="1.3000">1.30</td>
+<td class="mut" data-v="1.4410">1.44</td>
+<td class="down" data-v="-14.5000">-14.5%</td>
+<td class="down" data-v="-4.0500">-4.0%</td>
+<td class="mut" data-v="2166896">217万</td>
+</tr>
+<tr data-sym="TUT">
+<td class="rk">246</td>
+<td class="sym">TUT</td>
+<td class="mut" data-v="0.6600">0.66</td>
+<td class="mut" data-v="1.4000">1.40</td>
+<td class="mut" data-v="1.3450">1.34</td>
+<td class="down" data-v="-14.5100">-14.5%</td>
+<td class="down" data-v="-4.0600">-4.1%</td>
+<td class="mut" data-v="3732787">373万</td>
+</tr>
+<tr data-sym="BANANA">
+<td class="rk">247</td>
+<td class="sym">BANANA</td>
+<td class="mut" data-v="0.7210">0.72</td>
+<td class="mut" data-v="1.1280">1.13</td>
+<td class="mut" data-v="1.1540">1.15</td>
+<td class="down" data-v="-14.5300">-14.5%</td>
+<td class="down" data-v="-4.0700">-4.1%</td>
+<td class="mut" data-v="1040720">104万</td>
+</tr>
+<tr data-sym="1000LUNC">
+<td class="rk">248</td>
+<td class="sym">1000LUNC</td>
+<td class="mut" data-v="0.7740">0.77</td>
+<td class="mut" data-v="1.1090">1.11</td>
+<td class="mut" data-v="1.0590">1.06</td>
+<td class="down" data-v="-14.5800">-14.6%</td>
+<td class="down" data-v="-4.1300">-4.1%</td>
+<td class="mut" data-v="3568708">357万</td>
+</tr>
+<tr data-sym="QTUM">
+<td class="rk">249</td>
+<td class="sym">QTUM</td>
+<td class="mut" data-v="0.7760">0.78</td>
+<td class="mut" data-v="1.1260">1.13</td>
+<td class="mut" data-v="1.1380">1.14</td>
+<td class="down" data-v="-14.5900">-14.6%</td>
+<td class="down" data-v="-4.1400">-4.1%</td>
+<td class="mut" data-v="1020113">102万</td>
+</tr>
+<tr data-sym="SSV">
+<td class="rk">250</td>
+<td class="sym">SSV</td>
+<td class="mut" data-v="0.5310">0.53</td>
+<td class="mut" data-v="1.1260">1.13</td>
+<td class="mut" data-v="0.9930">0.99</td>
+<td class="down" data-v="-14.6200">-14.6%</td>
+<td class="down" data-v="-4.1700">-4.2%</td>
+<td class="mut" data-v="2194102">219万</td>
+</tr>
+<tr data-sym="ALICE">
+<td class="rk">251</td>
+<td class="sym">ALICE</td>
+<td class="mut" data-v="0.7010">0.70</td>
+<td class="mut" data-v="1.3440">1.34</td>
+<td class="mut" data-v="1.3460">1.35</td>
+<td class="down" data-v="-14.7400">-14.7%</td>
+<td class="down" data-v="-4.2900">-4.3%</td>
+<td class="mut" data-v="1447305">145万</td>
+</tr>
+<tr data-sym="IO">
+<td class="rk">252</td>
+<td class="sym">IO</td>
+<td class="mut" data-v="0.7080">0.71</td>
+<td class="mut" data-v="1.3740">1.37</td>
+<td class="mut" data-v="1.4350">1.44</td>
+<td class="down" data-v="-14.8300">-14.8%</td>
+<td class="down" data-v="-4.3700">-4.4%</td>
+<td class="mut" data-v="3301972">330万</td>
+</tr>
+<tr data-sym="RONIN">
+<td class="rk">253</td>
+<td class="sym">RONIN</td>
+<td class="mut" data-v="0.7110">0.71</td>
+<td class="mut" data-v="1.3500">1.35</td>
+<td class="mut" data-v="1.3200">1.32</td>
+<td class="down" data-v="-14.8300">-14.8%</td>
+<td class="down" data-v="-4.3700">-4.4%</td>
+<td class="mut" data-v="1201593">120万</td>
+</tr>
+<tr data-sym="TAIKO">
+<td class="rk">254</td>
+<td class="sym">TAIKO</td>
+<td class="mut" data-v="0.4710">0.47</td>
+<td class="mut" data-v="1.2970">1.30</td>
+<td class="mut" data-v="1.0380">1.04</td>
+<td class="down" data-v="-14.8400">-14.8%</td>
+<td class="down" data-v="-4.3900">-4.4%</td>
+<td class="mut" data-v="2157216">216万</td>
+</tr>
+<tr data-sym="GUN">
+<td class="rk">255</td>
+<td class="sym">GUN</td>
+<td class="mut" data-v="0.6030">0.60</td>
+<td class="mut" data-v="1.4640">1.46</td>
+<td class="mut" data-v="1.4940">1.49</td>
+<td class="down" data-v="-14.8500">-14.8%</td>
+<td class="down" data-v="-4.4000">-4.4%</td>
+<td class="mut" data-v="1608686">161万</td>
+</tr>
+<tr data-sym="WAXP">
+<td class="rk">256</td>
+<td class="sym">WAXP</td>
+<td class="mut" data-v="0.7470">0.75</td>
+<td class="mut" data-v="1.0970">1.10</td>
+<td class="mut" data-v="1.1150">1.11</td>
+<td class="down" data-v="-14.8800">-14.9%</td>
+<td class="down" data-v="-4.4200">-4.4%</td>
+<td class="mut" data-v="813406">81万</td>
+</tr>
+<tr data-sym="VVV">
+<td class="rk">257</td>
+<td class="sym">VVV</td>
+<td class="mut" data-v="0.5270">0.53</td>
+<td class="mut" data-v="1.5140">1.51</td>
+<td class="mut" data-v="1.6540">1.65</td>
+<td class="down" data-v="-14.9400">-14.9%</td>
+<td class="down" data-v="-4.4900">-4.5%</td>
+<td class="mut" data-v="32871062">3287万</td>
+</tr>
+<tr data-sym="ZEN">
+<td class="rk">258</td>
+<td class="sym">ZEN</td>
+<td class="mut" data-v="0.7650">0.77</td>
+<td class="mut" data-v="1.4660">1.47</td>
+<td class="mut" data-v="1.4500">1.45</td>
+<td class="down" data-v="-14.9900">-15.0%</td>
+<td class="down" data-v="-4.5400">-4.5%</td>
+<td class="mut" data-v="7316120">732万</td>
+</tr>
+<tr data-sym="AIXBT">
+<td class="rk">259</td>
+<td class="sym">AIXBT</td>
+<td class="mut" data-v="0.7800">0.78</td>
+<td class="mut" data-v="1.4290">1.43</td>
+<td class="mut" data-v="1.3270">1.33</td>
+<td class="down" data-v="-15.0200">-15.0%</td>
+<td class="down" data-v="-4.5600">-4.6%</td>
+<td class="mut" data-v="1522665">152万</td>
+</tr>
+<tr data-sym="FLOW">
+<td class="rk">260</td>
+<td class="sym">FLOW</td>
+<td class="mut" data-v="0.7020">0.70</td>
+<td class="mut" data-v="1.3720">1.37</td>
+<td class="mut" data-v="1.2880">1.29</td>
+<td class="down" data-v="-15.0400">-15.0%</td>
+<td class="down" data-v="-4.5900">-4.6%</td>
+<td class="mut" data-v="2500261">250万</td>
+</tr>
+<tr data-sym="1000PEPE">
+<td class="rk">261</td>
+<td class="sym">1000PEPE</td>
+<td class="mut" data-v="0.5010">0.50</td>
+<td class="mut" data-v="1.3150">1.31</td>
+<td class="mut" data-v="1.5490">1.55</td>
+<td class="down" data-v="-15.1300">-15.1%</td>
+<td class="down" data-v="-4.6700">-4.7%</td>
+<td class="mut" data-v="445507283">4.46亿</td>
+</tr>
+<tr data-sym="MYX">
+<td class="rk">262</td>
+<td class="sym">MYX</td>
+<td class="mut" data-v="0.6660">0.67</td>
+<td class="mut" data-v="1.7590">1.76</td>
+<td class="mut" data-v="1.4730">1.47</td>
+<td class="down" data-v="-15.1300">-15.1%</td>
+<td class="down" data-v="-4.6700">-4.7%</td>
+<td class="mut" data-v="2338563">234万</td>
+</tr>
+<tr data-sym="ID">
+<td class="rk">263</td>
+<td class="sym">ID</td>
+<td class="mut" data-v="0.6980">0.70</td>
+<td class="mut" data-v="1.2240">1.22</td>
+<td class="mut" data-v="1.3030">1.30</td>
+<td class="down" data-v="-15.2800">-15.3%</td>
+<td class="down" data-v="-4.8200">-4.8%</td>
+<td class="mut" data-v="2216344">222万</td>
+</tr>
+<tr data-sym="STO">
+<td class="rk">264</td>
+<td class="sym">STO</td>
+<td class="mut" data-v="0.6460">0.65</td>
+<td class="mut" data-v="1.3990">1.40</td>
+<td class="mut" data-v="1.3710">1.37</td>
+<td class="down" data-v="-15.2900">-15.3%</td>
+<td class="down" data-v="-4.8300">-4.8%</td>
+<td class="mut" data-v="1697492">170万</td>
+</tr>
+<tr data-sym="BB">
+<td class="rk">265</td>
+<td class="sym">BB</td>
+<td class="mut" data-v="0.7300">0.73</td>
+<td class="mut" data-v="1.6480">1.65</td>
+<td class="mut" data-v="1.5090">1.51</td>
+<td class="down" data-v="-15.2800">-15.3%</td>
+<td class="down" data-v="-4.8300">-4.8%</td>
+<td class="mut" data-v="2239064">224万</td>
+</tr>
+<tr data-sym="MOODENG">
+<td class="rk">266</td>
+<td class="sym">MOODENG</td>
+<td class="mut" data-v="0.7790">0.78</td>
+<td class="mut" data-v="1.3770">1.38</td>
+<td class="mut" data-v="1.3010">1.30</td>
+<td class="down" data-v="-15.2800">-15.3%</td>
+<td class="down" data-v="-4.8300">-4.8%</td>
+<td class="mut" data-v="1745330">175万</td>
+</tr>
+<tr data-sym="ACE">
+<td class="rk">267</td>
+<td class="sym">ACE</td>
+<td class="mut" data-v="0.6290">0.63</td>
+<td class="mut" data-v="1.4040">1.40</td>
+<td class="mut" data-v="1.2090">1.21</td>
+<td class="down" data-v="-15.3800">-15.4%</td>
+<td class="down" data-v="-4.9300">-4.9%</td>
+<td class="mut" data-v="2959722">296万</td>
+</tr>
+<tr data-sym="ATH">
+<td class="rk">268</td>
+<td class="sym">ATH</td>
+<td class="mut" data-v="0.6910">0.69</td>
+<td class="mut" data-v="1.7740">1.77</td>
+<td class="mut" data-v="1.8040">1.80</td>
+<td class="down" data-v="-15.4800">-15.5%</td>
+<td class="down" data-v="-5.0300">-5.0%</td>
+<td class="mut" data-v="2644191">264万</td>
+</tr>
+<tr data-sym="COAI">
+<td class="rk">269</td>
+<td class="sym">COAI</td>
+<td class="mut" data-v="0.6810">0.68</td>
+<td class="mut" data-v="1.6240">1.62</td>
+<td class="mut" data-v="1.3620">1.36</td>
+<td class="down" data-v="-15.5000">-15.5%</td>
+<td class="down" data-v="-5.0500">-5.0%</td>
+<td class="mut" data-v="1344368">134万</td>
+</tr>
+<tr data-sym="PUMP">
+<td class="rk">270</td>
+<td class="sym">PUMP</td>
+<td class="mut" data-v="0.6700">0.67</td>
+<td class="mut" data-v="1.7920">1.79</td>
+<td class="mut" data-v="1.9930">1.99</td>
+<td class="down" data-v="-15.6100">-15.6%</td>
+<td class="down" data-v="-5.1600">-5.2%</td>
+<td class="mut" data-v="98217672">9822万</td>
+</tr>
+<tr data-sym="APE">
+<td class="rk">271</td>
+<td class="sym">APE</td>
+<td class="mut" data-v="0.6680">0.67</td>
+<td class="mut" data-v="1.3460">1.35</td>
+<td class="mut" data-v="1.3050">1.30</td>
+<td class="down" data-v="-15.7100">-15.7%</td>
+<td class="down" data-v="-5.2600">-5.3%</td>
+<td class="mut" data-v="8543335">854万</td>
+</tr>
+<tr data-sym="FLUX">
+<td class="rk">272</td>
+<td class="sym">FLUX</td>
+<td class="mut" data-v="0.7090">0.71</td>
+<td class="mut" data-v="1.3890">1.39</td>
+<td class="mut" data-v="1.3710">1.37</td>
+<td class="down" data-v="-15.7200">-15.7%</td>
+<td class="down" data-v="-5.2700">-5.3%</td>
+<td class="mut" data-v="691456">69万</td>
+</tr>
+<tr data-sym="FRAX">
+<td class="rk">273</td>
+<td class="sym">FRAX</td>
+<td class="mut" data-v="0.6390">0.64</td>
+<td class="mut" data-v="1.0150">1.01</td>
+<td class="mut" data-v="1.0290">1.03</td>
+<td class="down" data-v="-15.7400">-15.7%</td>
+<td class="down" data-v="-5.2800">-5.3%</td>
+<td class="mut" data-v="509440">51万</td>
+</tr>
+<tr data-sym="SOMI">
+<td class="rk">274</td>
+<td class="sym">SOMI</td>
+<td class="mut" data-v="0.5210">0.52</td>
+<td class="mut" data-v="1.1070">1.11</td>
+<td class="mut" data-v="1.1160">1.12</td>
+<td class="down" data-v="-15.8000">-15.8%</td>
+<td class="down" data-v="-5.3400">-5.3%</td>
+<td class="mut" data-v="1147478">115万</td>
+</tr>
+<tr data-sym="ROSE">
+<td class="rk">275</td>
+<td class="sym">ROSE</td>
+<td class="mut" data-v="0.7520">0.75</td>
+<td class="mut" data-v="1.4550">1.46</td>
+<td class="mut" data-v="1.4540">1.45</td>
+<td class="down" data-v="-15.8000">-15.8%</td>
+<td class="down" data-v="-5.3400">-5.3%</td>
+<td class="mut" data-v="2368867">237万</td>
+</tr>
+<tr data-sym="JTO">
+<td class="rk">276</td>
+<td class="sym">JTO</td>
+<td class="mut" data-v="0.6960">0.70</td>
+<td class="mut" data-v="1.5720">1.57</td>
+<td class="mut" data-v="1.5530">1.55</td>
+<td class="down" data-v="-15.8500">-15.8%</td>
+<td class="down" data-v="-5.3900">-5.4%</td>
+<td class="mut" data-v="9803119">980万</td>
+</tr>
+<tr data-sym="XAN">
+<td class="rk">277</td>
+<td class="sym">XAN</td>
+<td class="mut" data-v="0.4900">0.49</td>
+<td class="mut" data-v="1.1690">1.17</td>
+<td class="mut" data-v="1.0720">1.07</td>
+<td class="down" data-v="-16.0000">-16.0%</td>
+<td class="down" data-v="-5.5500">-5.5%</td>
+<td class="mut" data-v="2377625">238万</td>
+</tr>
+<tr data-sym="QNT">
+<td class="rk">278</td>
+<td class="sym">QNT</td>
+<td class="mut" data-v="0.5880">0.59</td>
+<td class="mut" data-v="1.3190">1.32</td>
+<td class="mut" data-v="1.4070">1.41</td>
+<td class="down" data-v="-16.2900">-16.3%</td>
+<td class="down" data-v="-5.8300">-5.8%</td>
+<td class="mut" data-v="51561223">5156万</td>
+</tr>
+<tr data-sym="PRL">
+<td class="rk">279</td>
+<td class="sym">PRL</td>
+<td class="mut" data-v="0.4620">0.46</td>
+<td class="mut" data-v="1.1950">1.20</td>
+<td class="mut" data-v="1.1360">1.14</td>
+<td class="down" data-v="-16.3300">-16.3%</td>
+<td class="down" data-v="-5.8800">-5.9%</td>
+<td class="mut" data-v="8601773">860万</td>
+</tr>
+<tr data-sym="UNI">
+<td class="rk">280</td>
+<td class="sym">UNI</td>
+<td class="mut" data-v="0.6810">0.68</td>
+<td class="mut" data-v="1.5320">1.53</td>
+<td class="mut" data-v="1.5180">1.52</td>
+<td class="down" data-v="-16.4000">-16.4%</td>
+<td class="down" data-v="-5.9400">-5.9%</td>
+<td class="mut" data-v="215860918">2.16亿</td>
+</tr>
+<tr data-sym="XVG">
+<td class="rk">281</td>
+<td class="sym">XVG</td>
+<td class="mut" data-v="0.7320">0.73</td>
+<td class="mut" data-v="1.4730">1.47</td>
+<td class="mut" data-v="1.4280">1.43</td>
+<td class="down" data-v="-16.4100">-16.4%</td>
+<td class="down" data-v="-5.9600">-6.0%</td>
+<td class="mut" data-v="1435120">144万</td>
+</tr>
+<tr data-sym="1000FLOKI">
+<td class="rk">282</td>
+<td class="sym">1000FLOKI</td>
+<td class="mut" data-v="0.7560">0.76</td>
+<td class="mut" data-v="1.3090">1.31</td>
+<td class="mut" data-v="1.2920">1.29</td>
+<td class="down" data-v="-16.5400">-16.5%</td>
+<td class="down" data-v="-6.0900">-6.1%</td>
+<td class="mut" data-v="5224294">522万</td>
+</tr>
+<tr data-sym="CVX">
+<td class="rk">283</td>
+<td class="sym">CVX</td>
+<td class="mut" data-v="0.6480">0.65</td>
+<td class="mut" data-v="1.2440">1.24</td>
+<td class="mut" data-v="1.2710">1.27</td>
+<td class="down" data-v="-16.6800">-16.7%</td>
+<td class="down" data-v="-6.2200">-6.2%</td>
+<td class="mut" data-v="2400821">240万</td>
+</tr>
+<tr data-sym="PENGU">
+<td class="rk">284</td>
+<td class="sym">PENGU</td>
+<td class="mut" data-v="0.7670">0.77</td>
+<td class="mut" data-v="1.5730">1.57</td>
+<td class="mut" data-v="1.4980">1.50</td>
+<td class="down" data-v="-16.7800">-16.8%</td>
+<td class="down" data-v="-6.3200">-6.3%</td>
+<td class="mut" data-v="34966831">3497万</td>
+</tr>
+<tr data-sym="SAPIEN">
+<td class="rk">285</td>
+<td class="sym">SAPIEN</td>
+<td class="mut" data-v="0.7310">0.73</td>
+<td class="mut" data-v="1.4700">1.47</td>
+<td class="mut" data-v="1.3540">1.35</td>
+<td class="down" data-v="-16.8500">-16.9%</td>
+<td class="down" data-v="-6.3900">-6.4%</td>
+<td class="mut" data-v="880296">88万</td>
+</tr>
+<tr data-sym="SOL">
+<td class="rk">286</td>
+<td class="sym">SOL</td>
+<td class="mut" data-v="0.8520">0.85</td>
+<td class="mut" data-v="1.2320">1.23</td>
+<td class="mut" data-v="1.3080">1.31</td>
+<td class="down" data-v="-16.8500">-16.9%</td>
+<td class="down" data-v="-6.3900">-6.4%</td>
+<td class="mut" data-v="1904587148">19.05亿</td>
+</tr>
+<tr data-sym="AGLD">
+<td class="rk">287</td>
+<td class="sym">AGLD</td>
+<td class="mut" data-v="0.4600">0.46</td>
+<td class="mut" data-v="0.9760">0.98</td>
+<td class="mut" data-v="1.0870">1.09</td>
+<td class="down" data-v="-16.8500">-16.9%</td>
+<td class="down" data-v="-6.4000">-6.4%</td>
+<td class="mut" data-v="780266">78万</td>
+</tr>
+<tr data-sym="MON">
+<td class="rk">288</td>
+<td class="sym">MON</td>
+<td class="mut" data-v="0.6530">0.65</td>
+<td class="mut" data-v="1.4390">1.44</td>
+<td class="mut" data-v="1.4890">1.49</td>
+<td class="down" data-v="-17.0700">-17.1%</td>
+<td class="down" data-v="-6.6200">-6.6%</td>
+<td class="mut" data-v="13159003">1316万</td>
+</tr>
+<tr data-sym="MAV">
+<td class="rk">289</td>
+<td class="sym">MAV</td>
+<td class="mut" data-v="0.6870">0.69</td>
+<td class="mut" data-v="1.3840">1.38</td>
+<td class="mut" data-v="1.4180">1.42</td>
+<td class="down" data-v="-17.1900">-17.2%</td>
+<td class="down" data-v="-6.7400">-6.7%</td>
+<td class="mut" data-v="797236">80万</td>
+</tr>
+<tr data-sym="LAYER">
+<td class="rk">290</td>
+<td class="sym">LAYER</td>
+<td class="mut" data-v="0.7190">0.72</td>
+<td class="mut" data-v="1.2210">1.22</td>
+<td class="mut" data-v="1.3390">1.34</td>
+<td class="down" data-v="-17.2500">-17.2%</td>
+<td class="down" data-v="-6.7900">-6.8%</td>
+<td class="mut" data-v="1151300">115万</td>
+</tr>
+<tr data-sym="SKY">
+<td class="rk">291</td>
+<td class="sym">SKY</td>
+<td class="mut" data-v="0.6680">0.67</td>
+<td class="mut" data-v="1.0140">1.01</td>
+<td class="mut" data-v="1.0340">1.03</td>
+<td class="down" data-v="-17.2700">-17.3%</td>
+<td class="down" data-v="-6.8200">-6.8%</td>
+<td class="mut" data-v="3999658">400万</td>
+</tr>
+<tr data-sym="ZKC">
+<td class="rk">292</td>
+<td class="sym">ZKC</td>
+<td class="mut" data-v="0.6810">0.68</td>
+<td class="mut" data-v="1.3220">1.32</td>
+<td class="mut" data-v="1.3040">1.30</td>
+<td class="down" data-v="-17.3200">-17.3%</td>
+<td class="down" data-v="-6.8600">-6.9%</td>
+<td class="mut" data-v="1123962">112万</td>
+</tr>
+<tr data-sym="STRK">
+<td class="rk">293</td>
+<td class="sym">STRK</td>
+<td class="mut" data-v="0.6120">0.61</td>
+<td class="mut" data-v="1.5480">1.55</td>
+<td class="mut" data-v="1.2560">1.26</td>
+<td class="down" data-v="-17.3900">-17.4%</td>
+<td class="down" data-v="-6.9400">-6.9%</td>
+<td class="mut" data-v="24123180">2412万</td>
+</tr>
+<tr data-sym="STBL">
+<td class="rk">294</td>
+<td class="sym">STBL</td>
+<td class="mut" data-v="0.5440">0.54</td>
+<td class="mut" data-v="0.9400">0.94</td>
+<td class="mut" data-v="1.0030">1.00</td>
+<td class="down" data-v="-17.4300">-17.4%</td>
+<td class="down" data-v="-6.9800">-7.0%</td>
+<td class="mut" data-v="746073">75万</td>
+</tr>
+<tr data-sym="EDU">
+<td class="rk">295</td>
+<td class="sym">EDU</td>
+<td class="mut" data-v="0.5880">0.59</td>
+<td class="mut" data-v="1.2140">1.21</td>
+<td class="mut" data-v="1.1200">1.12</td>
+<td class="down" data-v="-17.4600">-17.5%</td>
+<td class="down" data-v="-7.0000">-7.0%</td>
+<td class="mut" data-v="1139231">114万</td>
+</tr>
+<tr data-sym="NEAR">
+<td class="rk">296</td>
+<td class="sym">NEAR</td>
+<td class="mut" data-v="0.6350">0.64</td>
+<td class="mut" data-v="1.5800">1.58</td>
+<td class="mut" data-v="1.7490">1.75</td>
+<td class="down" data-v="-17.5400">-17.5%</td>
+<td class="down" data-v="-7.0900">-7.1%</td>
+<td class="mut" data-v="424125575">4.24亿</td>
+</tr>
+<tr data-sym="CRV">
+<td class="rk">297</td>
+<td class="sym">CRV</td>
+<td class="mut" data-v="0.6360">0.64</td>
+<td class="mut" data-v="1.2340">1.23</td>
+<td class="mut" data-v="1.3450">1.34</td>
+<td class="down" data-v="-17.6200">-17.6%</td>
+<td class="down" data-v="-7.1700">-7.2%</td>
+<td class="mut" data-v="19896898">1990万</td>
+</tr>
+<tr data-sym="BRETT">
+<td class="rk">298</td>
+<td class="sym">BRETT</td>
+<td class="mut" data-v="0.7770">0.78</td>
+<td class="mut" data-v="1.6220">1.62</td>
+<td class="mut" data-v="1.6110">1.61</td>
+<td class="down" data-v="-17.6400">-17.6%</td>
+<td class="down" data-v="-7.1800">-7.2%</td>
+<td class="mut" data-v="839604">84万</td>
+</tr>
+<tr data-sym="AXL">
+<td class="rk">299</td>
+<td class="sym">AXL</td>
+<td class="mut" data-v="0.6340">0.63</td>
+<td class="mut" data-v="1.4220">1.42</td>
+<td class="mut" data-v="1.4470">1.45</td>
+<td class="down" data-v="-17.7200">-17.7%</td>
+<td class="down" data-v="-7.2700">-7.3%</td>
+<td class="mut" data-v="1540181">154万</td>
+</tr>
+<tr data-sym="IN">
+<td class="rk">300</td>
+<td class="sym">IN</td>
+<td class="mut" data-v="0.5510">0.55</td>
+<td class="mut" data-v="1.2590">1.26</td>
+<td class="mut" data-v="1.2340">1.23</td>
+<td class="down" data-v="-17.7800">-17.8%</td>
+<td class="down" data-v="-7.3200">-7.3%</td>
+<td class="mut" data-v="1817875">182万</td>
+</tr>
+<tr data-sym="DASH">
+<td class="rk">301</td>
+<td class="sym">DASH</td>
+<td class="mut" data-v="0.6970">0.70</td>
+<td class="mut" data-v="1.7680">1.77</td>
+<td class="mut" data-v="1.6520">1.65</td>
+<td class="down" data-v="-17.8700">-17.9%</td>
+<td class="down" data-v="-7.4100">-7.4%</td>
+<td class="mut" data-v="27654095">2765万</td>
+</tr>
+<tr data-sym="MIRA">
+<td class="rk">302</td>
+<td class="sym">MIRA</td>
+<td class="mut" data-v="0.7390">0.74</td>
+<td class="mut" data-v="1.4010">1.40</td>
+<td class="mut" data-v="1.3670">1.37</td>
+<td class="down" data-v="-17.9000">-17.9%</td>
+<td class="down" data-v="-7.4400">-7.4%</td>
+<td class="mut" data-v="1042974">104万</td>
+</tr>
+<tr data-sym="XRP">
+<td class="rk">303</td>
+<td class="sym">XRP</td>
+<td class="mut" data-v="0.7370">0.74</td>
+<td class="mut" data-v="1.0470">1.05</td>
+<td class="mut" data-v="1.1720">1.17</td>
+<td class="down" data-v="-17.9100">-17.9%</td>
+<td class="down" data-v="-7.4600">-7.5%</td>
+<td class="mut" data-v="862749350">8.63亿</td>
+</tr>
+<tr data-sym="LAB">
+<td class="rk">304</td>
+<td class="sym">LAB</td>
+<td class="mut" data-v="0.4860">0.49</td>
+<td class="mut" data-v="1.4060">1.41</td>
+<td class="mut" data-v="1.3800">1.38</td>
+<td class="down" data-v="-17.9700">-18.0%</td>
+<td class="down" data-v="-7.5100">-7.5%</td>
+<td class="mut" data-v="10871780">1087万</td>
+</tr>
+<tr data-sym="RIF">
+<td class="rk">305</td>
+<td class="sym">RIF</td>
+<td class="mut" data-v="0.6340">0.63</td>
+<td class="mut" data-v="0.9820">0.98</td>
+<td class="mut" data-v="0.9760">0.98</td>
+<td class="down" data-v="-17.9700">-18.0%</td>
+<td class="down" data-v="-7.5200">-7.5%</td>
+<td class="mut" data-v="1421660">142万</td>
+</tr>
+<tr data-sym="HEI">
+<td class="rk">306</td>
+<td class="sym">HEI</td>
+<td class="mut" data-v="0.5750">0.57</td>
+<td class="mut" data-v="1.1980">1.20</td>
+<td class="mut" data-v="1.2100">1.21</td>
+<td class="down" data-v="-18.2000">-18.2%</td>
+<td class="down" data-v="-7.7500">-7.8%</td>
+<td class="mut" data-v="1115191">112万</td>
+</tr>
+<tr data-sym="BICO">
+<td class="rk">307</td>
+<td class="sym">BICO</td>
+<td class="mut" data-v="0.6290">0.63</td>
+<td class="mut" data-v="1.2500">1.25</td>
+<td class="mut" data-v="1.0730">1.07</td>
+<td class="down" data-v="-18.2000">-18.2%</td>
+<td class="down" data-v="-7.7500">-7.8%</td>
+<td class="mut" data-v="1259964">126万</td>
+</tr>
+<tr data-sym="RARE">
+<td class="rk">308</td>
+<td class="sym">RARE</td>
+<td class="mut" data-v="0.5340">0.53</td>
+<td class="mut" data-v="1.0040">1.00</td>
+<td class="mut" data-v="0.9590">0.96</td>
+<td class="down" data-v="-18.2100">-18.2%</td>
+<td class="down" data-v="-7.7600">-7.8%</td>
+<td class="mut" data-v="1185500">119万</td>
+</tr>
+<tr data-sym="ZBT">
+<td class="rk">309</td>
+<td class="sym">ZBT</td>
+<td class="mut" data-v="0.5540">0.55</td>
+<td class="mut" data-v="1.0550">1.05</td>
+<td class="mut" data-v="1.2100">1.21</td>
+<td class="down" data-v="-18.3300">-18.3%</td>
+<td class="down" data-v="-7.8800">-7.9%</td>
+<td class="mut" data-v="4142520">414万</td>
+</tr>
+<tr data-sym="PNUT">
+<td class="rk">310</td>
+<td class="sym">PNUT</td>
+<td class="mut" data-v="0.6640">0.66</td>
+<td class="mut" data-v="1.2980">1.30</td>
+<td class="mut" data-v="1.2800">1.28</td>
+<td class="down" data-v="-18.6800">-18.7%</td>
+<td class="down" data-v="-8.2300">-8.2%</td>
+<td class="mut" data-v="3824106">382万</td>
+</tr>
+<tr data-sym="ANIME">
+<td class="rk">311</td>
+<td class="sym">ANIME</td>
+<td class="mut" data-v="0.6970">0.70</td>
+<td class="mut" data-v="1.0230">1.02</td>
+<td class="mut" data-v="1.1480">1.15</td>
+<td class="down" data-v="-18.7600">-18.8%</td>
+<td class="down" data-v="-8.3100">-8.3%</td>
+<td class="mut" data-v="1067452">107万</td>
+</tr>
+<tr data-sym="F">
+<td class="rk">312</td>
+<td class="sym">F</td>
+<td class="mut" data-v="0.7240">0.72</td>
+<td class="mut" data-v="1.3160">1.32</td>
+<td class="mut" data-v="1.4200">1.42</td>
+<td class="down" data-v="-18.7800">-18.8%</td>
+<td class="down" data-v="-8.3200">-8.3%</td>
+<td class="mut" data-v="1129063">113万</td>
+</tr>
+<tr data-sym="BANK">
+<td class="rk">313</td>
+<td class="sym">BANK</td>
+<td class="mut" data-v="0.6120">0.61</td>
+<td class="mut" data-v="0.9880">0.99</td>
+<td class="mut" data-v="0.9770">0.98</td>
+<td class="down" data-v="-18.8200">-18.8%</td>
+<td class="down" data-v="-8.3600">-8.4%</td>
+<td class="mut" data-v="4596873">460万</td>
+</tr>
+<tr data-sym="TOSHI">
+<td class="rk">314</td>
+<td class="sym">TOSHI</td>
+<td class="mut" data-v="0.7150">0.71</td>
+<td class="mut" data-v="1.1170">1.12</td>
+<td class="mut" data-v="1.2170">1.22</td>
+<td class="down" data-v="-18.8600">-18.9%</td>
+<td class="down" data-v="-8.4100">-8.4%</td>
+<td class="mut" data-v="1042361">104万</td>
+</tr>
+<tr data-sym="AZTEC">
+<td class="rk">315</td>
+<td class="sym">AZTEC</td>
+<td class="mut" data-v="0.6770">0.68</td>
+<td class="mut" data-v="1.6540">1.65</td>
+<td class="mut" data-v="1.7130">1.71</td>
+<td class="down" data-v="-18.8900">-18.9%</td>
+<td class="down" data-v="-8.4400">-8.4%</td>
+<td class="mut" data-v="1328685">133万</td>
+</tr>
+<tr data-sym="EUL">
+<td class="rk">316</td>
+<td class="sym">EUL</td>
+<td class="mut" data-v="0.6280">0.63</td>
+<td class="mut" data-v="1.3370">1.34</td>
+<td class="mut" data-v="1.4530">1.45</td>
+<td class="down" data-v="-18.9300">-18.9%</td>
+<td class="down" data-v="-8.4700">-8.5%</td>
+<td class="mut" data-v="1813894">181万</td>
+</tr>
+<tr data-sym="MARSCOIN">
+<td class="rk">317</td>
+<td class="sym">MARSCOIN</td>
+<td class="mut" data-v="0.5510">0.55</td>
+<td class="mut" data-v="1.8430">1.84</td>
+<td class="mut" data-v="1.9590">1.96</td>
+<td class="down" data-v="-19.3200">-19.3%</td>
+<td class="down" data-v="-8.8600">-8.9%</td>
+<td class="mut" data-v="12790903">1279万</td>
+</tr>
+<tr data-sym="HYPE">
+<td class="rk">318</td>
+<td class="sym">HYPE</td>
+<td class="mut" data-v="0.6430">0.64</td>
+<td class="mut" data-v="1.1320">1.13</td>
+<td class="mut" data-v="1.4790">1.48</td>
+<td class="down" data-v="-19.4200">-19.4%</td>
+<td class="down" data-v="-8.9700">-9.0%</td>
+<td class="mut" data-v="707759168">7.08亿</td>
+</tr>
+<tr data-sym="4">
+<td class="rk">319</td>
+<td class="sym">4</td>
+<td class="mut" data-v="0.6030">0.60</td>
+<td class="mut" data-v="1.8110">1.81</td>
+<td class="mut" data-v="1.7080">1.71</td>
+<td class="down" data-v="-19.4400">-19.4%</td>
+<td class="down" data-v="-8.9800">-9.0%</td>
+<td class="mut" data-v="1663081">166万</td>
+</tr>
+<tr data-sym="AIGENSYN">
+<td class="rk">320</td>
+<td class="sym">AIGENSYN</td>
+<td class="mut" data-v="0.7220">0.72</td>
+<td class="mut" data-v="1.3000">1.30</td>
+<td class="mut" data-v="1.2870">1.29</td>
+<td class="down" data-v="-19.6100">-19.6%</td>
+<td class="down" data-v="-9.1600">-9.2%</td>
+<td class="mut" data-v="1470589">147万</td>
+</tr>
+<tr data-sym="CARV">
+<td class="rk">321</td>
+<td class="sym">CARV</td>
+<td class="mut" data-v="0.5520">0.55</td>
+<td class="mut" data-v="1.5050">1.50</td>
+<td class="mut" data-v="1.6850">1.69</td>
+<td class="down" data-v="-19.6600">-19.7%</td>
+<td class="down" data-v="-9.2000">-9.2%</td>
+<td class="mut" data-v="684156">68万</td>
+</tr>
+<tr data-sym="ASTR">
+<td class="rk">322</td>
+<td class="sym">ASTR</td>
+<td class="mut" data-v="0.7090">0.71</td>
+<td class="mut" data-v="1.1700">1.17</td>
+<td class="mut" data-v="1.2340">1.23</td>
+<td class="down" data-v="-19.8900">-19.9%</td>
+<td class="down" data-v="-9.4400">-9.4%</td>
+<td class="mut" data-v="4365044">437万</td>
+</tr>
+<tr data-sym="GRIFFAIN">
+<td class="rk">323</td>
+<td class="sym">GRIFFAIN</td>
+<td class="mut" data-v="0.6080">0.61</td>
+<td class="mut" data-v="1.4860">1.49</td>
+<td class="mut" data-v="1.4720">1.47</td>
+<td class="down" data-v="-19.9100">-19.9%</td>
+<td class="down" data-v="-9.4600">-9.5%</td>
+<td class="mut" data-v="900164">90万</td>
+</tr>
+<tr data-sym="KAT">
+<td class="rk">324</td>
+<td class="sym">KAT</td>
+<td class="mut" data-v="0.6500">0.65</td>
+<td class="mut" data-v="1.3270">1.33</td>
+<td class="mut" data-v="1.2400">1.24</td>
+<td class="down" data-v="-20.2000">-20.2%</td>
+<td class="down" data-v="-9.7500">-9.8%</td>
+<td class="mut" data-v="2204750">220万</td>
+</tr>
+<tr data-sym="PEOPLE">
+<td class="rk">325</td>
+<td class="sym">PEOPLE</td>
+<td class="mut" data-v="0.7320">0.73</td>
+<td class="mut" data-v="1.3960">1.40</td>
+<td class="mut" data-v="1.3920">1.39</td>
+<td class="down" data-v="-20.3500">-20.4%</td>
+<td class="down" data-v="-9.9000">-9.9%</td>
+<td class="mut" data-v="4262362">426万</td>
+</tr>
+<tr data-sym="MEW">
+<td class="rk">326</td>
+<td class="sym">MEW</td>
+<td class="mut" data-v="0.7450">0.74</td>
+<td class="mut" data-v="1.3740">1.37</td>
+<td class="mut" data-v="1.4570">1.46</td>
+<td class="down" data-v="-20.7700">-20.8%</td>
+<td class="down" data-v="-10.3100">-10.3%</td>
+<td class="mut" data-v="1119182">112万</td>
+</tr>
+<tr data-sym="POPCAT">
+<td class="rk">327</td>
+<td class="sym">POPCAT</td>
+<td class="mut" data-v="0.7330">0.73</td>
+<td class="mut" data-v="1.4810">1.48</td>
+<td class="mut" data-v="1.4910">1.49</td>
+<td class="down" data-v="-20.9400">-20.9%</td>
+<td class="down" data-v="-10.4900">-10.5%</td>
+<td class="mut" data-v="1880087">188万</td>
+</tr>
+<tr data-sym="PHA">
+<td class="rk">328</td>
+<td class="sym">PHA</td>
+<td class="mut" data-v="0.5300">0.53</td>
+<td class="mut" data-v="1.4350">1.44</td>
+<td class="mut" data-v="1.4830">1.48</td>
+<td class="down" data-v="-21.0700">-21.1%</td>
+<td class="down" data-v="-10.6200">-10.6%</td>
+<td class="mut" data-v="3977673">398万</td>
+</tr>
+<tr data-sym="BCH">
+<td class="rk">329</td>
+<td class="sym">BCH</td>
+<td class="mut" data-v="0.6280">0.63</td>
+<td class="mut" data-v="1.0450">1.04</td>
+<td class="mut" data-v="1.2630">1.26</td>
+<td class="down" data-v="-21.1600">-21.2%</td>
+<td class="down" data-v="-10.7000">-10.7%</td>
+<td class="mut" data-v="63166349">6317万</td>
+</tr>
+<tr data-sym="ZORA">
+<td class="rk">330</td>
+<td class="sym">ZORA</td>
+<td class="mut" data-v="0.6670">0.67</td>
+<td class="mut" data-v="1.4640">1.46</td>
+<td class="mut" data-v="1.6150">1.61</td>
+<td class="down" data-v="-21.2500">-21.2%</td>
+<td class="down" data-v="-10.8000">-10.8%</td>
+<td class="mut" data-v="1876701">188万</td>
+</tr>
+<tr data-sym="MANTA">
+<td class="rk">331</td>
+<td class="sym">MANTA</td>
+<td class="mut" data-v="0.7100">0.71</td>
+<td class="mut" data-v="1.3080">1.31</td>
+<td class="mut" data-v="1.2520">1.25</td>
+<td class="down" data-v="-21.2700">-21.3%</td>
+<td class="down" data-v="-10.8200">-10.8%</td>
+<td class="mut" data-v="1423558">142万</td>
+</tr>
+<tr data-sym="MANTRA">
+<td class="rk">332</td>
+<td class="sym">MANTRA</td>
+<td class="mut" data-v="0.6650">0.67</td>
+<td class="mut" data-v="1.4380">1.44</td>
+<td class="mut" data-v="1.5240">1.52</td>
+<td class="down" data-v="-21.3200">-21.3%</td>
+<td class="down" data-v="-10.8700">-10.9%</td>
+<td class="mut" data-v="6165149">617万</td>
+</tr>
+<tr data-sym="SAHARA">
+<td class="rk">333</td>
+<td class="sym">SAHARA</td>
+<td class="mut" data-v="0.7550">0.76</td>
+<td class="mut" data-v="1.3280">1.33</td>
+<td class="mut" data-v="1.3340">1.33</td>
+<td class="down" data-v="-21.6200">-21.6%</td>
+<td class="down" data-v="-11.1700">-11.2%</td>
+<td class="mut" data-v="2329633">233万</td>
+</tr>
+<tr data-sym="POWER">
+<td class="rk">334</td>
+<td class="sym">POWER</td>
+<td class="mut" data-v="0.5970">0.60</td>
+<td class="mut" data-v="1.5550">1.55</td>
+<td class="mut" data-v="1.4870">1.49</td>
+<td class="down" data-v="-21.7000">-21.7%</td>
+<td class="down" data-v="-11.2400">-11.2%</td>
+<td class="mut" data-v="1358548">136万</td>
+</tr>
+<tr data-sym="AERO">
+<td class="rk">335</td>
+<td class="sym">AERO</td>
+<td class="mut" data-v="0.6620">0.66</td>
+<td class="mut" data-v="1.5820">1.58</td>
+<td class="mut" data-v="1.7860">1.79</td>
+<td class="down" data-v="-21.8200">-21.8%</td>
+<td class="down" data-v="-11.3700">-11.4%</td>
+<td class="mut" data-v="28341370">2834万</td>
+</tr>
+<tr data-sym="ORCA">
+<td class="rk">336</td>
+<td class="sym">ORCA</td>
+<td class="mut" data-v="0.6080">0.61</td>
+<td class="mut" data-v="1.1760">1.18</td>
+<td class="mut" data-v="1.2850">1.28</td>
+<td class="down" data-v="-21.9800">-22.0%</td>
+<td class="down" data-v="-11.5300">-11.5%</td>
+<td class="mut" data-v="4270595">427万</td>
+</tr>
+<tr data-sym="BIGTIME">
+<td class="rk">337</td>
+<td class="sym">BIGTIME</td>
+<td class="mut" data-v="0.6020">0.60</td>
+<td class="mut" data-v="1.1760">1.18</td>
+<td class="mut" data-v="1.2560">1.26</td>
+<td class="down" data-v="-21.9900">-22.0%</td>
+<td class="down" data-v="-11.5400">-11.5%</td>
+<td class="mut" data-v="1102204">110万</td>
+</tr>
+<tr data-sym="YB">
+<td class="rk">338</td>
+<td class="sym">YB</td>
+<td class="mut" data-v="0.5540">0.55</td>
+<td class="mut" data-v="1.2050">1.21</td>
+<td class="mut" data-v="1.3070">1.31</td>
+<td class="down" data-v="-22.2500">-22.2%</td>
+<td class="down" data-v="-11.8000">-11.8%</td>
+<td class="mut" data-v="904270">90万</td>
+</tr>
+<tr data-sym="SHELL">
+<td class="rk">339</td>
+<td class="sym">SHELL</td>
+<td class="mut" data-v="0.5810">0.58</td>
+<td class="mut" data-v="1.1880">1.19</td>
+<td class="mut" data-v="1.2220">1.22</td>
+<td class="down" data-v="-22.5500">-22.6%</td>
+<td class="down" data-v="-12.1000">-12.1%</td>
+<td class="mut" data-v="964560">96万</td>
+</tr>
+<tr data-sym="CKB">
+<td class="rk">340</td>
+<td class="sym">CKB</td>
+<td class="mut" data-v="0.6060">0.61</td>
+<td class="mut" data-v="1.2010">1.20</td>
+<td class="mut" data-v="1.4090">1.41</td>
+<td class="down" data-v="-22.6700">-22.7%</td>
+<td class="down" data-v="-12.2100">-12.2%</td>
+<td class="mut" data-v="1902053">190万</td>
+</tr>
+<tr data-sym="OPN">
+<td class="rk">341</td>
+<td class="sym">OPN</td>
+<td class="mut" data-v="0.7090">0.71</td>
+<td class="mut" data-v="1.5360">1.54</td>
+<td class="mut" data-v="1.4860">1.49</td>
+<td class="down" data-v="-22.7600">-22.8%</td>
+<td class="down" data-v="-12.3100">-12.3%</td>
+<td class="mut" data-v="2812616">281万</td>
+</tr>
+<tr data-sym="SYRUP">
+<td class="rk">342</td>
+<td class="sym">SYRUP</td>
+<td class="mut" data-v="0.6270">0.63</td>
+<td class="mut" data-v="1.4390">1.44</td>
+<td class="mut" data-v="1.5770">1.58</td>
+<td class="down" data-v="-22.7900">-22.8%</td>
+<td class="down" data-v="-12.3400">-12.3%</td>
+<td class="mut" data-v="6842570">684万</td>
+</tr>
+<tr data-sym="SKR">
+<td class="rk">343</td>
+<td class="sym">SKR</td>
+<td class="mut" data-v="0.5550">0.56</td>
+<td class="mut" data-v="1.2610">1.26</td>
+<td class="mut" data-v="1.3410">1.34</td>
+<td class="down" data-v="-22.8000">-22.8%</td>
+<td class="down" data-v="-12.3500">-12.3%</td>
+<td class="mut" data-v="1802542">180万</td>
+</tr>
+<tr data-sym="HYPER">
+<td class="rk">344</td>
+<td class="sym">HYPER</td>
+<td class="mut" data-v="0.5410">0.54</td>
+<td class="mut" data-v="1.2170">1.22</td>
+<td class="mut" data-v="1.2990">1.30</td>
+<td class="down" data-v="-22.8900">-22.9%</td>
+<td class="down" data-v="-12.4300">-12.4%</td>
+<td class="mut" data-v="1521264">152万</td>
+</tr>
+<tr data-sym="RIVER">
+<td class="rk">345</td>
+<td class="sym">RIVER</td>
+<td class="mut" data-v="0.7060">0.71</td>
+<td class="mut" data-v="1.7700">1.77</td>
+<td class="mut" data-v="1.6550">1.66</td>
+<td class="down" data-v="-23.1100">-23.1%</td>
+<td class="down" data-v="-12.6500">-12.7%</td>
+<td class="mut" data-v="7873456">787万</td>
+</tr>
+<tr data-sym="ZEC">
+<td class="rk">346</td>
+<td class="sym">ZEC</td>
+<td class="mut" data-v="0.5950">0.59</td>
+<td class="mut" data-v="1.8530">1.85</td>
+<td class="mut" data-v="2.1780">2.18</td>
+<td class="down" data-v="-23.3300">-23.3%</td>
+<td class="down" data-v="-12.8700">-12.9%</td>
+<td class="mut" data-v="2136512383">21.37亿</td>
+</tr>
+<tr data-sym="RLC">
+<td class="rk">347</td>
+<td class="sym">RLC</td>
+<td class="mut" data-v="0.4900">0.49</td>
+<td class="mut" data-v="1.0580">1.06</td>
+<td class="mut" data-v="1.1160">1.12</td>
+<td class="down" data-v="-23.4900">-23.5%</td>
+<td class="down" data-v="-13.0300">-13.0%</td>
+<td class="mut" data-v="4373172">437万</td>
+</tr>
+<tr data-sym="BREV">
+<td class="rk">348</td>
+<td class="sym">BREV</td>
+<td class="mut" data-v="0.5860">0.59</td>
+<td class="mut" data-v="1.2950">1.29</td>
+<td class="mut" data-v="1.4340">1.43</td>
+<td class="down" data-v="-23.9000">-23.9%</td>
+<td class="down" data-v="-13.4400">-13.4%</td>
+<td class="mut" data-v="1191712">119万</td>
+</tr>
+<tr data-sym="ZKP">
+<td class="rk">349</td>
+<td class="sym">ZKP</td>
+<td class="mut" data-v="0.5680">0.57</td>
+<td class="mut" data-v="1.4100">1.41</td>
+<td class="mut" data-v="1.4780">1.48</td>
+<td class="down" data-v="-24.5100">-24.5%</td>
+<td class="down" data-v="-14.0600">-14.1%</td>
+<td class="mut" data-v="1114667">111万</td>
+</tr>
+<tr data-sym="BASED">
+<td class="rk">350</td>
+<td class="sym">BASED</td>
+<td class="mut" data-v="0.5920">0.59</td>
+<td class="mut" data-v="1.5080">1.51</td>
+<td class="mut" data-v="1.5000">1.50</td>
+<td class="down" data-v="-24.5600">-24.6%</td>
+<td class="down" data-v="-14.1000">-14.1%</td>
+<td class="mut" data-v="2357348">236万</td>
+</tr>
+<tr data-sym="ZIL">
+<td class="rk">351</td>
+<td class="sym">ZIL</td>
+<td class="mut" data-v="0.4920">0.49</td>
+<td class="mut" data-v="1.4030">1.40</td>
+<td class="mut" data-v="1.4710">1.47</td>
+<td class="down" data-v="-24.7900">-24.8%</td>
+<td class="down" data-v="-14.3400">-14.3%</td>
+<td class="mut" data-v="4006731">401万</td>
+</tr>
+<tr data-sym="BERA">
+<td class="rk">352</td>
+<td class="sym">BERA</td>
+<td class="mut" data-v="0.6160">0.62</td>
+<td class="mut" data-v="1.4000">1.40</td>
+<td class="mut" data-v="1.4340">1.43</td>
+<td class="down" data-v="-24.8200">-24.8%</td>
+<td class="down" data-v="-14.3700">-14.4%</td>
+<td class="mut" data-v="8595075">860万</td>
+</tr>
+<tr data-sym="BANANAS31">
+<td class="rk">353</td>
+<td class="sym">BANANAS31</td>
+<td class="mut" data-v="0.5750">0.57</td>
+<td class="mut" data-v="1.3870">1.39</td>
+<td class="mut" data-v="1.4570">1.46</td>
+<td class="down" data-v="-25.1700">-25.2%</td>
+<td class="down" data-v="-14.7200">-14.7%</td>
+<td class="mut" data-v="8879980">888万</td>
+</tr>
+<tr data-sym="SYN">
+<td class="rk">354</td>
+<td class="sym">SYN</td>
+<td class="mut" data-v="0.5990">0.60</td>
+<td class="mut" data-v="1.3480">1.35</td>
+<td class="mut" data-v="1.4690">1.47</td>
+<td class="down" data-v="-25.5300">-25.5%</td>
+<td class="down" data-v="-15.0700">-15.1%</td>
+<td class="mut" data-v="2783995">278万</td>
+</tr>
+<tr data-sym="SLX">
+<td class="rk">355</td>
+<td class="sym">SLX</td>
+<td class="mut" data-v="0.5580">0.56</td>
+<td class="mut" data-v="1.4000">1.40</td>
+<td class="mut" data-v="1.5400">1.54</td>
+<td class="down" data-v="-25.5900">-25.6%</td>
+<td class="down" data-v="-15.1400">-15.1%</td>
+<td class="mut" data-v="5046555">505万</td>
+</tr>
+<tr data-sym="DUSK">
+<td class="rk">356</td>
+<td class="sym">DUSK</td>
+<td class="mut" data-v="0.6060">0.61</td>
+<td class="mut" data-v="1.3130">1.31</td>
+<td class="mut" data-v="1.4170">1.42</td>
+<td class="down" data-v="-25.7500">-25.8%</td>
+<td class="down" data-v="-15.3000">-15.3%</td>
+<td class="mut" data-v="2444921">244万</td>
+</tr>
+<tr data-sym="TLM">
+<td class="rk">357</td>
+<td class="sym">TLM</td>
+<td class="mut" data-v="0.5860">0.59</td>
+<td class="mut" data-v="1.2370">1.24</td>
+<td class="mut" data-v="1.3160">1.32</td>
+<td class="down" data-v="-25.8000">-25.8%</td>
+<td class="down" data-v="-15.3500">-15.3%</td>
+<td class="mut" data-v="896434">90万</td>
+</tr>
+<tr data-sym="WLD">
+<td class="rk">358</td>
+<td class="sym">WLD</td>
+<td class="mut" data-v="0.6770">0.68</td>
+<td class="mut" data-v="1.4750">1.48</td>
+<td class="mut" data-v="1.6610">1.66</td>
+<td class="down" data-v="-25.8800">-25.9%</td>
+<td class="down" data-v="-15.4200">-15.4%</td>
+<td class="mut" data-v="118572522">1.19亿</td>
+</tr>
+<tr data-sym="BABY">
+<td class="rk">359</td>
+<td class="sym">BABY</td>
+<td class="mut" data-v="0.6310">0.63</td>
+<td class="mut" data-v="1.2580">1.26</td>
+<td class="mut" data-v="1.4760">1.48</td>
+<td class="down" data-v="-26.2200">-26.2%</td>
+<td class="down" data-v="-15.7700">-15.8%</td>
+<td class="mut" data-v="2760894">276万</td>
+</tr>
+<tr data-sym="GRASS">
+<td class="rk">360</td>
+<td class="sym">GRASS</td>
+<td class="mut" data-v="0.6220">0.62</td>
+<td class="mut" data-v="1.8290">1.83</td>
+<td class="mut" data-v="1.9780">1.98</td>
+<td class="down" data-v="-26.2500">-26.2%</td>
+<td class="down" data-v="-15.8000">-15.8%</td>
+<td class="mut" data-v="12732681">1273万</td>
+</tr>
+<tr data-sym="PUNDIX">
+<td class="rk">361</td>
+<td class="sym">PUNDIX</td>
+<td class="mut" data-v="0.5560">0.56</td>
+<td class="mut" data-v="1.0160">1.02</td>
+<td class="mut" data-v="1.2140">1.21</td>
+<td class="down" data-v="-26.3500">-26.4%</td>
+<td class="down" data-v="-15.8900">-15.9%</td>
+<td class="mut" data-v="910765">91万</td>
+</tr>
+<tr data-sym="DATAIP">
+<td class="rk">362</td>
+<td class="sym">DATAIP</td>
+<td class="mut" data-v="0.6200">0.62</td>
+<td class="mut" data-v="1.3170">1.32</td>
+<td class="mut" data-v="1.4470">1.45</td>
+<td class="down" data-v="-26.5600">-26.6%</td>
+<td class="down" data-v="-16.1100">-16.1%</td>
+<td class="mut" data-v="2340762">234万</td>
+</tr>
+<tr data-sym="ME">
+<td class="rk">363</td>
+<td class="sym">ME</td>
+<td class="mut" data-v="0.7270">0.73</td>
+<td class="mut" data-v="1.3370">1.34</td>
+<td class="mut" data-v="1.4440">1.44</td>
+<td class="down" data-v="-27.0400">-27.0%</td>
+<td class="down" data-v="-16.5900">-16.6%</td>
+<td class="mut" data-v="1803636">180万</td>
+</tr>
+<tr data-sym="ENA">
+<td class="rk">364</td>
+<td class="sym">ENA</td>
+<td class="mut" data-v="0.6760">0.68</td>
+<td class="mut" data-v="1.7120">1.71</td>
+<td class="mut" data-v="1.8760">1.88</td>
+<td class="down" data-v="-27.3500">-27.4%</td>
+<td class="down" data-v="-16.8900">-16.9%</td>
+<td class="mut" data-v="227395559">2.27亿</td>
+</tr>
+<tr data-sym="CHIP">
+<td class="rk">365</td>
+<td class="sym">CHIP</td>
+<td class="mut" data-v="0.6060">0.61</td>
+<td class="mut" data-v="1.7070">1.71</td>
+<td class="mut" data-v="1.8560">1.86</td>
+<td class="down" data-v="-27.3800">-27.4%</td>
+<td class="down" data-v="-16.9200">-16.9%</td>
+<td class="mut" data-v="6740163">674万</td>
+</tr>
+<tr data-sym="IOTX">
+<td class="rk">366</td>
+<td class="sym">IOTX</td>
+<td class="mut" data-v="0.5860">0.59</td>
+<td class="mut" data-v="1.2620">1.26</td>
+<td class="mut" data-v="1.4350">1.44</td>
+<td class="down" data-v="-29.1900">-29.2%</td>
+<td class="down" data-v="-18.7400">-18.7%</td>
+<td class="mut" data-v="1241141">124万</td>
+</tr>
+<tr data-sym="ENSO">
+<td class="rk">367</td>
+<td class="sym">ENSO</td>
+<td class="mut" data-v="0.4900">0.49</td>
+<td class="mut" data-v="1.1860">1.19</td>
+<td class="mut" data-v="1.5620">1.56</td>
+<td class="down" data-v="-29.5400">-29.5%</td>
+<td class="down" data-v="-19.0900">-19.1%</td>
+<td class="mut" data-v="2622643">262万</td>
+</tr>
+<tr data-sym="2Z">
+<td class="rk">368</td>
+<td class="sym">2Z</td>
+<td class="mut" data-v="0.6150">0.61</td>
+<td class="mut" data-v="1.4440">1.44</td>
+<td class="mut" data-v="1.6720">1.67</td>
+<td class="down" data-v="-29.9200">-29.9%</td>
+<td class="down" data-v="-19.4700">-19.5%</td>
+<td class="mut" data-v="3734823">373万</td>
+</tr>
+<tr data-sym="MELANIA">
+<td class="rk">369</td>
+<td class="sym">MELANIA</td>
+<td class="mut" data-v="0.4810">0.48</td>
+<td class="mut" data-v="1.2250">1.23</td>
+<td class="mut" data-v="1.4530">1.45</td>
+<td class="down" data-v="-30.0800">-30.1%</td>
+<td class="down" data-v="-19.6300">-19.6%</td>
+<td class="mut" data-v="1957579">196万</td>
+</tr>
+<tr data-sym="RE">
+<td class="rk">370</td>
+<td class="sym">RE</td>
+<td class="mut" data-v="0.4750">0.47</td>
+<td class="mut" data-v="1.2820">1.28</td>
+<td class="mut" data-v="1.7090">1.71</td>
+<td class="down" data-v="-32.0900">-32.1%</td>
+<td class="down" data-v="-21.6300">-21.6%</td>
+<td class="mut" data-v="6766323">677万</td>
+</tr>
+<tr data-sym="PONS">
+<td class="rk">371</td>
+<td class="sym">PONS</td>
+<td class="mut" data-v="0.5930">0.59</td>
+<td class="mut" data-v="2.3550">2.35</td>
+<td class="mut" data-v="2.5100">2.51</td>
+<td class="down" data-v="-34.6000">-34.6%</td>
+<td class="down" data-v="-24.1400">-24.1%</td>
+<td class="mut" data-v="36713274">3671万</td>
+</tr>
+<tr data-sym="XPL">
+<td class="rk">372</td>
+<td class="sym">XPL</td>
+<td class="mut" data-v="0.4770">0.48</td>
+<td class="mut" data-v="1.5560">1.56</td>
+<td class="mut" data-v="1.6750">1.68</td>
+<td class="down" data-v="-35.1900">-35.2%</td>
+<td class="down" data-v="-24.7300">-24.7%</td>
+<td class="mut" data-v="29691102">2969万</td>
+</tr>
+<tr data-sym="CYS">
+<td class="rk">373</td>
+<td class="sym">CYS</td>
+<td class="mut" data-v="0.4560">0.46</td>
+<td class="mut" data-v="1.6300">1.63</td>
+<td class="mut" data-v="1.9340">1.93</td>
+<td class="down" data-v="-40.4000">-40.4%</td>
+<td class="down" data-v="-29.9500">-29.9%</td>
+<td class="mut" data-v="6075793">608万</td>
+</tr>
+</tbody></table>
+<footer><b>相关系数与 Beta</b>：用 14 天 1 小时收益率对 BTC 做回归。相关越低越独立；Beta = BTC 涨 1% 时它涨几%。<br><b>下跌捕获</b>：BTC 下跌那一小时里它的平均跌幅 ÷ BTC 跌幅。大于 1 表示跌得比大盘更狠，小于 1 才是相对抗跌。<br><b>超额</b>：14 天收益减去 BTC 同期收益，单位百分点。<br><b>注意</b>：低相关不等于安全，也不等于有人在交易——独立组里有 100 个成交额低于 1000 万，那些"独立"多半是流动性太差造成的统计噪声。<br>点击表头可排序，上方输入框可搜索。数据为一次性快照，不是实时；相关性会随叙事变化，建议每月重算。<b>不构成任何投资建议。</b></footer>
+</div><script>
+(function(){
+  function sortTable(tb, idx, numeric){
+    var body = tb.tBodies[0];
+    var rows = Array.prototype.slice.call(body.rows);
+    var asc = tb.dataset['sort'+idx] !== 'asc';
+    tb.dataset['sort'+idx] = asc ? 'asc' : 'desc';
+    rows.sort(function(a,b){
+      var x = a.cells[idx].dataset.v, y = b.cells[idx].dataset.v;
+      if(numeric){
+        x = parseFloat(x); y = parseFloat(y);
+        if(isNaN(x)) x = asc ? Infinity : -Infinity;
+        if(isNaN(y)) y = asc ? Infinity : -Infinity;
+        return asc ? x-y : y-x;
+      }
+      x = a.cells[idx].textContent; y = b.cells[idx].textContent;
+      return asc ? x.localeCompare(y,'zh') : y.localeCompare(x,'zh');
+    });
+    rows.forEach(function(r,i){ body.appendChild(r); r.cells[0].textContent = i+1; });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('table'), function(tb){
+    Array.prototype.forEach.call(tb.tHead.rows[0].cells, function(th, i){
+      if(i === 0) return;
+      th.addEventListener('click', function(){
+        sortTable(tb, i, th.dataset.num === '1');
+      });
+    });
+  });
+  var box = document.getElementById('q');
+  if(box) box.addEventListener('input', function(){
+    var q = this.value.trim().toUpperCase();
+    Array.prototype.forEach.call(document.querySelectorAll('tbody tr[data-sym]'), function(tr){
+      tr.style.display = (!q || tr.dataset.sym.indexOf(q) >= 0) ? '' : 'none';
+    });
+  });
+})();
+</script></body></html>
