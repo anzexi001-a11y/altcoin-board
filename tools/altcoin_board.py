@@ -418,6 +418,25 @@ LIVE_JS = r"""
   }
   globalThis.__tablesToMd = tablesToMd;
 
+  // ---- 整页自动重载（带倒计时）----
+  // 服务端每 5 分钟重算一次，所以整页重载 5 分钟一次就能拿到最新排名。
+  var RELOAD_MS = 300000;
+  (function(){
+    var el = document.getElementById("reload");
+    var end = Date.now() + RELOAD_MS;
+    function tick(){
+      var left = Math.max(0, end - Date.now());
+      if(el){
+        var m = Math.floor(left / 60000);
+        var s = Math.floor((left % 60000) / 1000);
+        el.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+      }
+      if(left <= 0){ location.reload(); }
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
   (function(){
     var btn = document.getElementById("copymd");
     if(!btn) return;
@@ -591,9 +610,11 @@ def build(rows, stamp, scanned, minvol, live=True, cross=None):
                % (cross.get("bybit", 0), cross.get("okx", 0),
                   cross.get("hl", 0), cross.get("bg", 0)))
     a('<div class="status">榜单由全市场扫描生成于 <b>%s</b>%s ｜ <i id="upd">正在获取实时数据…</i><br>'
-      '页面每 5 分钟就地刷新。<b>涨幅榜会按全市场实时重算并重排</b>（这是唯一会自动重排的表）；'
-      '另外两张表的排名来自生成时那次扫描，要重排请重跑脚本。</div>'
+      '页面每 5 分钟<b>自动整页重载</b>（倒计时 <b><span id="reload">5:00</span></b>），'
+      '会连排名一起更新，不需要手动刷新。<b>涨幅榜</b>另外每 5 分钟按全市场重算重排。'
+      '要立刻更新就按 F5。</div>'
       % (html.escape(stamp), html.escape(cov)))
+    a('<noscript><meta http-equiv="refresh" content="300"></noscript>')
     a('<span id="cfg" data-minvol="%d" hidden></span>' % int(minvol))
     a('<button id="copymd" class="btn">复制榜单为文字（可直接粘贴给其他 AI）</button>')
 
