@@ -28,7 +28,7 @@ try {
 
   [System.IO.File]::WriteAllText((Join-Path $here "index.html"),     $html, $enc)
   [System.IO.File]::WriteAllText((Join-Path $here "board.md"),       $md,   $enc)
-  [System.IO.File]::WriteAllText((Join-Path $here "last-build.txt"), "$($st.last_success) UTC", $enc)
+  [System.IO.File]::WriteAllText((Join-Path $here "last-build.txt"), "$($st.last_success)（北京时间）", $enc)
 
   & $git add index.html board.md last-build.txt 2>&1 | Out-Null
   & $git commit -q -m ("pages mirror " + $st.last_success) 2>&1 | Out-Null
